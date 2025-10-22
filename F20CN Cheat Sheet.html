@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Network Security Cheat Sheet</title>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: #3498db;
+            margin-top: 25px;
+        }
+        
+        .section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        blockquote {
+            background-color: #e7f4ff;
+            border-left: 5px solid #3498db;
+            padding: 10px 20px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .note {
+            background-color: #fffde7;
+            border: 1px solid #ffd54f;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .note::before {
+            content: "Note: ";
+            font-weight: bold;
+            color: #f57c00;
+        }
+        
+        code {
+            background-color: #f1f1f1;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .math {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Computer Network Security Cheat Sheet</h1>
+    </header>
+    
+    <div class="section">
+        <h2>1 CONCEPTS</h2>
+        
+        <h3>1.1 CORE CONCEPTS</h3>
+        <ul>
+            <li><strong>CIA Triad</strong>:    
+                <ul>
+                    <li><strong>Confidentiality</strong>: Protecting data from unauthorized access</li>
+                    <li><strong>Integrity</strong>: Ensuring data remains unchanged during transmission and storage</li>
+                    <li><strong>Availability</strong>: Ensuring systems and data are accessible when needed</li>
+                </ul>
+            </li>
+            <li><strong>AAA Framework</strong>:
+                <ul>
+                    <li><strong>Authentication</strong>: Verifying identity</li>
+                    <li><strong>Authorization</strong>: Determining access rights</li>
+                    <li><strong>Accounting</strong>: Tracking resource usage</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h3>1.2 Common Attacks</h3>
+        <ul>
+            <li><strong>Man-in-the-Middle (MitM)</strong>: Intercepting communications between two parties</li>
+            <li><strong>Denial of Service (DoS/DDoS)</strong>: Overwhelming systems to make them unavailable</li>
+            <li><strong>Packet Sniffing</strong>: Capturing and analysing network traffic</li>
+            <li><strong>ARP Poisoning</strong>: Manipulating Address Resolution Protocol to redirect traffic</li>
+            <li><strong>DNS Spoofing</strong>: Corrupting DNS data to redirect users to malicious sites</li>
+        </ul>
+        
+        <h3>1.3 Malware Types</h3>
+        <ul>
+            <li><strong>Viruses</strong>: Require user action to spread</li>
+            <li><strong>Worms</strong>: Self-replicating through networks</li>
+            <li><strong>Trojans</strong>: Disguised as legitimate software</li>
+            <li><strong>Ransomware</strong>: Encrypts data and demands payment</li>
+            <li><strong>Rootkits</strong>: Provides privileged access while hiding presence</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>2 DEFINITIONS</h2>
+        
+        <table>
+            <tr>
+                <th>Word</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td><strong>Security Analysis</strong></td>
+                <td>Surveys the threats which pose risk to assets, then propose a policy and solution at an appropriate cost</td>
+            </tr>
+            <tr>
+                <td><strong>Threat Model</strong></td>
+                <td>Comments the possible threats to a system, imagine all the vulnerabilities that could be exploited</td>
+            </tr>
+            <tr>
+                <td><strong>Risk Assessment</strong></td>
+                <td>Studies likelihood of each threat in the system environment and assigns a cost value, to find the risks</td>
+            </tr>
+            <tr>
+                <td><strong>Security Policy</strong></td>
+                <td>Addresses the threats and describes a coherent set of counter measures</td>
+            </tr>
+            <tr>
+                <td><strong>Trade-Off</strong></td>
+                <td>The costs of counter measures is compared against the risk</td>
+            </tr>
+            <tr>
+                <td><strong>Security Solution</strong></td>
+                <td>Designed and deploying appropriate technologies at an appropriate cost. Partly budgeting; but also important to spend effort in the right place</td>
+            </tr>
+        </table>
+        
+        <h3>2.1 CRYPTOGRAPHY</h3>
+        <table>
+            <tr>
+                <th>Word</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td>Cryptography</td>
+                <td>Secret writing with ciphers</td>
+            </tr>
+            <tr>
+                <td>Cryptanalysis</td>
+                <td>Breaking ciphers</td>
+            </tr>
+            <tr>
+                <td>Cryptology</td>
+                <td>Both of above</td>
+            </tr>
+            <tr>
+                <td>Encryption</td>
+                <td>Transforming plain text to cipher text</td>
+            </tr>
+            <tr>
+                <td>Decryption</td>
+                <td>Recovering plain text from cipher text</td>
+            </tr>
+            <tr>
+                <td>Cipher</td>
+                <td>A mechanism for encryption and decryption (also referred to as <strong>cryptosystem</strong>)</td>
+            </tr>
+        </table>
+        
+        <table>
+            <tr>
+                <th>Questions</th>
+                <th>Answers</th>
+            </tr>
+            <tr>
+                <td><strong>What does CIA stand for?</strong></td>
+                <td><strong>Confidentiality:</strong> preventing disclosure of information to unauthorised entities<br><strong>Integrity:</strong> preventing unauthorised modification of information<br><strong>Authenticity:</strong> preventing attribution of data to false origin</td>
+            </tr>
+            <tr>
+                <td><strong>What is a passive adversary?</strong></td>
+                <td>Able to eavesdrop on all messages</td>
+            </tr>
+            <tr>
+                <td><strong>What is an active adversary?</strong></td>
+                <td>In addition to eavesdropping they can also forge and modify messages</td>
+            </tr>
+        </table>
+        
+        <h3>2.2 PASSIVE CRYPTOSYSTEM ATTACK</h3>
+        <table>
+            <tr>
+                <th>Questions</th>
+                <th>Answers</th>
+            </tr>
+            <tr>
+                <td><strong>What is a Ciphertext-only attack?</strong></td>
+                <td>When the attacker only knows one or more encrypted messages (cipher-texts), all using the same key</td>
+            </tr>
+            <tr>
+                <td><strong>What is a Known-plaintext attack?</strong></td>
+                <td>When the attacker knows one or more plain-text and the corresponding cipher-text pairs, all using the same key</td>
+            </tr>
+        </table>
+        
+        <h3>2.3 ACTIVE CRYPTOSYSTEM ATTACK</h3>
+        <table>
+            <tr>
+                <th>Questions</th>
+                <th>Answers</th>
+            </tr>
+            <tr>
+                <td><strong>What is a Chosen-plaintext attack?</strong></td>
+                <td>When the attacker can choose one or more plain-texts and get the corresponding cipher-text, all using the same key</td>
+            </tr>
+            <tr>
+                <td><strong>What is a Chosen-ciphertext attack?</strong></td>
+                <td>When the attacker can choose one or more cipher-texts and get the corresponding plain-text, all using the same key</td>
+            </tr>
+        </table>
+        
+        <h3>2.4 ENCRYPTION SCHEME</h3>
+        <table>
+            <tr>
+                <th>Symbol</th>
+                <th>Terminology</th>
+            </tr>
+            <tr>
+                <td>𝓜</td>
+                <td>Message space (Just all possible words, or files or data innit)</td>
+            </tr>
+            <tr>
+                <td>𝓒</td>
+                <td>Cipher text space (Scrambled, unreadable versions of the message)</td>
+            </tr>
+            <tr>
+                <td>𝓚</td>
+                <td>Key space (Like a secret password that controls encryption and decryption)</td>
+            </tr>
+            <tr>
+                <td>(m ∈ 𝓜)</td>
+                <td>Reads every message in the message space<br>Each m is called the <strong>plaintext</strong> (og message)</td>
+            </tr>
+            <tr>
+                <td>(c ∈ 𝓒)</td>
+                <td>Reads every ciphertext in the ciphertext space<br>Each c is a <strong>ciphertext</strong> (encrypted message)</td>
+            </tr>
+            <tr>
+                <td>(k ∈ 𝓚)</td>
+                <td>Reads every key in the key space<br>Each k is a <strong>key</strong> in the key space</td>
+            </tr>
+        </table>
+        
+        <p>Let 𝓜 be the <strong>message space</strong> (all possible plaintexts), 𝓒 be the <strong>ciphertext space</strong> (all possible ciphertexts), and 𝓚 be the <strong>key space</strong> (all possible keys).</p>
+        
+        <p>An <strong>encryption scheme</strong> (or <strong>cipher</strong>) is defined by a pair of algorithms (E, D), where:</p>
+        <ul>
+            <li>E : 𝓚 × 𝓜 → 𝓒 is the <strong>encryption algorithm</strong>, and
+                <ul>
+                    <li>Takes a <strong>key</strong> and a <strong>message</strong> and produces a <strong>ciphertext</strong></li>
+                </ul>
+            </li>
+            <li>D : 𝓚 × 𝓒 → 𝓜 is the <strong>decryption algorithm</strong>.
+                <ul>
+                    <li>Takes a <strong>key</strong> and a <strong>ciphertext</strong> and produces a message</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>These algorithms must satisfy the <strong>correctness property</strong>:
+                <ul>
+                    <li>For every k ∈ 𝓚 and m ∈ 𝓜, D<sub>k</sub>(E<sub>k</sub>(m)) = m</li>
+                    <li>What does it mean?
+                        <ul>
+                            <li>If you encrypt a message m with a key so E<sub>k</sub>(m), and then decrypt it with the same key you get the original message back</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        
+        <div class="note">
+            <ul>
+                <li>The sets 𝓜, 𝓒, and 𝓚 typically contain strings of symbols — for example, binary strings or letters from natural languages</li>
+                <li>These sets don't have to contain the same kinds of strings (for instance, messages might be English text, while ciphertexts are binary strings)</li>
+            </ul>
+        </div>
+        
+        <h3>2.5 SYMMETRIC CRYPTOGRAPHY</h3>
+        <table>
+            <tr>
+                <th>Questions</th>
+                <th>Answers</th>
+            </tr>
+            <tr>
+                <td><strong>What is Transposition Cipher?</strong></td>
+                <td>A type of <strong>block cipher</strong> (meaning it works on chunks of a fixed size)<br>Permutes (rearranges) the symbols in the plaintext block</td>
+            </tr>
+            <tr>
+                <td><strong>What is Substitution Cipher</strong></td>
+                <td>A type of <strong>block cipher</strong> that replaces a block of symbols by another block of symbols</td>
+            </tr>
+        </table>
+        <p>Two main types of symmetric ciphers: block ciphers and stream ciphers</p>
+        
+        <h3>2.6 TRANSPOSITION CIPHERS</h3>
+        <table>
+            <tr>
+                <th>Symbol</th>
+                <th>Meaning</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>𝓜</td>
+                <td><strong>Message space</strong></td>
+                <td>The set of all possible plaintext blocks (messages before encryption).</td>
+            </tr>
+            <tr>
+                <td>𝓒</td>
+                <td><strong>Ciphertext space</strong></td>
+                <td>The set of all possible ciphertext blocks (messages after encryption).</td>
+            </tr>
+            <tr>
+                <td>𝓚</td>
+                <td><strong>Key space</strong></td>
+                <td>The set of all possible keys — in this cipher, all permutations of the positions 1, 2, ..., t.</td>
+            </tr>
+            <tr>
+                <td>t</td>
+                <td><strong>Block length</strong></td>
+                <td>The number of symbols in each block of plaintext that the cipher works on.</td>
+            </tr>
+            <tr>
+                <td>e</td>
+                <td><strong>Encryption key</strong></td>
+                <td>A particular permutation chosen from 𝓚; it tells how to reorder the symbols.</td>
+            </tr>
+            <tr>
+                <td>e(i)</td>
+                <td><strong>Permutation mapping</strong></td>
+                <td>The position in the plaintext that moves to the (i)-th position in the ciphertext.</td>
+            </tr>
+            <tr>
+                <td>m = (m<sub>1</sub>, m<sub>2</sub>, ..., m<sub>t</sub>)</td>
+                <td><strong>Plaintext block</strong></td>
+                <td>The original ordered symbols (letters, numbers, etc.) before encryption.</td>
+            </tr>
+            <tr>
+                <td>c = (c<sub>1</sub>, c<sub>2</sub>, ..., c<sub>t</sub>)</td>
+                <td><strong>Ciphertext block</strong></td>
+                <td>The reordered symbols (after encryption).</td>
+            </tr>
+            <tr>
+                <td>E<sub>e</sub>(m)</td>
+                <td><strong>Encryption function</strong></td>
+                <td>The rule that produces ciphertext by rearranging plaintext symbols according to (e): E<sub>e</sub>(m) = (m<sub>e(1)</sub>, m<sub>e(2)</sub>, ..., m<sub>e(t)</sub>)</td>
+            </tr>
+            <tr>
+                <td>D<sub>e</sub>(c)</td>
+                <td><strong>Decryption function</strong></td>
+                <td>The inverse operation that undoes the permutation (e), restoring the original message.</td>
+            </tr>
+        </table>
+        
+        <p>The Encryption function:</p>
+        <p>E<sub>e</sub>(m) = (m<sub>e(1)</sub>, m<sub>e(2)</sub>, ..., m<sub>e(t)</sub>)</p>
+        
+        <div class="note">
+            <p><strong>Example</strong></p>
+            <p>The permutation e = (4,3,2,6,1,5) would encrypt the plaintext M = secret as C = rcetse</p>
+        </div>
+        
+        <p>The decryption algorithm consists of applying the inverse permutation</p>
+        <div class="note">
+            <p><strong>Example</strong></p>
+            <p>e<sup>-1</sup> = (5,3,2,1,6,4) is the inverse of e = (4,3,2,6,1,5)</p>
+        </div>
+
+        <h3>2.7 SUBSTITUTION CIPHERS</h3>
+        <table>
+            <tr>
+                <th>Symbol</th>
+                <th>Meaning</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>𝓜</td>
+                <td><strong>Message space</strong></td>
+                <td>The set of all possible plaintext blocks (messages before encryption).</td>
+            </tr>
+            <tr>
+                <td>𝓐</td>
+                <td><strong>Alphabet</strong></td>
+                <td>The set of all possible symbols and letters</td>
+            </tr>
+            <tr>
+                <td>𝓚</td>
+                <td><strong>Key space</strong></td>
+                <td>The set of all possible keys — in this cipher, all permutations of the positions 1, 2, ..., t.</td>
+            </tr>
+            <tr>
+                <td>t</td>
+                <td><strong>Block length</strong></td>
+                <td>The number of symbols in each block of plaintext that the cipher works on.</td>
+            </tr>
+            <tr>
+                <td>e</td>
+                <td><strong>Encryption key</strong></td>
+                <td>A particular permutation chosen from 𝓚; it tells how to reorder the symbols.</td>
+            </tr>
+            <tr>
+                <td>e<sup>-1</sup></td>
+                <td><strong>Inverse permutation</strong></td>
+                <td>Undo the encryption key e</td>
+            </tr>
+            <tr>
+                <td>m = (m<sub>1</sub>, m<sub>2</sub>, ..., m<sub>t</sub>)</td>
+                <td><strong>Plaintext block</strong></td>
+                <td>The original ordered symbols (letters, numbers, etc.) before encryption.</td>
+            </tr>
+            <tr>
+                <td>c = (c<sub>1</sub>, c<sub>2</sub>, ..., c<sub>t</sub>)</td>
+                <td><strong>Ciphertext block</strong></td>
+                <td>The reordered symbols (after encryption).</td>
+            </tr>
+            <tr>
+                <td>E<sub>e</sub>(m)</td>
+                <td><strong>Encryption function</strong></td>
+                <td>The rule that produces ciphertext by rearranging plaintext symbols according to (e): E<sub>e</sub>(m) = (m<sub>e(1)</sub>, m<sub>e(2)</sub>, ..., m<sub>e(t)</sub>)</td>
+            </tr>
+            <tr>
+                <td>D<sub>e</sub>(c)</td>
+                <td><strong>Decryption function</strong></td>
+                <td>The inverse operation that undoes the permutation (e), restoring the original message.</td>
+            </tr>
+        </table>
+        
+        <p>A simple substitution cipher is a block cipher for any block length t. It swaps each letter for another letter, using a permutation of the alphabet</p>
+        <ul>
+            <li>Let 𝓐 be an alphabet, 𝓜 be the set of strings over 𝓐 of length t and 𝓚 be the set of all permutations on 𝓐</li>
+            <li>For each e ∈ 𝓚 define E<sub>e</sub> by applying the permutation e to each letter in the plain text block:</li>
+        </ul>
+        <p>E<sub>e</sub>(m) = e(m<sub>1</sub>)e(m<sub>2</sub>)...e(m<sub>t</sub>) = c</p>
+        
+        <ul>
+            <li>We define D<sub>e</sub>(c) = E<sub>e<sup>-1</sup></sub>(c)
+                <ul>
+                    <li><i>i.e., it is the encryption with the inverse permutation</i></li>
+                </ul>
+            </li>
+        </ul>
+        <p>D<sub>e</sub>(c) = e<sup>-1</sup>(c<sub>1</sub>)e<sup>-1</sup>(c<sub>2</sub>)...e<sup>-1</sup>(c<sub>t</sub>) = m<sub>1</sub>m<sub>2</sub>...m<sub>t</sub> = m</p>
+
+        <h3>2.8 CAESAR CIPHER</h3>
+        <p>Caesar cipher (also known as a shift cipher) is a simple substitution cipher</p>
+        <ul>
+            <li>It essentially "shifts" every letter in the plain text m by e elements in the alphabet to the right</li>
+            <li>So using e=3 as a key, the letter A is encrypted as D</li>
+            <li>How to decrypt?
+                <ul>
+                    <li>Shift every letter to the left</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <p>Alternative to the key mapping/table, we can use the following functions to describe the en/decryption</p>
+        <p>E<sub>e</sub>(x) = x + 2 mod 26</p>
+        <p>D<sub>e</sub>(x) = x - e mod 26</p>
+        
+        <img src="caesar cipher III example.png" alt="Caesar cipher example III" style="max-width: 600px;">
+        
+        <ul>
+            <li>What is Caesar cipher's weakness?
+                <ul>
+                    <li>It only has a small number of keys, therefore brute force attack is possible</li>
+                    <li>This is a cipher-text only attack, and hence <strong>PASSIVE ATTACK</strong></li>
+                </ul>
+            </li>
+        </ul>
+        
+        <ul>
+            <li>What is letter frequency attack?
+                <ul>
+                    <li>Count the frequency of each letter in the ciphertext</li>
+                    <li>Graph the counts, and overlay the same graph for a typical plaintext</li>
+                    <li>Since each ciphertext is a shift of plaintext character by the <strong>same amount</strong>, the graphs will be shifted too</li>
+                    <li>In the graph, H in the ciphertext (lighter line) resembles the frequency of E in the typical plaintext (darker line) - in fact, the lighter line looks to be shift 3 to the right, suggesting that the key is e=3</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <img src="letter frequency caesar cipher.png" alt="Letter frequency attack" style="max-width: 600px;">
+
+        <h3>2.9 POLYALPHABETIC SUBSTITUTIONS</h3>
+        <ul>
+            <li>What is it?
+                <ul>
+                    <li>A cipher that uses several different shift amounts for the same plaintext later</li>
+                    <li>Also called a Vignere Cipher</li>
+                    <li>This is often done by using a <strong>keyword</strong> to represent a short patter of shifts</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <img src="Pasted image 20250918114404.png" alt="Polyalphabetic substitution" style="max-width: 600px;">
+
+        <h3>2.10 POLYALPOHABETIC SUBSTITUTION ATTACK</h3>
+        <ul>
+            <li>Let's first assume that we know the key length, say 4</li>
+            <li>To cryptanalyse, note that every 4th letter is shifted the same amount (since the key is of length 4)
+                <ul>
+                    <li>At a distance of repeated characters of 4, only 4 can be the key length, not multiples</li>
+                </ul>
+            </li>
+            <li>Thus, one can determine the distribution of the ciphertext letters in each of the four groups to determine the four shift amounts</li>
+        </ul>
+        
+        <img src="Polyalphabetic substitution attack.png" alt="Polyalphabetic substitution attack" style="max-width: 600px;">
+        
+        <ul>
+            <li>How do you determine the key length?
+                <ul>
+                    <li>Guess a key length</li>
+                    <li>Look for patterns in the ciphertext that reveal the length</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>2.11 BLOCK CIPHERS</h3>
+        <ul>
+            <li>What is it?
+                <ul>
+                    <li>Each plain text is broken up into same sized blocks</li>
+                    <li>Each block is encrypted with the same key</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>2.12 STREAM CIPHERS</h3>
+        <ul>
+            <li>Uses the key to generate a key stream k=k<sub>1</sub>,k<sub>2</sub>,... where each k are a sequence of bits</li>
+            <li>Break plaintext into a sequence of bits and each m<sub>i</sub> is encrypted with the i<sup>th</sup> element k<sub>i</sub> as c=E<sub>k</sub>(m)=e<sub>k1</sub>(m<sub>1</sub>)E<sub>k<sub>2</sub></sub>(m<sub>2</sub>)</li>
+        </ul>
+
+        <h3>2.13 BITS BYTES AND BLOCKS</h3>
+        <table>
+            <tr>
+                <th>Terminology</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td>Bits</td>
+                <td>0 or 1</td>
+            </tr>
+            <tr>
+                <td>Bytes</td>
+                <td>Set of 8 bits</td>
+            </tr>
+            <tr>
+                <td>Plaintext and ciphertext blocks</td>
+                <td>Set of x bits, where x is typically from 64 to 256</td>
+            </tr>
+            <tr>
+                <td>Encryption key</td>
+                <td>Set of x bits, where x is typically from 64 to 256</td>
+            </tr>
+        </table>
+        
+        <ul>
+            <li>How many blocks are possible with an n-bit block cipher?
+                <ul>
+                    <li>2<sup>n</sup> blocks</li>
+                    <li><i>i.e. a 2-bit block cipher has 4 possible blocks</i></li>
+                </ul>
+            </li>
+            <li>Human often prefer decimal digits (base 10) over bits:
+                <ul>
+                    <li>2<sup>10</sup> ≈ 1,000 or 10<sup>3</sup></li>
+                    <li>2<sup>20</sup> ≈ 1,000,000 or 10<sup>6</sup></li>
+                    <li>2<sup>60</sup> ≈ 10<sup>18</sup> (since 2<sup>x</sup>2<sup>y</sup> = 2<sup>x+y</sup>)</li>
+                    <li>Thus 2<sup>64</sup> is about 16 × 10<sup>18</sup></li>
+                </ul>
+            </li>
+            <li>We can also go from a number (<i>e.g., of blocks</i>) to number of bits with logarithms
+                <ul>
+                    <li>log<sub>a</sub>a<sup>b</sup>=b</li>
+                    <li>log<sub>2</sub>2<sup>n</sup>=n</li>
+                    <li>log<sub>2</sub>2<sup>64</sup>=64</li>
+                    <li>log<sub>2</sub>16=4</li>
+                </ul>
+            </li>
+        </ul>
+
+        I'll continue the HTML file from where you've started, using only the content from your notes:
+
+
+<h3>2.14 DESIGNING BLOCK CIPHERS</h3>
+        <ul>
+            <li>What is the fundamental principle behind block cipher design
+                <ul>
+                    <li>Block ciphers need to create non-linear mappings between plaintext and ciphertext blocks to prevent easy cryptanalysis. Good ciphers rely on a combination of confusion and diffusion properties.</li>
+                </ul>
+            </li>
+            <li>What are the two key principles in block cipher design?
+                <ul>
+                    <li><strong>Confusion</strong> (obscuring the relationship between key and ciphertext) and</li> 
+                    <li><strong>Diffusion</strong> (spreading plaintext bits across the ciphertext to eliminate patterns)</li>
+                </ul>
+            </li>
+            <li>How many possible mappings exist for an n-bit block cipher?
+                <ul>
+                    <li>There are \((2^n)!\) possible mappings of plaintext blocks to ciphertext block</li>
+                </ul>
+            </li>
+            <li>Why are linear mappings considered weak for an encryption?
+                <ul>
+                    <li>A linear mappings (like \(c=am\) where \(a\) is the key) are vulnerable to known plaintext attacks. With just one plaintext-ciphertext pair, an attacker can easily compute the key</li>
+                </ul>
+            </li>
+        </ul>
+
+<h3>2.15 DES (DATA ENCRYPTION STANDARD)</h3>
+        <ul>
+            <li>What is it?
+                <ul>
+                    <li>A 64-bit block cipher with a 56-bit key (+8 parity bits)</li>
+                    <li>Encryption is performed over 16 rounds, with permutations (transpositions) at the start and end. Each round splits output from the previous into two halves (L and R) and performed the following:</li>
+                </ul>
+            </li>
+            <li>
+                <p>\[L_i = R_{i-1}\]</p>
+                <p>\[R_i = L_{i-1} \oplus f(K_i, R_{i-1})\]</p>
+                <ul>
+                    <li>The left half for round \(i\) becomes the previous right half</li>
+                    <li>The right half is previous left XOR a round function \(f\) applied to the previous right and subkey \(K-i\)</li>
+                    <li>XOR is its own inverse which is key to decryption</li>
+                </ul>
+            </li>
+            <li>What determines DES's strength
+                <ul>
+                    <li>Primarily the structure of \(f\) and the number of rounds</li>
+                    <li>Despite robust round design for its time, the 56-bit key is too small today</li>
+                </ul>
+            </li>
+        </ul>
+
+<h3>2.16 AES (RJINDAEL) SYMMETRIC CIPHER</h3>
+        <ul>
+            <li>What is it?
+                <ul>
+                    <li>A 128-bit block cipher standardised by NIST in 2001, with key sizes 123/192/256 bits and 10/12/14 rounds respectively. Built from linear transforms and S-box substitutions</li>
+                </ul>
+            </li>
+            <li>What are the round steps?
+                <ul>
+                    <li>SubBytes: non-linear byte-wise substitution (confusion)</li>
+                    <li>ShiftRows: row-wise byte permutation (diffusion)</li>
+                    <li>MixColumns: column-wise linear mixing (diffusion)</li>
+                    <li>AddRoundKey: XOR the round key</li>
+                    <li>Each step is invertible; decryption applies the inverse steps in reverse order</li>
+                    <li>Initial AddRoundKey mixes the plaintext with the key before round iterations</li>
+                </ul>
+            </li>
+            <li>What requisites does AES satisfy?
+                <ul>
+                    <li><strong>Security:</strong> mathematical, cryptanalystic resistance; randomness</li>
+                    <li><strong>Efficiency:</strong> time/space, hardware and software</li>
+                    <li><strong>Flexibility:</strong> block sizes 128bits, key sizes 128/192/256 bits</li>
+                    <li><strong>Intellectual property:</strong> unclassified, published, royalty-free</li>
+                </ul>
+            </li>
+            <li>What practical attacks affect AES?
+                <ul>
+                    <li>Side-channel attacks (especially timing)</li>
+                    <li>Due to data-dependent table lookups</li>
+                </ul>
+            </li>
+            <li>How to mitigate this?
+                <ul>
+                    <li>Constant-time implementations
+                        <ul>
+                            <li><em>e.g. avoid cache-timing variance, possibly at performance cost</em></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+<h3>2.17 MODES OF OPERATION</h3>
+        <ul>
+            <li>What is a block cipher mode of operation?
+                <ul>
+                    <li>A method to apply a block cipher to multi-block messages securely and correctly</li>
+                </ul>
+            </li>
+        </ul>
+
+        <table border="1">
+            <tr>
+                <th>Mode</th>
+                <th>Equation (Encryption)</th>
+                <th>How It Works</th>
+                <th>Security Considerations</th>
+            </tr>
+            <tr>
+                <td><strong>ECB (Electronic Codebook)</strong></td>
+                <td>\(c_j = E_k(m_j)\)</td>
+                <td>Each block encrypted independently</td>
+                <td>• Reveals patterns (identical plaintext blocks → identical ciphertext blocks)<br>• Not recommended for multi-block messages<br>• Simplest but least secure mode</td>
+            </tr>
+            <tr>
+                <td><strong>CBC (Cipher Block Chaining)</strong></td>
+                <td>\(c_j = E_k(m_j \oplus c_{j-1})\)<br>where \(c_0 = IV\)</td>
+                <td>Each plaintext block XORed with previous ciphertext before encryption</td>
+                <td>• Hides patterns in plaintext<br>• Requires random, unpredictable IV<br>• Error in one block affects all subsequent blocks<br>• Not parallelizable for encryption</td>
+            </tr>
+            <tr>
+                <td><strong>CTR (Counter)</strong></td>
+                <td>\(c_j = m_j \oplus E_k(IV+j-1)\)</td>
+                <td>Encrypts a sequence of counter values to create keystream</td>
+                <td>• Allows random access and parallelization<br>• Requires unique counter values<br>• No error propagation<br>• IV (nonce) must never be reused with same key</td>
+            </tr>
+            <tr>
+                <td><strong>CFB (Cipher Feedback)</strong></td>
+                <td>\(c_j = m_j \oplus E_k(c_{j-1})\)<br>where \(c_0 = IV\)</td>
+                <td>Previous ciphertext is encrypted and XORed with plaintext</td>
+                <td>• Similar to CBC, but XOR after encryption<br>• Limited error propagation<br>• Not parallelizable for encryption<br>• Requires unique IV</td>
+            </tr>
+            <tr>
+                <td><strong>OFB (Output Feedback)</strong></td>
+                <td>\(c_j = m_j \oplus O_j\)<br>where \(O_j = E_k(O_{j-1})\)<br>and \(O_0 = IV\)</td>
+                <td>Repeatedly encrypts IV to generate keystream<br></td>
+                <td>• Similar to CTR, but keystream generated by iteratively applying E to IV<br>• No error propagation<br>• Keystream can be precomputed<br>• Requires unique IV</td>
+            </tr>
+        </table>
+
+        <table border="1">
+            <tr>
+                <th>Mode</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>ECB</td>
+                <td>Each block encrypted independently<br><img src="ecb electronic codebook mode.png" alt="ECB Mode"><br><br><strong>ECB Decryption:</strong><br><img src="ECB Decryption.png" alt="ECB Decryption"></td>
+            </tr>
+            <tr>
+                <td>CBC</td>
+                <td>Each plaintext block XORed with previous ciphertext<br><br><img src="cipher block chaining.png" alt="CBC Mode" width="600"><br><br><strong>CBC Decryption</strong><br><img src="CBC DECRYPTION.png" alt="CBC Decryption"></td>
+            </tr>
+            <tr>
+                <td>CTR</td>
+                <td>Encrypts counter values to create keystream<br><br><img src="ctr counter mode.png" alt="CTR Mode"></td>
+            </tr>
+            <tr>
+                <td>CFB</td>
+                <td>Previous ciphertext encrypted and XORed with plaintext<br><br><img src="CFB Cipher.png" alt="CFB Mode"></td>
+            </tr>
+            <tr>
+                <td>OFB</td>
+                <td>Repeatedly encrypts IV to generate keystream<br><br><img src="OFB Cipher.png" alt="OFB Mode"></td>
+            </tr>
+        </table>
+
+<h3>2.18 Hash Functions and Data Integrity</h3>
+        <ul>
+            <li>Q: What is a hash function?
+                <ul>
+                    <li>A function mapping inputs of arbitrary length to a fixed-size output (the hash/digest). Many simple constructions exist, but most are not secure.</li>
+                </ul>
+            </li>
+            <li>Q: What is a cryptographic hash function?
+                <ul>
+                    <li>A hash function designed to satisfy specific hardness properties (below). We typically denote it h, with output h(x).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Core properties</h4>
+        <ul>
+            <li>Q: What does one-way (<strong>preimage resistance</strong>) mean?
+                <ul>
+                    <li>Given \(y = h(x)\), it's computationally hard to find any x such that \(h(x) = y\).</li>
+                </ul>
+            </li>
+            <li>Q: What is weak <strong>collision resistance</strong> (second preimage resistance)?
+                <ul>
+                    <li>Given a specific \(x\) (and \(h(x)\)), it's hard to find \(x' \neq x\) with \(h(x') = h(x)\)</li>
+                </ul>
+            </li>
+            <li>Q: What is (<strong>strong</strong>) collision resistance?
+                <ul>
+                    <li>It's hard to find any pair \(x \neq y\) such that \(h(x) = h(y)\)</li>
+                </ul>
+            </li>
+            <li>Q: Which functions are current examples?
+                <ul>
+                    <li>MD5 and SHA-1 are broken for collisions; use SHA-256/384/512 or SHA3-256/512.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Where hash functions are used</h4>
+        <ul>
+            <li>Q: Password storage — how are hashes used?
+                <ul>
+                    <li>Store \(H = PHF(password, salt)\) where PHF is a slow password-hashing function (bcrypt, scrypt, Argon2). On login, compute and compare. One-wayness helps protect leaked databases; slowness thwarts guessing.</li>
+                </ul>
+            </li>
+            <li>Q: Key derivation from passphrases — which functions?
+                <ul>
+                    <li>Use KDFs like PBKDF2-HMAC, scrypt, Argon2 to derive keys from passphrases. They add iteration/memory-hardness to resist brute force.</li>
+                </ul>
+            </li>
+            <li>Q: Proof of Work — what property is used?
+                <ul>
+                    <li>One-wayness: find nonce so that h(header || nonce) has required form (e.g., leading zeros). Hard to find; easy to verify.</li>
+                </ul>
+            </li>
+            <li>Q: Data integrity — which property is relevant?
+                <ul>
+                    <li>Weak collision resistance: an attacker shouldn't be able to replace x by x' with the same digest.</li>
+                </ul>
+            </li>
+            <li>Q: Digital signatures — what property is critical?
+                <ul>
+                    <li>Collision resistance: signing h(m) should not allow an attacker to find a different m' with the same hash (non-repudiation requires avoiding collisions).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>From confidentiality to integrity</h4>
+        <ul>
+            <li>Q: Do ciphers like AES-CBC/CTR or ChaCha20 provide integrity?
+                <ul>
+                    <li>No. They provide confidentiality only. Attackers can modify ciphertext; without integrity checks, changes may go undetected (and can be controlled in stream/CTR modes).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Integrity with an unkeyed hash</h4>
+        <ul>
+            <li>Q: How can a plain hash help with integrity?
+                <ol>
+                    <li>Alice sends x over an insecure channel.</li>
+                    <li>Alice sends h(x) over an authentic channel (e.g., phone or a well-known, authenticated page).</li>
+                    <li>Bob computes h(x') on what he received; accept iff h(x') = h(x).</li>
+                </ol>
+                <p>Explanation: By weak collision resistance, finding \(x' \neq x\) with equal hash should be infeasible. The separate authentic channel is essential; otherwise an attacker could swap both x and \(h(x)\).</p>
+            </li>
+        </ul>
+
+        <h4>Message Authentication Codes (MACs) and HMAC</h4>
+        <ul>
+            <li>Q: What is a MAC?
+                <ul>
+                    <li>A keyed integrity check: given shared secret K, compute \(tag = MAC_K(x)\). Only holders of K can produce valid tags. Verifier recomputes \(MAC_K(x')\) and checks equality.</li>
+                </ul>
+            </li>
+            <li>Q: What is HMAC?
+                <ul>
+                    <li>A MAC built from a cryptographic hash. Notation: \(h_K(x) = HMAC(K, x)\). Standard choices: HMAC-SHA-256, HMAC-SHA-512.</li>
+                </ul>
+            </li>
+            <li>Q: How does HMAC work (equation)?
+                <ul>
+                    <li>\[HMAC(K, m) = H((K' \oplus opad) \| H((K' \oplus ipad) \| m))\], where:
+                        <ul>
+                            <li>H is a cryptographic hash (e.g., SHA-256),</li>
+                            <li>K' is K adjusted to the hash block size (padded or hashed),</li>
+                            <li>ipad/opad are fixed constants,</li>
+                            <li>|| is concatenation, \(\oplus\) is XOR.</li>
+                        </ul>
+                        <p>Explanation: The inner and outer hash with different paddings prevent extension attacks and tie the tag to K and m.</p>
+                    </li>
+                </ul>
+            </li>
+            <li>Q: How is HMAC used for integrity?
+                <ul>
+                    <li>Send (x, t) where t = HMAC(K, x).</li>
+                    <li>Receiver recomputes t' = HMAC(K, x') and accepts iff t' = t.</li>
+                    <li>No separate authentic channel is needed; the key provides authenticity.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Why each property matters (quick checks)</h4>
+        <ul>
+            <li>Q: Why isn't one-wayness alone enough for integrity?
+                <ul>
+                    <li>An attacker who can choose x and x' might aim for h(x) = h(x') without needing to invert h; collision resistance protects against that.</li>
+                </ul>
+            </li>
+            <li>Q: Why do passwords need "slow" hashing?
+                <ul>
+                    <li>Fast hashes let attackers test billions of guesses per second. Slow/MEM-hard functions reduce guessing rate, improving security.</li>
+                </ul>
+            </li>
+            <li>Q: Why are MD5/SHA-1 unsafe for signatures?
+                <ul>
+                    <li>Their collision resistance is broken; an attacker can craft two different documents with the same hash and reuse a signature.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Equations and verification logic</h4>
+        <ul>
+            <li>Q: Integrity with hash over two channels — what equality is checked?
+                <ul>
+                    <li>Accept iff \(h(x') = h(x_{authentic})\). If an attacker changes x → x', they must also forge the authentic h(x), which they cannot if the authentic channel is trusted.</li>
+                </ul>
+            </li>
+            <li>Q: Integrity with HMAC — what equality is checked?
+                <ul>
+                    <li>Accept iff \(HMAC(K, x') = t\). Without K, forging t is infeasible (reduces to breaking the PRF-like security of HMAC).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Practical tips and pitfalls</h4>
+        <ul>
+            <li>Q: Common mistakes to avoid?
+                <ul>
+                    <li>Using plain fast hash for passwords (use bcrypt/scrypt/Argon2 instead).</li>
+                    <li>Relying on a plain hash for integrity without an authentic channel (use HMAC or an AEAD).</li>
+                    <li>Using MD5/SHA-1 for signatures or long-term integrity.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h4>Memory hooks</h4>
+        <ul>
+            <li>Q: How to remember the three properties quickly?
+                <ul>
+                    <li>"P-SC": Preimage (hard to find \(x\) from \(h(x)\)), Second-preimage (hard to find \(x'\) for given \(x\)), Collision (hard to find any pair colliding).</li>
+                </ul>
+            </li>
+            <li>Q: Hash vs MAC in one line?
+                <ul>
+                    <li>Hash = integrity only if authenticated out-of-band; MAC = integrity + authenticity with a shared key.</li>
+                </ul>
+            </li>
+        </ul>
+
+<h3>2.19 ASYMMETRIC CRYPTOGRAPHY</h3>
+        <ul>
+            <li>What is symmetric cryptography?
+                <ul>
+                    <li>Single-key cryptography</li>
+                    <li>Keys for encryption and decryption are the same</li>
+                    <li>Secret-key, shared-key, single- key conventional</li>
+                </ul>
+            </li>
+            <li>What is asymmetric cryptography?
+                <ul>
+                    <li>Public key, two key cryptography</li>
+                    <li>Has two (related) keys: \(e\) used for encryption and \(d\) used for decryption</li>
+                    <li>Given \(e\), it is infeasible to find \(d\)</li>
+                    <li>\(e\) is also known as Public-key (PK) as it can be made public</li>
+                    <li>\(d\) is kept private, known only to the person (or people) authorised for decryption</li>
+                </ul>
+            </li>
+            <li>What are the limits of symmetric encryption?
+                <ul>
+                    <li>Two parties must share the same secret key in advance over a confidential and authentic channel</li>
+                    <li>Poor for communicating with many recipients</li>
+                </ul>
+            </li>
+        </ul>
+
+<h3>2.20 PUBLIC KEY ENCRYPTION</h3>
+        <ul>
+            <li>How does it work?
+                <ul>
+                    <li>Everyone has two keys
+                        <ul>
+                            <li>A <strong>private key</strong>, kept secret (\(d\))</li>
+                            <li>A <strong>public key</strong>, which can be published (\(e\))</li>
+                        </ul>
+                    </li>
+                    <li>Use the recipients' <strong>public key</strong> to <strong>encrypt</strong> the data</li>
+                    <li>The recipient uses their <strong>private key</strong> to decrypt</li>
+                    <li>Idea relies on the fact that the <strong>private key</strong> cannot be efficiently computed from the <strong>public key</strong></li>
+                </ul>
+            </li>
+        </ul>
+
+<h3>2.21 RSA ENCRYPTION</h3>
+        <table border="1">
+            <tr>
+                <th><strong>Symbol</strong></th>
+                <th><strong>Meaning / Description</strong></th>
+                <th><strong>Notes / Role</strong></th>
+            </tr>
+            <tr>
+                <td>\( p, q \)</td>
+                <td>Two large <strong>prime numbers</strong></td>
+                <td>Secretly chosen by Bob; form the basis of the modulus</td>
+            </tr>
+            <tr>
+                <td>\( n \)</td>
+                <td>The <strong>modulus</strong>, defined as \( n = p \times q \)</td>
+                <td>Part of both public and private keys; public</td>
+            </tr>
+            <tr>
+                <td>\( \varphi(n) \)</td>
+                <td><strong>Euler's totient</strong> of \( n \), equals \( (p - 1)(q - 1) \)</td>
+                <td>Used to find \( d \); measures how many integers are coprime to \( n \)</td>
+            </tr>
+            <tr>
+                <td>\( e \)</td>
+                <td><strong>Public exponent</strong></td>
+                <td>Chosen such that \( \gcd(e, \varphi(n)) = 1 \); used for encryption</td>
+            </tr>
+            <tr>
+                <td>\( d \)</td>
+                <td><strong>Private exponent</strong>, the modular inverse of \( e \)</td>
+                <td>Satisfies \( e \times d \equiv 1 \pmod{\varphi(n)} \); used for decryption</td>
+            </tr>
+            <tr>
+                <td>\( k \)</td>
+                <td>Integer used in expressing \(ed = k\varphi(n) + 1 \)</td>
+                <td>Helps show the relationship between \( e \) and \( d \) in proofs</td>
+            </tr>
+            <tr>
+                <td>\( M \)</td>
+                <td><strong>Plaintext message</strong></td>
+                <td>A number representing the original message; must satisfy \( 0 \le M < n \)</td>
+            </tr>
+            <tr>
+                <td>\( C \)</td>
+                <td><strong>Ciphertext</strong> (encrypted message)</td>
+                <td>Computed as \( C = M^e \bmod n \)</td>
+            </tr>
+            <tr>
+                <td>\( \mathbb{Z}_n \)</td>
+                <td>The set \( {0, 1, 2, …, n-1} \)</td>
+                <td>All possible remainders modulo \( n \); the space messages live in</td>
+            </tr>
+            <tr>
+                <td>\( \mathbb{Z}_n^* \)</td>
+                <td>The set of integers in \( \mathbb{Z}_n \) <strong>coprime</strong> to \( n \)</td>
+                <td>Used in proofs; Euler's theorem applies here</td>
+            </tr>
+            <tr>
+                <td>\( \gcd(a, b) \)</td>
+                <td><strong>Greatest common divisor</strong> of \( a \) and \( b \)</td>
+                <td>Measures if two numbers are relatively prime (\( \gcd = 1 \))</td>
+            </tr>
+            <tr>
+                <td>\( i \)</td>
+                <td>Integer such that \( M = i p \) when \( M \) shares factor \( p \) with \( n \)</td>
+                <td>Used in the "not relatively prime" case proof</td>
+            </tr>
+            <tr>
+                <td>\( h \)</td>
+                <td>Integer such that \( M^{k\varphi(n)} = 1 + hq \)</td>
+                <td>Appears in the algebraic manipulation for the non-coprime case</td>
+            </tr>
+            <tr>
+                <td>\( E_{(e,n)}(M) \)</td>
+                <td><strong>Encryption function</strong></td>
+                <td>\( E_{(e,n)}(M) = M^e \bmod n \)</td>
+            </tr>
+            <tr>
+                <td>\( D_d(C) \)</td>
+                <td><strong>Decryption function</strong></td>
+                <td>\( D_d(C) = C^d \bmod n \)</td>
+            </tr>
+            <tr>
+                <td>\( \equiv \)</td>
+                <td><strong>Congruence symbol</strong> ("is equivalent to ... modulo")</td>
+                <td>Example: \( a \equiv b \pmod{n} \) means \( n \) divides \( a-b \)</td>
+            </tr>
+            <tr>
+                <td>\( \bmod n \)</td>
+                <td>"Modulo \( n \)" (take the remainder after dividing by \( n \))</td>
+                <td>Fundamental to modular arithmetic</td>
+            </tr>
+            <tr>
+                <td>\( \varphi(p), \varphi(q) \)</td>
+                <td>Totients of \( p \) and \( q \): \( p-1 \), \( q-1 \)</td>
+                <td>Used in \( \varphi(n) = \varphi(p)\varphi(q) \) since \( p, q \) are primes</td>
+            </tr>
+        </table>
+        <ul>
+            <li>What is it?
+                <ul>
+                    <li>Security based on integer factorisation</li>
+                </ul>
+            </li>
+            <li>The idea:
+                <ul>
+                    <li>Given a composite (A composite number is a positive integer that can be formed by multiplying two smaller positive integers) number \(n\) find the factors of \(n\)</li>
+                    <li>Such that \(n\) can be written as the product of two primes \(p\) and \(q\) so \(n=pq\)</li>
+                </ul>
+            </li>
+            <li>How to pick the keys?
+                <ul>
+                    <li>Pick two large random <strong>prime numbers</strong> \(p\) and \(q\)</li>
+                    <li>Then pick a number \(e\) that is <strong>relatively prime</strong> to \(\varphi(n)=(p-1)(q-1)\)
+                        <ul>
+                            <li>This counts how numbers below \(n\) are coprime (have no shared factors) with \(n\)</li>
+                            <li>Example: \(\varphi(143) = (11 - 1)(13 - 1) = 120\)</li>
+                        </ul>
+                    </li>
+                    <li>Then compute the inverse of \(e\), mod \(\varphi(n)\)
+                        <ul>
+                            <li>\(d=e^{-1} \text{ mod } \varphi(n)\)
+                                <ul>
+                                    <li>Essentially means, find the number \(d\) such that \(e \times d \equiv 1 \pmod{\varphi(n)}\)</li>
+                                    <li>Multiply \(e\) by \(d\), divide up by \(\varphi(n)\) and you get a remainder of 1</li>
+                                </ul>
+                            </li>
+                            <li>\(d\) is the <strong>private key</strong> and must be kept confidential</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>How is the message encrypted?
+                <ul>
+                    <li>Alice encrypts the <strong>plaintext</strong> \(M \in \mathbb{Z}_{n}\) using Bob's public key by computing \[C=E_{{(e,n)}}(M)=M^e \bmod n\]
+                        <ul>
+                            <li>Raise \(M\) to the power of \(e\) (Bob's public exponent), then take the remainder and divide it by \(n\)</li>
+                            <li>\(M \in \mathbb{Z}_{n}\) means \(M\) is an integer between 0 and \(n−1\)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>How is the message decrypted?
+                <ul>
+                    <li>Bob received cipher text \(C\) encrypted with his public key \(e\)</li>
+                    <li>Then decrypts it using his private key \(d\), by computing \(D_{d}(C)=C^d \bmod n\)
+                        <ul>
+                            <li>Raise the ciphertext \(C\) to the power \(d\) (private), then rake remainder modulo \(n\)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+<h3>2.22 $M$ IS RELATIVELY PRIME TO $n$</h3>
+        <p>That means:</p>
+        <p>\[\gcd(M,n)=1\]</p>
+        <p>so \(M\) shares no factors with \(n=p \times q\)</p>
+
+        <ol>
+            <li><strong>Start with the definition of decryption</strong>
+                <p>\[C^d \bmod n=(M^e)^d \bmod n\]</p>
+                <ul>
+                    <li>This just substitutes the definition of encryption: \(C=M^e\)</li>
+                </ul>
+            </li>
+            <li><strong>Use Euler's Theorem</strong>
+                <p>\[M^{\varphi(n)} \equiv 1 \pmod n\]</p>
+                <p>(only applies since \(\gcd(M,n)=1\), meaning \(M\) and \(n\) have no common factors)</p>
+                <ul>
+                    <li>Since we picked \(e\) and \(d\) such that \(e \times d \equiv 1 \pmod{\varphi(n)}\), we can write</li>
+                    <li>\[ed = 1 + k\varphi(n)\]</li>
+                    <li>for some integer \(k\)</li>
+                </ul>
+            </li>
+            <li><strong>Expand the encryption/decryption using this relation</strong>
+                <p>\[M^{ed} = M^{1 + k\varphi(n)} = M \times M^{k\varphi(n)} \bmod n\]</p>
+            </li>
+            <li><strong>Apply Euler's Theorem to \(M^{k\varphi(n)}\)</strong>
+                <p>\[M^{k\varphi(n)} = (M^{\varphi(n)})^k \equiv 1^k \equiv 1 \pmod n\]</p>
+                <ul>
+                    <li>Since \(M^{\varphi(n)} \equiv 1 \pmod n\) by Euler's theorem</li>
+                </ul>
+            </li>
+            <li><strong>This gives us</strong>
+                <p>\[M^{ed} \equiv M \times 1 \equiv M \pmod n\]</p>
+                <ul>
+                    <li>Therefore \(C^d \bmod n = M\), meaning decryption successfully recovers the original message</li>
+                </ul>
+            </li>
+        </ol>
+
+<h3>2.23 $M$ IS NOT RELATIVELY PRIME TO $n$</h3>
+        <p>We want to show that <strong>RSA decryption still gives the correct message</strong>, even when</p>
+
+        <p>\[\gcd(M, n) \neq 1\]</p>
+        <p>That is, even if \(M\) shares a factor with \(n = pq\)</p>
+
+        <p>Normally, we rely on <strong>Euler's Theorem</strong>, which only works if \(M\) and \(n\) are <em>coprime</em>.<br>  
+        So when they aren't, we need another argument.</p>
+
+        <p>For a message \(M\) that shares a factor with \(n\), either:</p>
+        <ol>
+            <li>\(M\) is a multiple of \(p\) (so \(\gcd(M,n) = p\)), or</li>
+            <li>\(M\) is a multiple of \(q\) (so \(\gcd(M,n) = q\)), or</li>
+            <li>\(M\) is a multiple of both \(p\) and \(q\) (so \(\gcd(M,n) = n = pq\))</li>
+        </ol>
+
+        <p>Let's prove case 1 (the others are similar):</p>
+
+        <ol>
+            <li><strong>Start with the case where \(M\) is a multiple of \(p\)</strong>
+                <p>This means \(M = ip\) for some integer \(i\), where \(0 < i < q\)</p>
+            </li>
+            <li><strong>We know that</strong>
+                <p>\[ed = 1 + k\varphi(n) = 1 + k(p-1)(q-1)\]</p>
+            </li>
+            <li><strong>Consider \(M^{ed} \bmod n\)</strong>
+                <p>\[M^{ed} = M \times M^{k(p-1)(q-1)}\]</p>
+            </li>
+            <li><strong>Since \(M = ip\), this becomes</strong>
+                <p>\[(ip)^{ed} = ip \times (ip)^{k(p-1)(q-1)}\]</p>
+            </li>
+            <li><strong>Note that</strong>
+                <p>\[(ip)^{k(p-1)(q-1)} = (ip)^{k(p-1)(q-1)}\]</p>
+            </li>
+            <li><strong>Looking at this expression modulo \(p\):</strong>
+                <p>\[(ip)^{k(p-1)(q-1)} \equiv 0 \pmod p\]</p>
+                <p>(because any power of \(ip\) is a multiple of \(p\))</p>
+            </li>
+            <li><strong>Now consider the expression modulo \(q\):</strong>
+                <p>\[(ip)^{k(p-1)(q-1)} = i^{k(p-1)(q-1)} \times p^{k(p-1)(q-1)}\]</p>
+                <p>By Fermat's Little Theorem, since \(q\) is prime:</p>
+                <p>\[i^{q-1} \equiv 1 \pmod q\]</p>
+                <p>And since \((p-1)(q-1)\) is a multiple of \(q-1\):</p>
+                <p>\[i^{k(p-1)(q-1)} \equiv 1 \pmod q\]</p>
+                <p>Also, \(p^{q-1} \equiv 1 \pmod q\) (as long as \(p\) is not a multiple of \(q\), which it isn't since \(p\) and \(q\) are distinct primes)</p>
+                <p>Therefore:</p>
+                <p>\[(ip)^{k(p-1)(q-1)} \equiv i^{k(p-1)(q-1)} \times p^{k(p-1)(q-1)} \equiv 1 \times 1 \equiv 1 \pmod q\]</p>
+            </li>
+            <li><strong>By the Chinese Remainder Theorem, we can combine these results:</strong>
+                <p>\[(ip)^{k(p-1)(q-1)} \equiv 0 \pmod p\]</p>
+                <p>\[(ip)^{k(p-1)(q-1)} \equiv 1 \pmod q\]</p>
+                <p>This means \((ip)^{k(p-1)(q-1)} = hq\) for some integer \(h\)</p>
+            </li>
+            <li><strong>Therefore:</strong>
+                <p>\[M^{ed} \bmod n = (ip \times (ip)^{k(p-1)(q-1)}) \bmod n = (ip \times hq) \bmod n = (ihpq) \bmod n\]</p>
+            </li>
+            <li><strong>Since \(pq = n\), we have:</strong>
+                <p>\[M^{ed} \bmod n = (ihn) \bmod n = 0 \bmod n\]</p>
+            </li>
+            <li><strong>But this contradicts what we expected:</strong>
+                <p>We should get \(M^{ed} \bmod n = M \bmod n = ip \bmod n\), not 0</p>
+                <p>The error is that we incorrectly assumed \((ip)^{k(p-1)(q-1)} = hq\). The correct formula is:</p>
+                <p>\[(ip)^{k(p-1)(q-1)} = 1 + hq\]</p>
+                <p>for some integer \(h\)</p>
+            </li>
+            <li><strong>With this correction:</strong>
+                <p>\[M^{ed} \bmod n = (ip \times (1 + hq)) \bmod n = (ip + ihpq) \bmod n = ip \bmod n\]</p>
+                <p>(since \(ihpq = ihn\) is a multiple of \(n\))</p>
+            </li>
+            <li><strong>And since \(ip = M\), we have:</strong>
+                <p>\[M^{ed} \bmod n = M \bmod n = M\]</p>
+            </li>
+        </ol>
+
+        <p>Therefore, even if \(M\) is <em>not relatively prime to</em> \(n\), RSA decryption still recovers the original message.</p>
+
+<h3>2.24 SECURITY OF RSA</h3>
+        <ul>
+            <li><strong>What is the basis of RSA security?</strong>
+                <ul>
+                    <li>RSA security is based on the computational difficulty of factoring large composite numbers, specifically the product of two large prime numbers</li>
+                </ul>
+            </li>
+            <li><strong>What is the main mathematical problem underlying RSA?</strong>
+                <ul>
+                    <li>The main problem is the integer factorisation problem: Given a large number \((n=pq)\), where \(p\) and \(q\) are large primes, it is hard to efficiently find \(p\) and \(q\)</li>
+                </ul>
+            </li>
+            <li><strong>What is the computational complexity of the best known attacks on RSA?</strong>
+                <ul>
+                    <li>Attacks are based on integer factorisation, which for an \(n\)-bit number, currently require sub-exponential time: \(( O(e^{O(n)}))\)</li>
+                </ul>
+            </li>
+        </ul>
+
+<h3>2.25 RSA IMPLEMENTATION</h3>
+        <ul>
+            <li><strong>Why is PRIMARLITY TESTING important in RSA?</strong>
+                <ul>
+                    <li>Needed during <strong>key generation</strong> to ensure the numbers chosen for \(p\) and \(q\) are prime</li>
+                    <li>Only prime numbers guarantee the mathematical properties required for RSA security</li>
+                </ul>
+            </li>
+            <li><strong>When and why is GCD computation used in RSA?</strong>  
+                <ul>
+                    <li>Used during key generation to ensure that the public exponent \(e\) is relatively prime to \(\varphi(n)\)(Euler's totient function).</li>
+                    <li>Ensures that e has an inverse modulo \(\varphi(n)\)</li>
+                </ul>
+            </li>
+            <li><strong>What is the purpose of modular inverse computation in RSA?</strong> 
+                <ul>
+                    <li>Needed during key generation to compute the private key \(d\), where \(d = e^{-1} \bmod \varphi(n)\)</li>
+                    <li>Allows decryption to work correctly.</li>
+                </ul>
+            </li>
+            <li><strong>Where is modular exponentiation used in RSA, and why is efficiency important?</strong>  
+                <ul>
+                    <li>Used during encryption \(C = M^e \bmod n\) and decryption \(M = C^d \bmod n\)</li>
+                    <li>Efficient algorithms (like square-and-multiply) are crucial because these operations are performed on large numbers and can be computationally expensive.</li>
+                </ul>
+            </li>
+        </ul>
+
+<h3>2.26 RSA Remarks</h3>
+        <ul>
+            <li><strong>Is textbook RSA deterministic or randomized? Why is this a problem?</strong>  
+                <ul>
+                    <li>Textbook RSA is deterministic: if \(M_1 = M_2\), then  \(C_1 = C_2\)</li>
+                    <li>This predictability makes it vulnerable to chosen plaintext and other attacks.</li>
+                </ul>
+            </li>
+            <li><strong>How is RSA made secure in practice?</strong>  
+                <ul>
+                    <li>In practice, RSA is used with randomization (e.g., padding schemes like OAEP or salting the plaintext).</li>
+                    <li>Randomization prevents attacks that exploit its deterministic nature.</li>
+                </ul>
+            </li>
+            <li><strong>Why is the public exponent \( e \) typically chosen to be small?</strong> 
+                <ul>
+                    <li>A small \(e\) (like 65537) makes encryption faster than decryption.</li>
+                    <li>Exponentiation with a small exponent requires fewer multiplications.</li>
+                </ul>
+            </li>
+            <li><strong>How can knowing \( p \) and \( q \) help with efficient decryption?</strong>  
+                <ul>
+                    <li>If the recipient retains \( p \) and \( q \), they can use the Chinese Remainder Theorem (CRT) to speed up decryption.</li>
+                    <li>CRT makes modular exponentiation much more efficient.</li>
+                </ul>
+            </li>
+            <li><strong>What is the typical use of RSA in real-world systems?</strong>  
+                <ul>
+                    <li>RSA is usually used to encrypt symmetric session keys, not entire messages.</li>
+                    <li>This approach, called hybrid encryption, combines the efficiency of symmetric ciphers with the key distribution advantages of RSA.</li>
+                </ul>
+            </li>
+            <li><strong>How do RSA key sizes and computational costs compare to symmetric ciphers like AES?</strong>  
+                <ul>
+                    <li>RSA keys are much larger and computations are more expensive than symmetric ciphers like AES.</li>
+                    <li>This is why RSA is used mainly for key exchange, not bulk data encryption</li>
+                </ul>
+            </li>
+        </ul>
+
+<h3>2.27 HYBRID ENCRYPTION</h3>
+        <ul>
+            <li><strong>What is it?</strong>
+                <ul>
+                    <li>A combination of symmetric and asymmetric encryption techniques where symmetric encryption is used for the actual message, while asymmetric encryption is used to protect the symmetric key</li>
+                </ul>
+            </li>
+            <li><strong>Why is hybrid encryption more efficient than using only asymmetric encryption?</strong>
+                <ul>
+                    <li>Symmetric encryption is much faster than asymmetric encryption for large amounts of data, making the hybrid approach more efficient while maintaining security</li>
+                </ul>
+            </li>
+            <li><strong>What role does RSA play in hybrid encryption?</strong>
+                <ul>
+                    <li>RSA is used to asymmetrically encrypt and share the symmetric key between parties</li>
+                </ul>
+            </li>
+        </ul>
+
+<h3>2.28 ELGAMAL ENCRYPTION</h3>
+        <ul>
+            <li><strong>What are the mathematics behind ElGamal?</strong>
+                <ul>
+                    <li>ElGamal is based on the difficulty of the <strong>discrete logarithm problem</strong> in finite fields</li>
+                    <li>Given \(g\) and \(g^x\) in a finite field, it's computationally hard to find \(x\)</li>
+                </ul>
+            </li>
+            <li><strong>How does ElGamal key generation work?</strong>
+                <ul>
+                    <li>Select a large prime \(p\) and a generator \(g\) of the multiplicative group \(\mathbb{Z}_p^*\)</li>
+                    <li>Choose a random private key \(x\) where \(1 \leq x \leq p-2\)</li>
+                    <li>Compute the public key \(y = g^x \bmod p\)</li>
+                    <li>Public parameters: \((p, g, y)\), Private key: \(x\)</li>
+                </ul>
+            </li>
+            <li><strong>How is a message encrypted with ElGamal?</strong>
+                <ul>
+                    <li>To encrypt message \(m\) (where \(m < p\)) with public key \((p, g, y)\):
+                        <ol>
+                            <li>Choose a random \(k\) where \(1 \leq k \leq p-2\)</li>
+                            <li>Compute \(a = g^k \bmod p\) (first component of ciphertext)</li>
+                            <li>Compute \(b = m \cdot y^k \bmod p\) (second component of ciphertext)</li>
+                            <li>The ciphertext is the pair \((a, b)\)</li>
+                        </ol>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>How is a message decrypted with ElGamal?</strong>
+                <ul>
+                    <li>To decrypt ciphertext \((a, b)\) with private key \(x\):
+                        <ol>
+                            <li>Compute \(s = a^x \bmod p\)</li>
+                            <li>Compute \(m = b \cdot s^{-1} \bmod p\)</li>
+                            <li>This works because \(s = a^x = (g^k)^x = g^{kx} = y^k\)</li>
+                            <li>So \(m = b \cdot s^{-1} = m \cdot y^k \cdot (y^k)^{-1} = m\)</li>
+                        </ol>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Why is the ElGamal cryptosystem secure?</strong>
+                <ul>
+                    <li>The security of ElGamal depends on two key factors:
+                        <ol>
+                            <li><strong>Practical security:</strong> Choosing a new random number \(k\) for every encryption (if \(k\) is reused, the system becomes vulnerable)</li>
+                            <li><strong>Fundamental security:</strong> The difficulty of solving the <strong>discrete logarithm problem</strong> (given \(g^x \bmod p\), it's computationally infeasible to find \(x\))</li>
+                        </ol>
+                    </li>
+                    <li>The discrete logarithm problem is believed to be computationally hard, similar to the integer factorisation problem that secures RSA</li>
+                </ul>
+            </li>
+            <li><strong>What mathematical principles prove that ElGamal decryption works?</strong>
+                <ul>
+                    <li>The correctness of ElGamal is proven by showing that \[D_x(E_{(p,g,y)}(m)) = m\]
+                        <ul>
+                            <li>Starting with \(b(a^{x})^{-1} \bmod p\)</li>
+                            <li>Substituting definitions: \(my^k((g^k)^x)^{-1} \bmod p\)</li>
+                            <li>Applying \(y = g^x: m(g^x)^k(g^{kx})^{-1} \bmod p\)</li>
+                            <li>Simplifying: \(mg^{kx} \cdot g^{-kx} \bmod p\)</li>
+                            <li>Which equals \(m \bmod p=m\)</li>
+                        </ul>
+                    </li>
+                    <li>This algebraic proof confirms that the decryption process correctly recovers the original message</li>
+                </ul>
+            </li>
+            <li><strong>How does it compare to RSA?</strong>
+                <ul>
+                    <li>Unlike textbook RSA:
+                        <ul>
+                            <li>Probabilistic rather than deterministic</li>
+                            <li>Produces ciphertexts twice the size of the plaintext</li>
+                            <li>Has security based on the discrete logarithm problem (rather than integer facotrisation)</li>
+                            <li>Includes randomness in every encryption</li>
+                            <li>Requires a new random value \(k\) for each encryption</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+<h3>2.29 SECURITY OF ASSYMETRIC CIPHERS</h3>
+        <ul>
+            <li><strong>What is integer factorization in cryptography?</strong>  
+                <ul>
+                    <li>Integer factorization is the mathematical problem of finding the prime factorization of a positive integer n.</li>
+                    <li>It involves finding distinct primes \(p_i\) such that \(n = p_1^{e_1} \cdots p_n^{e_n}\) for some \(e_i \geq 1\).</li>
+                    <li>This problem forms the security basis for the RSA cryptosystem.</li>
+                </ul>
+            </li>
+            <li><strong>What is the RSA Problem (RSAP) and why is it important?</strong>  
+                <ul>
+                    <li>RSAP is the problem of finding \(m\) such that \(m^e = c \mod n\) when given n (where \(n = pq\), p and q are primes), e (where \(\gcd(e,(p-1)(q-1)) = 1\)), and c.</li>
+                    <li>This is essentially the problem of computing the eth root modulo n without knowing the factorization.</li>
+                    <li>It represents the core computational challenge that must be solved to break RSA encryption.</li>
+                
+<h3>2.29 Security of Asymmetric Ciphers</h3>
+<ul>
+  <li><strong>What is integer factorization in cryptography?</strong>
+    <ul>
+      <li>Integer factorization is the mathematical problem of finding the prime factorization of a positive integer n.</li>
+      <li>It involves finding distinct primes p<sub>i</sub> such that n = p<sub>1</sub><sup>e<sub>1</sub></sup> ⋯ p<sub>n</sub><sup>e<sub>n</sub></sup> for some e<sub>i</sub> ≥ 1.</li>
+      <li>This problem forms the security basis for the RSA cryptosystem.</li>
+    </ul>
+  </li>
+
+  <li><strong>What is the RSA Problem (RSAP) and why is it important?</strong>
+    <ul>
+      <li>RSAP is the problem of finding m such that m<sup>e</sup> = c mod n when given n (where n = pq, p and q are primes), e (where gcd(e,(p-1)(q-1)) = 1), and c.</li>
+      <li>This is essentially the problem of computing the eth root modulo n without knowing the factorization.</li>
+      <li>It represents the core computational challenge that must be solved to break RSA encryption.</li>
+    </ul>
+  </li>
+
+  <li><strong>What is the Discrete Logarithm Problem (DLP)?</strong>
+    <ul>
+      <li>DLP involves finding the integer x (where 0 ≤ x ≤ p-2) such that g<sup>x</sup> = a mod p, given prime p, generator g of ℤ<sub>p</sub>, and element a.</li>
+      <li>It's the mathematical foundation for ElGamal encryption and many other cryptosystems.</li>
+      <li>Computing discrete logarithms is believed to be computationally difficult, which provides security.</li>
+    </ul>
+  </li>
+
+  <li><strong>What is the Diffie-Hellman Problem (DH)?</strong>
+    <ul>
+      <li>The DH problem is computing g<sup>xy</sup> mod p when given only p, generator g, g<sup>x</sup> mod p, and g<sup>y</sup> mod p.</li>
+      <li>This problem underlies the security of Diffie-Hellman key exchange.</li>
+      <li>If this problem could be efficiently solved, the shared secret in DH key exchange would be compromised.</li>
+    </ul>
+  </li>
+
+  <li><strong>What is the relationship between these cryptographic problems?</strong>
+    <ul>
+      <li>RSAP ≤<sub>P</sub> FACTORING: This means the RSA problem can be efficiently reduced to the factoring problem.</li>
+      <li>DH ≤<sub>P</sub> DLP: The Diffie-Hellman problem can be efficiently reduced to the discrete logarithm problem.</li>
+      <li>These reductions mean that if we can solve the harder problem (factoring or DLP), we can also solve the easier problem (RSAP or DH).</li>
+    </ul>
+  </li>
+
+  <li><strong>What does the notation "A ≤<sub>P</sub> B" mean in cryptographic complexity?</strong>
+    <ul>
+      <li>A ≤<sub>P</sub> B means there exists a polynomial-time (efficient) reduction from problem A to problem B.</li>
+      <li>In practical terms, it means if you can solve problem B efficiently, you can also solve problem A efficiently.</li>
+      <li>This helps establish hierarchies of problem difficulty in cryptography.</li>
+    </ul>
+  </li>
+
+  <li><strong>What security properties do RSA, ElGamal, and DH provide and what do they lack?</strong>
+    <ul>
+      <li>These asymmetric cryptosystems can provide confidentiality (keeping messages secret).</li>
+      <li>However, they do not inherently provide integrity or data-origin authentication.</li>
+      <li>This means they cannot by themselves prove who sent a message or that it wasn't altered.</li>
+    </ul>
+  </li>
+
+  <li><strong>What is a man-in-the-middle attack and how does it affect asymmetric cryptosystems?</strong>
+    <ul>
+      <li>A man-in-the-middle attack occurs when an attacker intercepts communications between two parties.</li>
+      <li>RSA, ElGamal, and DH are susceptible to this attack during key exchange if used without additional authentication.</li>
+      <li>The attacker can establish separate connections with both parties and relay messages between them while seeing all communication.</li>
+    </ul>
+  </li>
+
+  <li><strong>What is the fundamental authentication challenge in asymmetric cryptography?</strong>
+    <ul>
+      <li>The fundamental challenge is: "How can Alice confirm that it's Bob's public key that she has received?"</li>
+      <li>Without solving this authentication problem, asymmetric cryptography is vulnerable to impersonation attacks.</li>
+      <li>Public key infrastructure (PKI) and digital certificates were developed to address this challenge.</li>
+    </ul>
+  </li>
+
+  <li><strong>Why is the difficulty of these mathematical problems important for cryptographic security?</strong>
+    <ul>
+      <li>The security of asymmetric cryptosystems directly depends on the computational difficulty of these problems.</li>
+      <li>If efficient algorithms were discovered for factoring or discrete logarithms, the corresponding cryptosystems would be broken.</li>
+      <li>The absence of known efficient algorithms for these problems is what makes modern asymmetric cryptography secure.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>2.30 Man-in-the-Middle Attacks on Diffie-Hellman</h3>
+<ul>
+  <li><strong>What is a Man-in-the-Middle attack against Diffie-Hellman?</strong>
+    <ul>
+      <li>A Man-in-the-Middle attack is when an attacker secretly intercepts and relays messages between two parties who believe they are directly communicating with each other.</li>
+    </ul>
+  </li>
+
+  <li><strong>Why is basic Diffie-Hellman vulnerable to MITM attacks?</strong>
+    <ul>
+      <li>Diffie-Hellman provides confidentiality but not authentication. Without additional authentication, there's no way to verify who you're actually establishing a shared key with.</li>
+    </ul>
+  </li>
+
+  <li><strong>How does an attacker execute a MITM attack against Diffie-Hellman?</strong>
+    <ul>
+      <li>The attacker positions themselves between Alice and Bob</li>
+      <li>Instead of Alice and Bob establishing a shared key directly, the attacker establishes separate keys with each of them</li>
+      <li>This allows the attacker to decrypt, read, and re-encrypt all messages passing between Alice and Bob</li>
+    </ul>
+  </li>
+
+  <li><strong>What specific steps does the attacker take?</strong>
+    <ul>
+      <li>The attacker chooses their own secret value e in Zₚ (the set of integers modulo p)</li>
+      <li>When Alice tries to perform a key exchange with Bob, the attacker intercepts and performs a key exchange with Alice using e</li>
+      <li>Similarly, the attacker performs a separate key exchange with Bob using e</li>
+      <li>As a result, the attacker shares one key with Alice and another key with Bob</li>
+    </ul>
+  </li>
+
+  <li><strong>What can the attacker do after establishing these separate keys?</strong>
+    <ul>
+      <li>Decrypt messages from Alice using their shared key</li>
+      <li>Read the message contents</li>
+      <li>Re-encrypt the messages with the key shared with Bob before forwarding</li>
+      <li>Neither Alice nor Bob knows their communication is being intercepted</li>
+    </ul>
+  </li>
+
+  <li><strong>How can Diffie-Hellman be protected from MITM attacks?</strong>
+    <ul>
+      <li>By adding authentication to verify the identity of each party</li>
+      <li>Using digital signatures to sign the exchanged values</li>
+      <li>Implementing a Public Key Infrastructure (PKI) with certificates</li>
+      <li>Using authenticated key exchange protocols like Station-to-Station (STS) protocol</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>2.31 Digital Signatures</h3>
+<ul>
+  <li><strong>What is it?</strong>
+    <ul>
+      <li>A digital signature is a mathematical technique used to validate the authenticity and integrity of a digital message or document.</li>
+      <li>It is created using the sender's private key and can be verified using the sender's public key.</li>
+    </ul>
+  </li>
+
+  <li><strong>How does Alice create a digital signature?</strong>
+    <ul>
+      <li>Alice uses her private key to digitally sign a message.</li>
+      <li>In practice, rather than signing the entire message, Alice typically signs the hash of the message: s = s<sub>B</sub>(h(m)).</li>
+      <li>Alice then sends both the message and the signature (m,s) to Bob.</li>
+    </ul>
+  </li>
+
+  <li><strong>What is an example of a signature algorithm?</strong>
+    <ul>
+      <li>Common signature algorithms include RSA-PSS, DSA (Digital Signature Algorithm), and EC-DSA (Elliptic Curve Digital Signature Algorithm).</li>
+      <li>A textbook RSA signature is computed as s = h(m)<sup>d</sup> mod n, where d is Alice's private key and n is the RSA modulus.</li>
+    </ul>
+  </li>
+
+  <li><strong>How does Bob verify Alice's signature?</strong>
+    <ul>
+      <li>Bob uses Alice's public key to verify the signature.</li>
+      <li>In the case of RSA, Bob computes s<sup>e</sup> mod n (where e is Alice's public exponent) and checks if it equals h(m).</li>
+      <li>If they match, the signature is valid; if not, the message may have been tampered with or wasn't signed by Alice.</li>
+    </ul>
+  </li>
+
+  <li><strong>What is the advantage of digital signatures over symmetric authentication schemes like HMACs?</strong>
+    <ul>
+      <li>Digital signatures provide public verifiability - anyone with access to the signer's public key can verify the signature.</li>
+      <li>In contrast, symmetric schemes like HMACs require the verifier to have the same secret key as the signer, limiting verification to parties who share that key.</li>
+    </ul>
+  </li>
+
+  <li><strong>What problem must be solved for digital signatures to be meaningful?</strong>
+    <ul>
+      <li>The authenticity of the public key itself must be established.</li>
+      <li>If Bob can't be sure he has Alice's real public key (and not an attacker's), the signature verification is meaningless.</li>
+      <li>This is known as the key authentication problem.</li>
+    </ul>
+  </li>
+
+  <li><strong>How is the public key authentication problem solved?</strong>
+    <ul>
+      <li>Alice's public key must be contained in a digital certificate.</li>
+      <li>This certificate is digitally signed by a trusted third party (Certificate Authority) that vouches for the authenticity of the key.</li>
+      <li>This creates a chain of trust that helps recipients verify they have the correct public key.</li>
+    </ul>
+  </li>
+
+  <li><strong>What happens in a man-in-the-middle attack against digital signatures?</strong>
+    <ul>
+      <li>Without proper public key authentication, an attacker could substitute their own public key for Alice's.</li>
+      <li>The attacker could then sign messages pretending to be Alice.</li>
+      <li>Recipients would verify the signature as valid (using the attacker's public key) without realizing they're not communicating with Alice.</li>
+    </ul>
+  </li>
+
+  <li><strong>What information is typically included in a digital certificate?</strong>
+    <ul>
+      <li>The subject's identity information (name, organization, etc.)</li>
+      <li>The subject's public key</li>
+      <li>The certificate's validity period</li>
+      <li>The digital signature of the Certificate Authority</li>
+      <li>Information about the Certificate Authority</li>
+    </ul>
+  </li>
+
+  <li><strong>How do digital signatures differ from encryption?</strong>
+    <ul>
+      <li>Encryption provides confidentiality (keeping content secret)</li>
+      <li>Digital signatures provide authentication (proving who created the message) and integrity (proving the message hasn't been altered)</li>
+      <li>Encryption uses the recipient's public key, while signing uses the sender's private key</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>2.32 Certificate Authorities (CAs)</h3>
+<ul>
+  <li><strong>What is a Certificate Authority (CA)?</strong>
+    <ul>
+      <li>A Certificate Authority is a trusted third party that issues and manages digital certificates used to verify the identity of entities in a public key infrastructure (PKI).</li>
+      <li>CAs act as trusted intermediaries that bind public keys to identities (people, organizations, or systems) by signing certificates.</li>
+    </ul>
+  </li>
+
+  <li><strong>How does the CA solve the public key authentication problem?</strong>
+    <ul>
+      <li>The CA solves the fundamental problem of "How do I know this public key belongs to who it claims to belong to?"</li>
+      <li>Without CAs, users would have no reliable way to verify the authenticity of public keys they receive, making man-in-the-middle attacks easy to execute.</li>
+      <li>The CA vouches for the authenticity of public keys by digitally signing them with its own private key.</li>
+    </ul>
+  </li>
+
+  <li><strong>What is contained in a digital certificate issued by a CA?</strong>
+    <ul>
+      <li>The subject's identity information (name, organization, email, etc.)</li>
+      <li>The subject's public key</li>
+      <li>The certificate's validity period (issue and expiry dates)</li>
+      <li>The digital signature of the CA</li>
+      <li>Information about the CA that issued it</li>
+      <li>The certificate's serial number</li>
+      <li>The certificate's intended purpose</li>
+    </ul>
+  </li>
+
+  <li><strong>How does Alice distribute her public key securely?</strong>
+    <ul>
+      <li>Alice distributes her public key together with the certificate she received from the CA.</li>
+      <li>The certificate binds Alice's identity to her public key through the CA's digital signature.</li>
+      <li>This prevents an attacker from substituting a different public key.</li>
+    </ul>
+  </li>
+
+  <li><strong>How can Bob verify that Alice's public key is authentic?</strong>
+    <ul>
+      <li>Bob uses the CA's public key (which he already trusts and possesses) to verify the CA's digital signature on Alice's certificate.</li>
+      <li>If the signature verification succeeds, Bob can trust that Alice's public key is authentic.</li>
+      <li>This works because only the legitimate CA could have created a valid signature using its private key.</li>
+    </ul>
+  </li>
+
+  <li><strong>What is the chain of trust in PKI?</strong>
+    <ul>
+      <li>The chain of trust starts with Root CAs, whose certificates are self-signed and widely distributed.</li>
+      <li>Root CAs issue certificates to Intermediate CAs.</li>
+      <li>Intermediate CAs issue certificates to end entities (like Alice).</li>
+      <li>Trust flows from the Root CA through the chain to the end entity.</li>
+    </ul>
+  </li>
+
+  <li><strong>What happens when a CA's private key is compromised?</strong>
+    <ul>
+      <li>All certificates issued by that CA become untrustworthy.</li>
+      <li>The CA must revoke all affected certificates.</li>
+      <li>A Certificate Revocation List (CRL) or Online Certificate Status Protocol (OCSP) can be used to check if certificates are still valid.</li>
+      <li>This is why protecting CA private keys is critically important.</li>
+    </ul>
+  </li>
+
+  <li><strong>How are CAs themselves verified?</strong>
+    <ul>
+      <li>Root CAs are typically verified through "out-of-band" methods.</li>
+      <li>Their certificates come pre-installed in operating systems and browsers.</li>
+      <li>The developers of these systems carefully vet which Root CAs to include.</li>
+      <li>This creates a "web of trust" where certain CAs are inherently trusted.</li>
+    </ul>
+  </li>
+
+  <li><strong>What is the difference between a self-signed certificate and a CA-signed certificate?</strong>
+    <ul>
+      <li>A self-signed certificate is signed by the same entity that it identifies (the subject signs their own certificate).</li>
+      <li>A CA-signed certificate is signed by a trusted third party (the CA).</li>
+      <li>Self-signed certificates don't provide third-party verification of identity, while CA-signed certificates do.</li>
+    </ul>
+  </li>
+
+  <li><strong>What role do CAs play in securing internet communications?</strong>
+    <ul>
+      <li>CAs enable secure HTTPS connections by certifying the authenticity of website certificates.</li>
+      <li>They help prevent man-in-the-middle attacks by providing a trusted way to verify the identity of the server you're connecting to.</li>
+      <li>Without CAs, secure e-commerce and private communication over the internet would be much more difficult.</li>
+    </ul>
+  </li>
+</ul>
