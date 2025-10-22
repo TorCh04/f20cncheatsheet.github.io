@@ -601,6 +601,64 @@
             <li>Uses the key to generate a key stream k=k<sub>1</sub>,k<sub>2</sub>,... where each k are a sequence of bits</li>
             <li>Break plaintext into a sequence of bits and each m<sub>i</sub> is encrypted with the i<sup>th</sup> element k<sub>i</sub> as c=E<sub>k</sub>(m)=e<sub>k1</sub>(m<sub>1</sub>)E<sub>k<sub>2</sub></sub>(m<sub>2</sub>)</li>
         </ul>
+        <h4>2.12.1 RC4 (RIVEST CIPHER 4)</h4>
+        <ul>
+        <li>
+            <strong>What is it?</strong>
+            <ul>
+            <li>A stream cipher designed by Ron Rivest in 1987 for RSA Security</li>
+            <li>Once widely used in protocols like WEP, SSL/TLS, and PDF encryption</li>
+            <li>Variable key length (typically 40-2048 bits)</li>
+            </ul>
+        </li>
+        
+        <li>
+            <strong>How does RC4 work?</strong>
+            <ul>
+            <li>Uses a key scheduling algorithm (KSA) to initialize a 256-byte state array S</li>
+            <li>Generates pseudorandom bytes through the Pseudo-Random Generation Algorithm (PRGA)</li>
+            <li>Each output byte is XORed with a plaintext byte to produce ciphertext</li>
+            </ul>
+        </li>
+
+        <li>
+            <strong>RC4 Algorithm Steps:</strong>
+            <ol>
+            <li>
+                <strong>Key Scheduling (KSA)</strong>:
+                <ul>
+                <li>Initialize <em>S[0...255]</em> with values 0 to 255</li>
+                <li>Scramble the array using the secret key K</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Keystream Generation (PRGA)</strong>:
+                <ul>
+                <li>For each byte, update two indices i and j</li>
+                <li>Swap <em>S[i]</em> and <em>S[j]</em></li>
+                <li>Output <em>S[(S[i] + S[j]) mod 256]</em> as keystream byte</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Encryption/Decryption</strong>:
+                <ul>
+                <li>XOR keystream bytes with plaintext/ciphertext</li>
+                </ul>
+            </li>
+            </ol>
+        </li>
+
+        <li>
+            <strong>Security Issues:</strong>
+            <ul>
+            <li>Vulnerable to several weaknesses (biases in the keystream)</li>
+            <li>Completely broken when key is reused or when initial bytes are not discarded</li>
+            <li>Weak against related-key attacks</li>
+            <li>Officially deprecated for TLS in 2015 (RFC 7465)</li>
+            <li>Should not be used in new systems; replaced by ChaCha20 and other modern stream ciphers</li>
+            </ul>
+        </li>
+        </ul>
 
         <h3>2.13 BITS BYTES AND BLOCKS</h3>
         <table>
