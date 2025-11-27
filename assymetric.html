@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Security Exam Revision: Asymmetric Cryptography</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background: #181c23;
+            color: #e6e6e6;
+        }
+        h1, h2, h3 {
+            color: #7ecfff;
+        }
+        h1 {
+            border-bottom: 2px solid #7ecfff;
+            padding-bottom: 0.3em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+            background: #232733;
+        }
+        th, td {
+            border: 1px solid #444a5a;
+            padding: 0.5em 1em;
+            text-align: left;
+        }
+        th {
+            background: #22334a;
+            color: #b8e1ff;
+        }
+        code {
+            background: #232733;
+            color: #ffecb3;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .example, .note {
+            background: #22334a;
+            border-left: 4px solid #7ecfff;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        ul, ol {
+            margin-left: 2em;
+        }
+        blockquote {
+            background: #232733;
+            border-left: 4px solid #7ecfff;
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            color: #b8e1ff;
+        }
+        a {
+            color: #7ecfff;
+        }
+        strong {
+            color: #ffd580;
+        }
+        em {
+            color: #b8e1ff;
+        }
+        /* Image normalization and improved display */
+        /* Constrain images to a consistent max width, keep them responsive, and center */
+        .section img {
+            max-width: 420px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0.75em auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        /* Make list-adjacent images clear and not overlap bullets */
+        .section ul img {
+            margin-left: 0;
+        }
+
+        /* Smaller devices: allow images to be slightly narrower for comfort */
+        @media (max-width: 520px) {
+            .section img {
+                max-width: 100%;
+                margin: 0.6em auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Network Security Exam Revision: Asymmetric Cryptography</h1>
+
+    <div class="section">
+        <h2>1. Symmetric vs Asymmetric Cryptosystems</h2>
+        <ul>
+            <li><b>Symmetric (Secret-Key):</b> Same key for encryption and decryption (e.g., AES).</li>
+            <li><b>Asymmetric (Public-Key):</b> Two keys: public (encryption) and private (decryption). E.g., RSA, ElGamal.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>2. Limitations of Symmetric Encryption</h2>
+        <ul>
+            <li>Key distribution is difficult for multiple recipients.</li>
+            <li>Secure key exchange is a challenge.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>3. Public-Key Encryption</h2>
+        <ul>
+            <li>Each user has a public and private key.</li>
+            <li>Encrypt with recipient's public key; decrypt with their private key.</li>
+            <li>Security relies on infeasibility of deriving private key from public key.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>4. RSA Cryptosystem</h2>
+        <h3>Key Generation</h3>
+        <ol>
+            <li>Choose large primes <code>p</code> and <code>q</code>; compute <code>n = p * q</code>.</li>
+            <li>Choose <code>e</code> such that <code>gcd(e, (p-1)(q-1)) = 1</code>.</li>
+            <li>Compute <code>d = e<sup>-1</sup> mod (p-1)(q-1)</code>.</li>
+            <li>Public key: <code>(e, n)</code>; Private key: <code>d</code>.</li>
+        </ol>
+        <h3>Encryption</h3>
+        <div class="formula">C = M<sup>e</sup> mod n</div>
+        <h3>Decryption</h3>
+        <div class="formula">M = C<sup>d</sup> mod n</div>
+        <div class="note">
+            <b>Note:</b> Both encryption and decryption are modular exponentiations.
+        </div>
+        <h3>Security</h3>
+        <ul>
+            <li>Based on difficulty of factoring large integers.</li>
+            <li>RSA keys must be much larger than symmetric keys (≥2048 bits recommended).</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>5. Hybrid Encryption</h2>
+        <ul>
+            <li>Symmetric encryption for data (fast).</li>
+            <li>Asymmetric encryption for exchanging the symmetric key (secure key distribution).</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>6. ElGamal Cryptosystem</h2>
+        <ul>
+            <li>Public-key cryptosystem using randomization (non-deterministic).</li>
+        </ul>
+        <h3>Key Generation</h3>
+        <ol>
+            <li>Choose prime <code>p</code>, generator <code>g</code>.</li>
+            <li>Choose private key <code>x</code>; compute <code>y = g<sup>x</sup> mod p</code>.</li>
+            <li>Public key: <code>(p, g, y)</code>; Private key: <code>x</code>.</li>
+        </ol>
+        <h3>Encryption</h3>
+        <div class="formula">(a, b) = (g<sup>k</sup> mod p, m * y<sup>k</sup> mod p)</div>
+        <h3>Decryption</h3>
+        <div class="formula">m = b * (a<sup>x</sup>)<sup>-1</sup> mod p</div>
+        <div class="note">
+            <b>Security:</b> Based on the discrete logarithm problem.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>7. Diffie-Hellman Key Exchange</h2>
+        <div class="info">
+            <b>Purpose:</b> Establish a shared secret over an insecure channel.
+        </div>
+        <ol>
+            <li>Alice: picks random <code>x</code>, sends <code>X = g<sup>x</sup> mod p</code>.</li>
+            <li>Bob: picks random <code>y</code>, sends <code>Y = g<sup>y</sup> mod p</code>.</li>
+            <li>Both compute shared key: <code>K = g<sup>xy</sup> mod p</code>.</li>
+        </ol>
+        <div class="note">
+            <b>Security:</b> Based on the difficulty of the discrete logarithm problem.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>8. Security Problems & Attacks</h2>
+        <ul>
+            <li><b>Man-in-the-Middle Attack:</b> Active attacker intercepts and alters key exchange.</li>
+            <li>RSA, ElGamal, DH provide confidentiality, but not integrity or authentication by themselves.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>9. Digital Signatures & Certificates</h2>
+        <ul>
+            <li>Sign with private key; verify with public key.</li>
+            <li>Provides authenticity and integrity.</li>
+            <li>Public keys are distributed in <b>digital certificates</b> signed by Certificate Authorities (CAs).</li>
+        </ul>
+    </div>
+
+    <div class="section summary">
+        <h2>Summary Table</h2>
+        <ul>
+            <li><b>Symmetric:</b> Fast, same key, e.g., AES.</li>
+            <li><b>Asymmetric:</b> Easier key management, e.g., RSA, ElGamal.</li>
+            <li><b>Hybrid:</b> Combines both for secure, efficient communication.</li>
+            <li><b>Integrity:</b> Provided by hashes, MACs, or digital signatures.</li>
+            <li><b>Authentication:</b> Requires digital signatures and certificates.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Key Problems in Asymmetric Cryptography</h2>
+        <ul>
+            <li><b>Factoring:</b> Find prime factors of n.</li>
+            <li><b>RSA Inversion:</b> Given c, find m such that m<sup>e</sup> = c mod n.</li>
+            <li><b>Discrete Logarithm:</b> Given g, p, a, find x such that g<sup>x</sup> = a mod p.</li>
+            <li><b>Diffie-Hellman:</b> Given g<sup>x</sup> and g<sup>y</sup>, compute g<sup>xy</sup> mod p.</li>
+        </ul>
+    </div>
+</body>
+</html>
