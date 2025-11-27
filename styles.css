@@ -1,0 +1,144 @@
+/* Dark-mode adapted stylesheet for steganography page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 2em;
+    background: #181c23;
+    color: #e6e6e6;
+}
+
+h1, h2, h3 {
+    color: #7ecfff;
+}
+
+h1 {
+    border-bottom: 2px solid #7ecfff;
+    padding-bottom: 0.3em;
+}
+
+/* Keep the boxed sections but adapt to dark background */
+.section {
+    background: #232733;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    margin-bottom: 30px;
+    padding: 24px;
+    color: #e6e6e6;
+}
+
+ul { margin-top: 0; }
+
+/* Adapt image placeholders to the dark theme and keep them centered/responsive */
+.img-placeholder {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    height: 180px;
+    background: #1f2630;
+    color: #99cfff;
+    text-align: center;
+    line-height: 180px;
+    margin: 16px auto;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+.tool { margin-bottom: 12px; }
+
+.important { color: #ffd580; font-weight: bold; }
+
+/* Tables and code */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+    background: #232733;
+    color: #e6e6e6;
+}
+
+th, td {
+    border: 1px solid #444a5a;
+    padding: 0.5em 1em;
+    text-align: left;
+}
+
+th {
+    background: #22334a;
+    color: #b8e1ff;
+}
+
+code {
+    background: #232733;
+    color: #ffecb3;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+}
+
+.example, .note {
+    background: #22334a;
+    border-left: 4px solid #7ecfff;
+    padding: 1em;
+    margin: 1em 0;
+    color: #dbeeff;
+}
+
+ul, ol { margin-left: 2em; }
+
+blockquote {
+    background: #232733;
+    border-left: 4px solid #7ecfff;
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    color: #b8e1ff;
+}
+
+a { color: #7ecfff; }
+
+strong { color: #ffd580; }
+
+em { color: #b8e1ff; }
+
+/* Image normalization and improved display */
+/* Constrain images to a consistent max width, keep them responsive, and center */
+.section img {
+    max-width: 420px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0.75em auto;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Make list-adjacent images clear and not overlap bullets */
+.section ul img { margin-left: 0; }
+
+/* Smaller devices: allow images to be slightly narrower for comfort */
+@media (max-width: 520px) {
+    .section img { max-width: 100%; margin: 0.6em auto; }
+    .img-placeholder { max-width: 100%; height: 140px; line-height: 140px; }
+}
+
+/* Top action area (home button) */
+.top-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin: 8px 0 18px 0;
+}
+
+.home-btn {
+    background: #7ecfff;
+    color: #081826;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 6px 16px rgba(30,90,130,0.18);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    margin-left: 0.25rem;
+}
+
+.home-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(30,90,130,0.22);
+}
