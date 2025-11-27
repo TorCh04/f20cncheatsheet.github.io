@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intro to Information Security</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background: #f9f9f9;
+            color: #222;
+        }
+        h1, h2, h3 {
+            color: #2a4d69;
+        }
+        h1 {
+            border-bottom: 2px solid #2a4d69;
+            padding-bottom: 0.3em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+        }
+        th, td {
+            border: 1px solid #bbb;
+            padding: 0.5em 1em;
+            text-align: left;
+        }
+        th {
+            background: #e6ecf2;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .example, .note {
+            background: #eaf6fb;
+            border-left: 4px solid #2a4d69;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        ul, ol {
+            margin-left: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Intro to Information Security</h1>
+    <p><strong>Class:</strong> Computer Network Security</p>
+
+    <h2>1. Goal of Information Security</h2>
+    <ul>
+        <li>The goal of <strong>Information Security</strong> is the prevention and detection of unauthorised use of information. What constitutes <em>unauthorised use</em> must be specified (e.g., in a security policy).</li>
+        <li>Physical Security, Cyber Security, Network Security, Web Security, etc. deal with the prevention and detection of unauthorised actions on assets in their domain.</li>
+        <li>Depending on the assets and their environment, information security involves these specialised branches to varying degrees.</li>
+    </ul>
+
+    <h3>1.1 Example: Voting Systems</h3>
+    <div class="example">
+        <p>National elections decide the distribution of power in a country and can influence global geopolitical history. A security policy for elections can be derived from Article 21 of the Universal Declaration of Human Rights.</p>
+        <blockquote>
+            The will of the people shall be the basis of the authority of government; this shall be expressed in periodic and genuine elections which shall be by universal and equal suffrage and shall be held by secret vote or by equivalent free voting procedures.
+        </blockquote>
+        <p><em>(Emphasis added for later reference.)</em></p>
+    </div>
+
+    <h3>1.2 The CIA Security Properties</h3>
+    <ul>
+        <li><strong>Confidentiality:</strong> Information is not made available or disclosed to unauthorised entities.</li>
+        <li><strong>Integrity:</strong> Information is accurate and complete.</li>
+        <li><strong>Availability:</strong> Information is accessible and usable upon demand by an authorised entity.</li>
+    </ul>
+    <p>These are the most common information security properties, also referred to as the <strong>CIA properties</strong>.</p>
+
+    <h3>1.3 Example: Security Goals of Voting Systems</h3>
+    <ul>
+        <li><strong>Will of the people:</strong> The published result for each candidate must be the sum of all votes cast for the candidate. (<strong>Integrity</strong>)</li>
+        <li><strong>Universal and equal suffrage:</strong> No voter can be prevented from casting their vote. (<strong>Availability</strong>)</li>
+        <li><strong>Secret vote, free voting procedures:</strong> Only the voters themselves must know how they voted. (<strong>Confidentiality</strong>)</li>
+    </ul>
+
+    <h2>2. Evaluating Information Security</h2>
+    <p>To reason about the security of a system, we need to first agree on some terminology. The <strong>Common Criteria</strong> (CC) are one of several international standards for Information Security Evaluation. We will use their terminology and concepts.</p>
+
+    <h3>2.1 Basic Concepts from the CC</h3>
+    <ul>
+        <li>Security is about protecting <strong>assets</strong> from <strong>threats</strong> in an operational environment (e.g., a data centre, a university network, the Internet, ...).</li>
+        <li>Threats are the potential for abuse of assets.</li>
+        <li><strong>Owners</strong> value assets and want to protect them.</li>
+        <li><strong>Threat agents</strong> also value assets, and seek to abuse them.</li>
+        <li>Owners analyse threats to decide which apply—these are <strong>risks</strong> that can be costed.</li>
+        <li>This helps select <strong>controls</strong> to reduce risk.</li>
+        <li>(Security) controls are measures to protect assets.</li>
+    </ul>
+
+    <h3>2.2 Concepts and Relationships</h3>
+    <p><em>[Diagram: conceptsandrelationships.png]</em></p>
+
+    <h3>2.3 Common Criteria 2005 and Earlier</h3>
+    <ul>
+        <li>CC V2.3 and earlier also referred to <strong>vulnerabilities</strong> and <strong>countermeasures</strong> (now controls).</li>
+        <li>By CC V2.3, owners select countermeasures, which reduce vulnerabilities.</li>
+    </ul>
+    <p><em>[Diagram: CC 2205 and Earlier.png]</em></p>
+
+    <h3>2.4 Examples</h3>
+    <table>
+        <tr>
+            <th></th>
+            <th>Example 1</th>
+            <th>Example 2</th>
+        </tr>
+        <tr>
+            <td>Asset</td>
+            <td>Wireless network communications</td>
+            <td>HR database</td>
+        </tr>
+        <tr>
+            <td>Threat</td>
+            <td>Eavesdropping</td>
+            <td>Ransomware</td>
+        </tr>
+        <tr>
+            <td>Threat Agent</td>
+            <td>Competitor</td>
+            <td>Extortionist</td>
+        </tr>
+        <tr>
+            <td>Control</td>
+            <td>Encrypted communication</td>
+            <td>DB query validation</td>
+        </tr>
+    </table>
+    <ul>
+        <li>A potential vulnerability in Example 2 would be a SQL injection weakness.</li>
+        <li>Risk is often measured as the product of <strong>likelihood</strong> of occurrence over a time period and (financial) <strong>impact</strong>.<br>
+            <em>e.g. 10% probability of an attack in a year, resulting in damages of £100,000 results in a risk of £10,000/year</em>
+        </li>
+        <li>In both cases, there is residual (remaining) risk (e.g., unknown zero-day vulnerabilities, vulnerable countermeasure code).</li>
+    </ul>
+
+    <h2>3. Managing Security: Implementing a Solution</h2>
+    <ul>
+        <li>A <strong>security analysis</strong> surveys the threats which pose risks to assets, and then proposes policy and solutions at an appropriate cost.</li>
+        <li>
+            <ol>
+                <li><strong>Threat model:</strong> Documents the possible threats to a system, imagining all the vulnerabilities which might be exploited.</li>
+                <li><strong>Risk assessment:</strong> Studies the likelihood of each threat in the system environment and assigns a cost value, to find the risks.</li>
+                <li><strong>Security policy:</strong> Addresses the threats, and describes a coherent set of countermeasures.</li>
+                <li>The costs of countermeasures is compared against the risks to make a sensible <strong>trade-off</strong>.</li>
+                <li>This allows a <strong>security solution</strong> to be designed, deploying appropriate technologies at an appropriate cost. Partly this is budgeting; but it's also important to spend effort in the right place.</li>
+            </ol>
+        </li>
+    </ul>
+</body>
+</html>
