@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Security & PKI - Exam Revision</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background: #181c23;
+            color: #e6e6e6;
+        }
+        h1, h2, h3 {
+            color: #7ecfff;
+        }
+        h1 {
+            border-bottom: 2px solid #7ecfff;
+            padding-bottom: 0.3em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+            background: #232733;
+        }
+        th, td {
+            border: 1px solid #444a5a;
+            padding: 0.5em 1em;
+            text-align: left;
+        }
+        th {
+            background: #22334a;
+            color: #b8e1ff;
+        }
+        code {
+            background: #232733;
+            color: #ffecb3;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .example, .note {
+            background: #22334a;
+            border-left: 4px solid #7ecfff;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        ul, ol {
+            margin-left: 2em;
+        }
+        blockquote {
+            background: #232733;
+            border-left: 4px solid #7ecfff;
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            color: #b8e1ff;
+        }
+        a {
+            color: #7ecfff;
+        }
+        strong {
+            color: #ffd580;
+        }
+        em {
+            color: #b8e1ff;
+        }
+        /* Image normalization and improved display */
+        /* Constrain images to a consistent max width, keep them responsive, and center */
+        .section img {
+            max-width: 420px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0.75em auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        /* Make list-adjacent images clear and not overlap bullets */
+        .section ul img {
+            margin-left: 0;
+        }
+
+        /* Smaller devices: allow images to be slightly narrower for comfort */
+        @media (max-width: 520px) {
+            .section img {
+                max-width: 100%;
+                margin: 0.6em auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Network Security & Public Key Infrastructure (PKI) - Exam Revision</h1>
+
+    <section>
+        <h2>1. Security Services</h2>
+        <ul>
+            <li><strong>Confidentiality</strong></li>
+            <li><strong>Integrity</strong></li>
+            <li><strong>Message Authentication</strong></li>
+            <li><strong>Nonrepudiation</strong></li>
+        </ul>
+        <p>Digital signatures provide integrity, authentication, and nonrepudiation.</p>
+    </section>
+
+    <section>
+        <h2>2. Digital Signatures</h2>
+        <ul>
+            <li>Authenticate sender using <strong>private key</strong>.</li>
+            <li>Receiver verifies with sender's <strong>public key</strong>.</li>
+            <li>Verification function returns <code>true</code> or <code>false</code>.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>3. Public Key Certificate</h2>
+        <ul>
+            <li>Issued and signed by a <strong>Certification Authority (CA)</strong>.</li>
+            <li>Binds a subscriber's name to a public key.</li>
+            <li>Receiver verifies certificate using CA's public key.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>4. Public Key Infrastructure (PKI)</h2>
+        <ul>
+            <li>Set of software, hardware, policies, and procedures for managing digital certificates.</li>
+            <li>Goal: Establish identity, control access, protect data, provide accountability.</li>
+        </ul>
+        <h3>Certificate Chains</h3>
+        <ul>
+            <li>Multiple CAs exist (national, commercial, corporate).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>5. Trust Models</h2>
+        <ul>
+            <li><strong>Third-party trust:</strong> Trust via a common CA.</li>
+            <li><strong>Web of Trust:</strong> Direct trust, no central CA.</li>
+            <li><strong>Hierarchical:</strong> Single root CA, all others below.</li>
+            <li><strong>Distributed:</strong> Multiple CAs, basis for most internet certificates.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>6. Certificate Lifecycle</h2>
+        <ol>
+            <li><strong>Creation</strong>: Certificate issued after identity verification.</li>
+            <li><strong>Suspension</strong>: Temporarily invalid.</li>
+            <li><strong>Revocation</strong>: Permanently invalid before expiry.</li>
+            <li><strong>Expiration</strong>: Certificate becomes invalid after expiry date.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>7. Digital Certificate Standards</h2>
+        <ul>
+            <li><strong>X.509:</strong> Used in browsers, S/MIME, IPsec, SSL/TLS.</li>
+            <li><strong>PGP:</strong> Multiple CAs, web of trust, multiple user IDs.</li>
+        </ul>
+        <h3>X.509 Fields</h3>
+        <table>
+            <tr><th>Field</th><th>Description</th></tr>
+            <tr><td>Version</td><td>1, 2, or 3</td></tr>
+            <tr><td>Serial Number</td><td>Unique to CA</td></tr>
+            <tr><td>Signature Algorithm</td><td>Algorithm and parameters</td></tr>
+            <tr><td>Issuer</td><td>CA's name</td></tr>
+            <tr><td>Validity</td><td>Not before/after</td></tr>
+            <tr><td>Subject</td><td>Name of certificate holder</td></tr>
+            <tr><td>Subject Public Key Info</td><td>Algorithm, parameters, public key</td></tr>
+            <tr><td>Issuer/Subject Unique ID</td><td>Optional (v2/v3)</td></tr>
+            <tr><td>Extensions</td><td>Optional (v3)</td></tr>
+            <tr><td>Signature</td><td>Signature details</td></tr>
+        </table>
+        <h3>PGP Fields</h3>
+        <table>
+            <tr><th>Field</th><th>Description</th></tr>
+            <tr><td>Key ID</td><td>Unique identifier</td></tr>
+            <tr><td>Public Key</td><td>Key, size, algorithm</td></tr>
+            <tr><td>User IDs</td><td>Email, name, photo</td></tr>
+            <tr><td>Self-signature</td><td>Owner's signature</td></tr>
+            <tr><td>Validity Period</td><td>Start/expiry dates</td></tr>
+            <tr><td>Encryption Algorithm</td><td>Symmetric preference</td></tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>8. OpenPGP</h2>
+        <ul>
+            <li>Standard for certificates, encrypted messages, private keys, signatures.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>9. Web of Trust</h2>
+        <ul>
+            <li>PGP defines trust levels: Unknown, None, Marginal, Full.</li>
+            <li>Key validity: Valid, Marginally valid, Invalid.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>10. Certificate Revocation</h2>
+        <h3>X.509</h3>
+        <ul>
+            <li>Certificate Revocation List (CRL)</li>
+            <li>Online Certificate Status Protocol (OCSP)</li>
+        </ul>
+        <h3>PGP</h3>
+        <ul>
+            <li>Signers revoke their own signatures.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>11. Certification Authority (CA) Core Functions</h2>
+        <ul>
+            <li>Verify subject identity.</li>
+            <li>Sign certificates with private key.</li>
+            <li>Signature ensures certificate integrity.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>12. CA Setup & Certificate Issuance</h2>
+        <ol>
+            <li>Generate public/private key pair.</li>
+            <li>Create X.509 certificate (self-signed for root CA).</li>
+            <li>Generate Certificate Signing Request (CSR).</li>
+            <li>CA verifies identity and issues certificate.</li>
+            <li>Root CA's public key is pre-installed in OS/browsers.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>13. PKI vs. Man-in-the-Middle (MITM) Attacks</h2>
+        <ul>
+            <li>Authentic certificate: Attacker can't decrypt secret.</li>
+            <li>Fake certificate: Not signed by trusted CA, browser warns user.</li>
+            <li>Attacker's certificate: Subject mismatch, browser terminates connection.</li>
+        </ul>
+        <p><strong>Always verify the common name matches the hostname!</strong></p>
+    </section>
+
+    <section>
+        <h2>14. Attack Surfaces on PKI</h2>
+        <ul>
+            <li>CA verification process (e.g., Comodo breach 2011)</li>
+            <li>CA signing process (e.g., DigiNotar breach 2011)</li>
+            <li>Algorithm weaknesses (e.g., MD5, SHA-1 collisions)</li>
+            <li>User confirmation flaws (e.g., Unicode phishing)</li>
+        </ul>
+        <div class="case-study">
+            <strong>Case Study: Unicode Phishing</strong><br>
+            Domain <code>xn—80ak6aa92e.com</code> (Cyrillic) appears as <code>apple.com</code> in browser.<br>
+            User may be tricked if browser doesn't show true domain.
+        </div>
+    </section>
+
+    <section>
+        <h2>15. Key Exam Tips</h2>
+        <ul>
+            <li>Understand the difference between X.509 and PGP certificates.</li>
+            <li>Know the certificate lifecycle and revocation methods.</li>
+            <li>Be able to explain trust models and their real-world implications.</li>
+            <li>Recognize common PKI attack vectors and countermeasures.</li>
+            <li>Always check certificate subject (common name) matches the intended hostname.</li>
+        </ul>
+    </section>
+
+</body>
+</html>
