@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Security Exam Revision: Tunneling</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background: #181c23;
+            color: #e6e6e6;
+        }
+        h1, h2, h3 {
+            color: #7ecfff;
+        }
+        h1 {
+            border-bottom: 2px solid #7ecfff;
+            padding-bottom: 0.3em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+            background: #232733;
+        }
+        th, td {
+            border: 1px solid #444a5a;
+            padding: 0.5em 1em;
+            text-align: left;
+        }
+        th {
+            background: #22334a;
+            color: #b8e1ff;
+        }
+        code {
+            background: #232733;
+            color: #ffecb3;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .example, .note {
+            background: #22334a;
+            border-left: 4px solid #7ecfff;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        ul, ol {
+            margin-left: 2em;
+        }
+        blockquote {
+            background: #232733;
+            border-left: 4px solid #7ecfff;
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            color: #b8e1ff;
+        }
+        a {
+            color: #7ecfff;
+        }
+        strong {
+            color: #ffd580;
+        }
+        em {
+            color: #b8e1ff;
+        }
+        /* Image normalization and improved display */
+        /* Constrain images to a consistent max width, keep them responsive, and center */
+        .section img {
+            max-width: 420px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0.75em auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        /* Make list-adjacent images clear and not overlap bullets */
+        .section ul img {
+            margin-left: 0;
+        }
+
+        /* Smaller devices: allow images to be slightly narrower for comfort */
+        @media (max-width: 520px) {
+            .section img {
+                max-width: 100%;
+                margin: 0.6em auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Network Security Exam Revision</h1>
+    <h2>Tunneling</h2>
+    <div class="note">
+        <strong>Definition:</strong> Tunneling is the process of sending private data through a public network in a way that hides it from unauthorized access.
+    </div>
+    <img src="images/tunenling.png" alt="Tunneling Diagram">
+
+    <div class="qa">
+        <strong>Q: What is tunneling?</strong>
+        <ul>
+            <li>The process of sending private data through a public network where it could normally be visible to prying eyes.</li>
+        </ul>
+    </div>
+
+    <div class="qa">
+        <strong>Q: How does a private tunnel protect data on a public network?</strong>
+        <ul>
+            <li>It “bores through” the public network to hide the contents of the data.</li>
+        </ul>
+    </div>
+
+    <div class="qa">
+        <strong>Q: What happens to the data before it is sent through the tunnel?</strong>
+        <ul>
+            <li>The data is first <strong>encrypted</strong> and then <strong>encapsulated</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="qa">
+        <strong>Q: What is encapsulation in the context of tunneling?</strong>
+        <ul>
+            <li>Encapsulation is the process of enclosing the encrypted data with an additional header so that the data can be directed to its destination.</li>
+        </ul>
+    </div>
+
+    <div class="qa">
+        <strong>Q: What would happen if all data, including its header, was completely encrypted during transmission?</strong>
+        <ul>
+            <li>Network routers would not be able to forward the packet to its destination.</li>
+        </ul>
+    </div>
+
+    <div class="qa">
+        <strong>Q: How is encrypted information able to travel across networks as normal?</strong>
+        <ul>
+            <li>By encapsulating the encrypted information with unencrypted information, allowing routers to read the necessary forwarding details.</li>
+        </ul>
+    </div>
+
+    <div class="qa">
+        <strong>Q: What is the technique called that allows secure transport of data across a network in this way?</strong>
+        <ul>
+            <li><strong>Tunneling</strong></li>
+        </ul>
+    </div>
+
+    <img src="images/Tunelling.png" alt="Tunneling Example Diagram">
+
+    <h2>Key Points for Exam</h2>
+    <ul>
+        <li>Tunneling = Securely sending private data over public networks</li>
+        <li>Data is <strong>encrypted</strong> (for privacy) and <strong>encapsulated</strong> (for routing)</li>
+        <li>Encapsulation adds a readable header so routers can forward the packet</li>
+        <li>If headers were encrypted, routing would fail</li>
+        <li>Tunneling is essential for VPNs and secure communications</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Security Exam Revision: VPNs, TLS, and IPSec</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background: #181c23;
+            color: #e6e6e6;
+        }
+        h1, h2, h3 {
+            color: #7ecfff;
+        }
+        h1 {
+            border-bottom: 2px solid #7ecfff;
+            padding-bottom: 0.3em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+            background: #232733;
+        }
+        th, td {
+            border: 1px solid #444a5a;
+            padding: 0.5em 1em;
+            text-align: left;
+        }
+        th {
+            background: #22334a;
+            color: #b8e1ff;
+        }
+        code {
+            background: #232733;
+            color: #ffecb3;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .example, .note {
+            background: #22334a;
+            border-left: 4px solid #7ecfff;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        ul, ol {
+            margin-left: 2em;
+        }
+        blockquote {
+            background: #232733;
+            border-left: 4px solid #7ecfff;
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            color: #b8e1ff;
+        }
+        a {
+            color: #7ecfff;
+        }
+        strong {
+            color: #ffd580;
+        }
+        em {
+            color: #b8e1ff;
+        }
+        /* Image normalization and improved display */
+        /* Constrain images to a consistent max width, keep them responsive, and center */
+        .section img {
+            max-width: 420px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0.75em auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        /* Make list-adjacent images clear and not overlap bullets */
+        .section ul img {
+            margin-left: 0;
+        }
+
+        /* Smaller devices: allow images to be slightly narrower for comfort */
+        @media (max-width: 520px) {
+            .section img {
+                max-width: 100%;
+                margin: 0.6em auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Network Security Exam Revision: VPNs, TLS, and IPSec</h1>
+
+    <div class="section">
+        <h2>1. Virtual Private Networks (VPNs)</h2>
+        <div class="img-container">
+            <img src="images/VPNs.png" alt="VPNs Diagram">
+        </div>
+        <ul>
+            <li><strong>Definition:</strong> A VPN is a security technology that enables authorized users to use an unsecured public network (like the Internet) as if it were a secure private network.</li>
+            <li><strong>How it works:</strong> Encrypts all data transmitted between the remote endpoint and the network.</li>
+            <li><strong>VPN Tunnel:</strong> Connects two devices securely over an untrusted network.</li>
+            <li><strong>Types of VPNs:</strong>
+                <ul>
+                    <li><strong>Remote access VPN:</strong> User-to-LAN connection for remote users.</li>
+                    <li><strong>Site-to-site VPN:</strong> Connects multiple sites over the Internet.</li>
+                </ul>
+            </li>
+            <li><strong>Always-on VPNs:</strong> Stay connected at all times, no need to reconnect each session.</li>
+            <li><strong>Main secure protocols:</strong>
+                <ul>
+                    <li>Transport Layer Security (<strong>TLS</strong>)</li>
+                    <li>IP Security (<strong>IPSec</strong>)</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>2. TLS VPN</h2>
+        <div class="img-container">
+            <img src="images/tls vpn.png" alt="TLS VPN Diagram">
+        </div>
+        <ul>
+            <li><strong>Transport Layer Security (TLS):</strong> Provides a high degree of protection for VPNs.</li>
+            <li><strong>Standard for secure communications</strong> (including VPNs).</li>
+            <li><strong>Clientless VPN:</strong> Users can connect via a browser without a separate VPN client.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>3. IPSec VPN</h2>
+        <div class="img-container">
+            <img src="images/IPSEC VPN.png" alt="IPSec VPN Diagram">
+        </div>
+        <ul>
+            <li><strong>IP Security (IPSec):</strong> A suite of protocols for securing IP communications.</li>
+            <li><strong>How it works:</strong> Encrypts and authenticates each IP packet in a session.</li>
+            <li><strong>Encryption Modes:</strong>
+                <ul>
+                    <li><strong>Transport Mode:</strong> Encrypts only the data (payload), header remains unencrypted.</li>
+                    <li><strong>Tunnel Mode:</strong> Encrypts both header and data.</li>
+                </ul>
+            </li>
+            <li><strong>Mechanism:</strong> Adds new headers to the IP packet; the original packet becomes the data portion of the new packet.</li>
+            <li><strong>Robustness:</strong> More robust than TLS because it secures IP, the foundation of all TCP/IP protocols.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>4. IPSec vs TLS</h2>
+        <div class="img-container">
+            <img src="images/IPSEC VS TLS.png" alt="IPSec vs TLS Diagram">
+        </div>
+        <table class="compare-table">
+            <tr>
+                <th>Feature</th>
+                <th>IPSec</th>
+                <th>TLS</th>
+            </tr>
+            <tr>
+                <td>Layer</td>
+                <td>Network Layer</td>
+                <td>Application Layer</td>
+            </tr>
+            <tr>
+                <td>Encryption Scope</td>
+                <td>Entire IP packet (Tunnel mode), or just payload (Transport mode)</td>
+                <td>Application data (e.g., web traffic)</td>
+            </tr>
+            <tr>
+                <td>Client Requirement</td>
+                <td>Usually requires VPN client</td>
+                <td>Can be clientless (browser-based)</td>
+            </tr>
+            <tr>
+                <td>Use Cases</td>
+                <td>Site-to-site, remote access</td>
+                <td>Remote access, web-based access</td>
+            </tr>
+            <tr>
+                <td>Robustness</td>
+                <td>More robust (protects all IP traffic)</td>
+                <td>Less robust (protects specific applications)</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
