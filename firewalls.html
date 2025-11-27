@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Security Exam Revision: Firewalls</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background: #181c23;
+            color: #e6e6e6;
+        }
+        h1, h2, h3 {
+            color: #7ecfff;
+        }
+        h1 {
+            border-bottom: 2px solid #7ecfff;
+            padding-bottom: 0.3em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+            background: #232733;
+        }
+        th, td {
+            border: 1px solid #444a5a;
+            padding: 0.5em 1em;
+            text-align: left;
+        }
+        th {
+            background: #22334a;
+            color: #b8e1ff;
+        }
+        code {
+            background: #232733;
+            color: #ffecb3;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .example, .note {
+            background: #22334a;
+            border-left: 4px solid #7ecfff;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        ul, ol {
+            margin-left: 2em;
+        }
+        blockquote {
+            background: #232733;
+            border-left: 4px solid #7ecfff;
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            color: #b8e1ff;
+        }
+        a {
+            color: #7ecfff;
+        }
+        strong {
+            color: #ffd580;
+        }
+        em {
+            color: #b8e1ff;
+        }
+        /* Image normalization and improved display */
+        /* Constrain images to a consistent max width, keep them responsive, and center */
+        .section img {
+            max-width: 420px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0.75em auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        /* Make list-adjacent images clear and not overlap bullets */
+        .section ul img {
+            margin-left: 0;
+        }
+
+        /* Smaller devices: allow images to be slightly narrower for comfort */
+        @media (max-width: 520px) {
+            .section img {
+                max-width: 100%;
+                margin: 0.6em auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Network Security Exam Revision: Firewalls</h1>
+
+    <h2>1. What is a Firewall?</h2>
+    <ul>
+        <li>First line of defence in a network.</li>
+        <li>Monitors and controls incoming/outgoing network traffic based on security rules.</li>
+        <li>Positioned between a local network and the Internet, filtering harmful traffic.</li>
+        <li>Can be hardware, software, or both.</li>
+    </ul>
+
+    <h2>2. Firewall Functions</h2>
+    <ul>
+        <li>Limits the spread of malware.</li>
+        <li>Examines both outgoing and incoming packets (bidirectional).</li>
+        <li>Allows approved packets; blocks or denies suspicious packets based on rules.</li>
+        <li>Rule-based firewalls use specific criteria to accept or deny packets.</li>
+    </ul>
+
+    <h2>3. Firewall Rules</h2>
+    <ul>
+        <li>Parameters include:
+            <ul>
+                <li><b>Source/Destination Address</b> (IP, range, MAC, hostname)</li>
+                <li><b>Source/Destination Port</b> (specific or range)</li>
+                <li><b>Protocol</b> (e.g., TCP, UDP)</li>
+                <li><b>Direction</b> (Incoming, Outgoing, Both)</li>
+                <li><b>Priority</b> (order of rule application)</li>
+                <li><b>Time</b> (active schedule)</li>
+                <li><b>Context</b> (e.g., on-site vs remote)</li>
+                <li><b>Action</b> (allow, deny, etc.)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Examples of Firewall Rule Actions</h3>
+    <ul>
+        <li>Allow inbound SMTP (email) connections.</li>
+        <li>Allow outbound SMTP connections.</li>
+        <li>Default rule applies if no previous rule matches.</li>
+    </ul>
+
+    <h3>Firewall Rules Configuration Examples</h3>
+    <ul>
+        <li>Block all connections from a specific IP:<br>
+            <code>sudo ufw deny from 15.15.15.51</code>
+        </li>
+        <li>Allow all incoming HTTP traffic:<br>
+            <code>sudo ufw allow http</code>
+        </li>
+    </ul>
+
+    <h3>Remarks</h3>
+    <ul>
+        <li>Older firewalls processed rules sequentially (IF-THEN-ELSE); order was crucial.</li>
+        <li>Modern firewalls use priorities to resolve rule conflicts.</li>
+    </ul>
+
+    <h3>More Flexible Firewalls</h3>
+    <ul>
+        <li><b>Policy-based firewalls</b> allow generic statements (e.g., allow all traffic from a subnet to a port).</li>
+        <li>Can include content/URL filtering (e.g., block specific websites).</li>
+    </ul>
+
+    <h2>4. Firewall Categories</h2>
+    <table>
+        <tr>
+            <th>Term/Concept</th>
+            <th>Definition</th>
+        </tr>
+        <tr>
+            <td>Hardware Firewall</td>
+            <td>Separate device; more features, costlier, harder to manage.</td>
+        </tr>
+        <tr>
+            <td>Software Firewall</td>
+            <td>Runs on a device; can be compromised if host is infected.</td>
+        </tr>
+        <tr>
+            <td>Host-based Firewall</td>
+            <td>Protects a single endpoint; included in modern OSes.</td>
+        </tr>
+        <tr>
+            <td>Appliance Firewall</td>
+            <td>Hardware device for entire network protection.</td>
+        </tr>
+        <tr>
+            <td>Virtual Firewall</td>
+            <td>Runs in the cloud; used when hardware is impractical.</td>
+        </tr>
+        <tr>
+            <td>Stateless Packet Filtering</td>
+            <td>Examines each packet individually (Layer 3).</td>
+        </tr>
+        <tr>
+            <td>Stateful Packet Filtering</td>
+            <td>Tracks connection state (Layer 4); allows/denies based on session.</td>
+        </tr>
+        <tr>
+            <td>Access Control List (ACL)</td>
+            <td>Set of rules to permit/deny traffic; not a device.</td>
+        </tr>
+        <tr>
+            <td>Policy-based Firewall</td>
+            <td>Uses generic policies; can include content/URL filtering.</td>
+        </tr>
+    </table>
+
+    <h2>5. Specialised Firewalls</h2>
+    <h3>Web Application Firewall (WAF)</h3>
+    <ul>
+        <li>Examines HTTP applications.</li>
+        <li>Blocks attacks like XSS and SQL injection.</li>
+        <li>Can be hardware or software.</li>
+    </ul>
+
+    <h3>Next-Generation Firewall (NGFW)</h3>
+    <ul>
+        <li>Provides features beyond traditional firewalls.</li>
+        <li>Uses deep packet inspection for malware detection.</li>
+        <li>Includes URL filtering and intrusion prevention.</li>
+    </ul>
+
+    <h3>Unified Threat Management (UTM)</h3>
+    <ul>
+        <li>All-in-one device: packet filtering, antispam, antiphishing, antispyware, encryption, intrusion protection, web filtering.</li>
+        <li><span class="remark">Drawback: Single point of failure (SPOF).</span></li>
+    </ul>
+
+    <h2>6. Final Remarks</h2>
+    <ul>
+        <li>Firewalls are often seen as the ultimate security device, but this is inaccurate.</li>
+        <li>They have limitations but remain a key element in network security.</li>
+    </ul>
+</body>
+</html>
