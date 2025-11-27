@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Security: IDS & IPS - Exam Revision</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background: #181c23;
+            color: #e6e6e6;
+        }
+        h1, h2, h3 {
+            color: #7ecfff;
+        }
+        h1 {
+            border-bottom: 2px solid #7ecfff;
+            padding-bottom: 0.3em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+            background: #232733;
+        }
+        th, td {
+            border: 1px solid #444a5a;
+            padding: 0.5em 1em;
+            text-align: left;
+        }
+        th {
+            background: #22334a;
+            color: #b8e1ff;
+        }
+        code {
+            background: #232733;
+            color: #ffecb3;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .example, .note {
+            background: #22334a;
+            border-left: 4px solid #7ecfff;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        ul, ol {
+            margin-left: 2em;
+        }
+        blockquote {
+            background: #232733;
+            border-left: 4px solid #7ecfff;
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            color: #b8e1ff;
+        }
+        a {
+            color: #7ecfff;
+        }
+        strong {
+            color: #ffd580;
+        }
+        em {
+            color: #b8e1ff;
+        }
+        /* Image normalization and improved display */
+        /* Constrain images to a consistent max width, keep them responsive, and center */
+        .section img {
+            max-width: 420px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0.75em auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        /* Make list-adjacent images clear and not overlap bullets */
+        .section ul img {
+            margin-left: 0;
+        }
+
+        /* Smaller devices: allow images to be slightly narrower for comfort */
+        @media (max-width: 520px) {
+            .section img {
+                max-width: 100%;
+                margin: 0.6em auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Network Security: IDS & IPS</h1>
+    <div class="section">
+        <h2>1. Intrusion</h2>
+        <p><span class="keyword">Intrusion:</span> A sequence of related actions by a malicious adversary that compromises a target system.</p>
+        <ul>
+            <li>Guessing/cracking passwords</li>
+            <li>Copying sensitive databases (e.g., credit card numbers)</li>
+            <li>Viewing sensitive data</li>
+            <li>Running packet sniffers to capture credentials</li>
+            <li>Using unattended, logged-in devices without permission</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>2. Intrusion Detection System (IDS)</h2>
+        <p><span class="keyword">IDS:</span> Monitors networks/systems for malicious activities or policy violations.</p>
+        <ul>
+            <li>Implemented as a device or software application</li>
+            <li>Detects attacks or potential attacks</li>
+            <li>Produces reports/alerts for administrators</li>
+            <li>Cannot usually stop attacks (does not block packets)</li>
+        </ul>
+
+        <h3>2.1 IDS Principles</h3>
+        <ul>
+            <li>Assumes intruder behavior differs from legitimate users</li>
+            <li>Patterns of legitimate behavior established from history</li>
+            <li>No exact distinction between attack and normal activity</li>
+            <li>
+                <span class="keyword">Loose interpretation:</span> More intruders caught, more false positives<br>
+                <span class="keyword">Tight interpretation:</span> More false negatives (missed intrusions)
+            </li>
+            <li>
+                <span class="keyword">False Positive:</span> Legitimate activity flagged as intrusion<br>
+                <span class="keyword">False Negative:</span> Malicious activity not detected
+            </li>
+        </ul>
+
+        <h3>2.2 IDS Confusion Matrix</h3>
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>Actual Intrusion</th>
+                <th>Actual Normal</th>
+            </tr>
+            <tr>
+                <th>IDS: Intrusion</th>
+                <td class="highlight">True Positive</td>
+                <td>False Positive</td>
+            </tr>
+            <tr>
+                <th>IDS: Normal</th>
+                <td>False Negative</td>
+                <td class="highlight">True Negative</td>
+            </tr>
+        </table>
+
+        <h3>2.3 IDS Types</h3>
+        <ul>
+            <li><span class="keyword">Host-based IDS (HIDS):</span> Monitors a specific host; expensive to deploy everywhere; used for critical servers.</li>
+            <li><span class="keyword">Network-based IDS (NIDS):</span> Monitors network traffic; cheaper; monitors at network level.</li>
+        </ul>
+
+        <h3>2.4 IDS Detection Styles</h3>
+        <ul>
+            <li><span class="keyword">Signature-based Detection:</span>
+                <ul>
+                    <li>Uses known attack patterns (signatures)</li>
+                    <li>Detects only known attacks (cannot detect new attacks)</li>
+                    <li>Example: Regex <code>union\s+select</code> for SQL injection</li>
+                </ul>
+            </li>
+            <li><span class="keyword">Anomaly-based Detection:</span>
+                <ul>
+                    <li>Learns normal network behavior over time</li>
+                    <li>Uses ML/statistics to detect deviations</li>
+                    <li>Can detect new attacks, but may miss attacks similar to normal activity</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>3. Intrusion Prevention System (IPS)</h2>
+        <ul>
+            <li>Can block connections, alert, log, quarantine hosts, etc.</li>
+            <li>Types: <span class="keyword">Host-based (HIPS)</span> and <span class="keyword">Network-based (NIPS)</span></li>
+        </ul>
+
+        <h3>3.1 IDS vs IPS</h3>
+        <ul>
+            <li>IDS does not slow down networks; IPS can</li>
+            <li>IPS false positives can block legitimate traffic; IDS only alerts/logs</li>
+        </ul>
+
+        <h3>3.2 Combining IDS and IPS</h3>
+        <ul>
+            <li>Some solutions combine both IDS and IPS</li>
+            <li>Start with IDS mode to observe, then enable IPS for active protection</li>
+        </ul>
+    </div>
+
+    <div class="note">
+        <strong>Exam Tips:</strong>
+        <ul>
+            <li>Know definitions and differences between IDS and IPS</li>
+            <li>Understand types (HIDS/NIDS, HIPS/NIPS) and detection methods</li>
+            <li>Be able to explain false positives/negatives and their impact</li>
+            <li>Give examples of signature and anomaly-based detection</li>
+        </ul>
+    </div>
+</body>
+</html>

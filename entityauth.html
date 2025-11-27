@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Security Exam Revision: Entity Authentication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background: #181c23;
+            color: #e6e6e6;
+        }
+        h1, h2, h3 {
+            color: #7ecfff;
+        }
+        h1 {
+            border-bottom: 2px solid #7ecfff;
+            padding-bottom: 0.3em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+            background: #232733;
+        }
+        th, td {
+            border: 1px solid #444a5a;
+            padding: 0.5em 1em;
+            text-align: left;
+        }
+        th {
+            background: #22334a;
+            color: #b8e1ff;
+        }
+        code {
+            background: #232733;
+            color: #ffecb3;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .example, .note {
+            background: #22334a;
+            border-left: 4px solid #7ecfff;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        ul, ol {
+            margin-left: 2em;
+        }
+        blockquote {
+            background: #232733;
+            border-left: 4px solid #7ecfff;
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            color: #b8e1ff;
+        }
+        a {
+            color: #7ecfff;
+        }
+        strong {
+            color: #ffd580;
+        }
+        em {
+            color: #b8e1ff;
+        }
+        /* Image normalization and improved display */
+        /* Constrain images to a consistent max width, keep them responsive, and center */
+        .section img {
+            max-width: 420px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0.75em auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        /* Make list-adjacent images clear and not overlap bullets */
+        .section ul img {
+            margin-left: 0;
+        }
+
+        /* Smaller devices: allow images to be slightly narrower for comfort */
+        @media (max-width: 520px) {
+            .section img {
+                max-width: 100%;
+                margin: 0.6em auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Network Security Exam Revision: Entity Authentication</h1>
+
+    <div class="section">
+        <h2>1. Overview of Security Properties</h2>
+        <ul>
+            <li><b>Confidentiality:</b> Encryption (historical, symmetric, asymmetric), hybrid encryption (asymmetric for key exchange, symmetric for data).</li>
+            <li><b>Integrity:</b> Hash functions, MACs, digital signatures (also provide non-repudiation).</li>
+            <li><b>Access Control:</b> Firewalls.</li>
+            <li><b>Attack Detection:</b> Intrusion detection systems.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>2. Authentication Basics</h2>
+        <ul>
+            <li><b>Authentication:</b> Confirming someone/something is authentic (entity or user authentication).</li>
+            <li><b>Parties:</b> Claimant (A) and Verifier (B).</li>
+            <li><b>Passes:</b> One-pass (single message) or multi-pass (challenge-response).</li>
+            <li><b>Factors:</b> Can use multiple independent pieces of information.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>3. Types of Authentication Factors</h2>
+        <ul>
+            <li><b>Something you know:</b> Password, PIN.</li>
+            <li><b>Something you have:</b> Token, card, phone, private key.</li>
+            <li><b>Something you are:</b> Biometric (fingerprint, face, iris, etc.).</li>
+            <li><b>Somewhere you are:</b> Location-based (e.g., IP address).</li>
+            <li><b>Someone you know:</b> Social authentication.</li>
+        </ul>
+        <div class="key-point">
+            <b>Best security:</b> Use factors from different categories (e.g., password + card).
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>4. Authentication Lifecycle</h2>
+        <ul>
+            <li><b>Registration/Issuance:</b> Setting up authentication info.</li>
+            <li><b>Login/Authentication:</b> Using info to authenticate.</li>
+            <li><b>Maintenance/Recovery:</b> Updating or recovering info.</li>
+        </ul>
+        <div class="key-point">
+            <b>Security:</b> Confidentiality, integrity, and availability of authentication info.<br>
+            <b>Usability:</b> Convenience and memorability affect security.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>5. Usability & Security of Factors</h2>
+        <details>
+            <summary>Biometrics ("Something you are")</summary>
+            <ul>
+                <li><b>Issuance:</b> No need to choose info, but must record biometric securely.</li>
+                <li><b>Login:</b> Requires correct interaction; must detect liveness.</li>
+                <li><b>Maintenance:</b> Limited options if compromised or unusable.</li>
+            </ul>
+        </details>
+        <details>
+            <summary>Tokens/Cards ("Something you have")</summary>
+            <ul>
+                <li><b>Issuance:</b> Securely share device/info.</li>
+                <li><b>Login:</b> Must possess and use device correctly.</li>
+                <li><b>Maintenance:</b> Re-issuance if lost/damaged.</li>
+            </ul>
+        </details>
+        <details>
+            <summary>Passwords ("Something you know")</summary>
+            <ul>
+                <li><b>Issuance:</b> Must choose strong, memorable password.</li>
+                <li><b>Login:</b> 100% recall required; must protect entry.</li>
+                <li><b>Maintenance:</b> Avoid overlap with old passwords.</li>
+            </ul>
+        </details>
+    </div>
+
+    <div class="section">
+        <h2>6. Multi-Factor Authentication</h2>
+        <div class="key-point">
+            <b>Using two knowledge-based factors (e.g., PIN + password) is better than one, but not as secure as using factors from different categories.</b>
+        </div>
+        <ul>
+            <li><b>Multiplicative security:</b> If both must be guessed together: <span class="formula">Work = W(PIN) × W(password)</span></li>
+            <li><b>Additive security:</b> If errors are reported separately: <span class="formula">Work = W(PIN) + W(password)</span></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>7. Biometrics</h2>
+        <ul>
+            <li><b>Types:</b> Physiological (fingerprint, iris, face), Behavioural (voice, typing pattern).</li>
+            <li><b>Applications:</b> Identification (one-to-many), Verification (one-to-one).</li>
+            <li><b>Key Considerations:</b> Usability (enrolment, login), Security (false acceptance/rejection), Privacy (template storage).</li>
+        </ul>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Outcome</th><th>Description</th><th>Result</th><th>Impact</th>
+                </tr>
+                <tr>
+                    <td>True Positive (TP)</td><td>Legitimate user accepted</td><td>Correct</td><td>Good usability</td>
+                </tr>
+                <tr>
+                    <td>False Negative (FN)</td><td>Legitimate user rejected</td><td>Incorrect</td><td>Bad usability</td>
+                </tr>
+                <tr>
+                    <td>True Negative (TN)</td><td>Attacker rejected</td><td>Correct</td><td>Good security</td>
+                </tr>
+                <tr>
+                    <td>False Positive (FP)</td><td>Attacker accepted</td><td>Incorrect</td><td>Bad security</td>
+                </tr>
+            </table>
+        </div>
+        <ul>
+            <li><b>False Acceptance Rate (FAR):</b> <span class="formula">FAR = FP / (FP + TN)</span> (should be &lt; 0.1%)</li>
+            <li><b>False Rejection Rate (FRR):</b> <span class="formula">FRR = FN / (FN + TP)</span></li>
+            <li><b>Equal Error Rate (EER):</b> Point where FAR = FRR (lower is better).</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>8. Password Security</h2>
+        <ul>
+            <li><b>Attacks:</b> Shoulder surfing, social engineering, server impersonation, client compromise, eavesdropping, user impersonation, DoS, database compromise.</li>
+            <li><b>Mitigations:</b> Masking input, user education, anti-malware, encryption, limiting attempts, hashing and salting passwords.</li>
+        </ul>
+        <div class="key-point">
+            <b>Passwords should be stored as salted hashes, not plain text.</b>
+        </div>
+        <ul>
+            <li><b>Hashing:</b> Store <span class="formula">h(password)</span> instead of password.</li>
+            <li><b>Salting:</b> Store <span class="formula">h(salt, password)</span> with unique salt per user.</li>
+            <li><b>Salting effect:</b> Prevents attackers from using precomputed hash tables for all users.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>9. Dynamic Passwords & One-Time Passwords</h2>
+        <ul>
+            <li><b>One-time password lists:</b> Each password used only once; cumbersome to manage.</li>
+            <li><b>Lamport Hash Chains:</b> Use iterated hashes for one-time passwords without storing a list.</li>
+            <li><b>Variable Passwords:</b> Use nonces (random, timestamp, sequence) to make each authentication unique.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>10. "Something You Have" Authentication</h2>
+        <ul>
+            <li><b>Tokens:</b> Hardware (e.g., OTP display), Software (e.g., phone app).</li>
+            <li><b>Security Keys:</b> USB, Lightning, or NFC dongles with cryptographic info.</li>
+            <li><b>Smart Cards:</b> Physical cards with embedded chips, often require a reader.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>11. "Something You Are" Authentication</h2>
+        <ul>
+            <li><b>Biometrics:</b> Used for identification (one-to-many) and authentication (one-to-one).</li>
+            <li><b>Qualities:</b> Uniqueness, universality, permanence, measurability, acceptability.</li>
+            <li><b>System Architecture:</b> Data capture, signal processing, matching, storage, decision.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>12. Physiological & Behavioural Biometrics</h2>
+        <ul>
+            <li><b>Physiological:</b> Fingerprint, face, retina, iris, palm, voice.</li>
+            <li><b>Behavioural:</b> Keystroke dynamics, signature, gait.</li>
+        </ul>
+        <div class="key-point">
+            <b>Keystroke dynamics:</b> Measures dwell and flight time; no special hardware needed.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>13. Error Ratings in Biometrics</h2>
+        <ul>
+            <li><b>False Rejection Rate (FRR):</b> Legitimate user rejected. <span class="formula">FRR = FN / (FN + TP)</span></li>
+            <li><b>False Acceptance Rate (FAR):</b> Attacker accepted. <span class="formula">FAR = FP / (FP + TN)</span></li>
+            <li><b>Goal:</b> Minimize both FRR and FAR (trade-off exists).</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>14. Quick Revision Table: Authentication Factors</h2>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Factor</th>
+                    <th>Examples</th>
+                    <th>Strengths</th>
+                    <th>Weaknesses</th>
+                </tr>
+                <tr>
+                    <td>Something you know</td>
+                    <td>Password, PIN</td>
+                    <td>Easy to implement</td>
+                    <td>Can be guessed, phished, forgotten</td>
+                </tr>
+                <tr>
+                    <td>Something you have</td>
+                    <td>Token, card, phone</td>
+                    <td>Harder to steal remotely</td>
+                    <td>Can be lost, stolen, damaged</td>
+                </tr>
+                <tr>
+                    <td>Something you are</td>
+                    <td>Fingerprint, face, iris</td>
+                    <td>Unique, hard to share</td>
+                    <td>Privacy, spoofing, error rates</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>15. Key Exam Tips</h2>
+        <ul>
+            <li>Understand the difference between authentication factors and why combining different types increases security.</li>
+            <li>Be able to explain how password hashing and salting work, and why they are important.</li>
+            <li>Know the main types of biometric errors (FAR, FRR) and their implications.</li>
+            <li>Be familiar with common attacks on authentication systems and their mitigations.</li>
+            <li>Practice drawing and explaining authentication protocols (e.g., challenge-response, Lamport hash chains).</li>
+        </ul>
+    </div>
+</body>
+</html>
