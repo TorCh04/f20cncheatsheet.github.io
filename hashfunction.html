@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Security: Hash Functions & Data Integrity - Exam Revision</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background: #181c23;
+            color: #e6e6e6;
+        }
+        h1, h2, h3 {
+            color: #7ecfff;
+        }
+        h1 {
+            border-bottom: 2px solid #7ecfff;
+            padding-bottom: 0.3em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+            background: #232733;
+        }
+        th, td {
+            border: 1px solid #444a5a;
+            padding: 0.5em 1em;
+            text-align: left;
+        }
+        th {
+            background: #22334a;
+            color: #b8e1ff;
+        }
+        code {
+            background: #232733;
+            color: #ffecb3;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .example, .note {
+            background: #22334a;
+            border-left: 4px solid #7ecfff;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        ul, ol {
+            margin-left: 2em;
+        }
+        blockquote {
+            background: #232733;
+            border-left: 4px solid #7ecfff;
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            color: #b8e1ff;
+        }
+        a {
+            color: #7ecfff;
+        }
+        strong {
+            color: #ffd580;
+        }
+        em {
+            color: #b8e1ff;
+        }
+        /* Image normalization and improved display */
+        /* Constrain images to a consistent max width, keep them responsive, and center */
+        .section img {
+            max-width: 420px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0.75em auto;
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        /* Make list-adjacent images clear and not overlap bullets */
+        .section ul img {
+            margin-left: 0;
+        }
+
+        /* Smaller devices: allow images to be slightly narrower for comfort */
+        @media (max-width: 520px) {
+            .section img {
+                max-width: 100%;
+                margin: 0.6em auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Network Security: Hash Functions & Data Integrity</h1>
+    <div class="section">
+        <h2>1. Hash Functions</h2>
+        <ul>
+            <li>A <strong>hash function</strong> maps input of arbitrary size to a fixed-size output.</li>
+            <li><strong>Cryptographic hash functions</strong> have special security properties (see below).</li>
+            <li>Notation: <code>h(x)</code> is the hash of input <code>x</code>.</li>
+            <li>The output is called a <strong>hash</strong>, <strong>hash value</strong>, or <strong>message digest</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>2. Properties of Cryptographic Hash Functions</h2>
+        <ul>
+            <li><strong>One-way (Preimage resistance):</strong> Given <code>h(x)</code>, it is hard to find <code>x</code>.</li>
+            <li><strong>Weak collision resistance (Second preimage resistance):</strong> Given <code>x</code> and <code>h(x)</code>, hard to find <code>y ≠ x</code> such that <code>h(x) = h(y)</code>.</li>
+            <li><strong>Strong collision resistance:</strong> Hard to find any <code>x</code> and <code>y</code> such that <code>h(x) = h(y)</code>.</li>
+        </ul>
+        <div class="example">
+            <strong>Examples:</strong>
+            <ul>
+                <li>Common hash functions: <strong>MD5</strong>, <strong>SHA-1</strong>, <strong>SHA-256</strong>, <strong>SHA3-256</strong></li>
+                <li><strong>MD5</strong> and <strong>SHA-1</strong> are <span style="color: red;">not secure</span> (not collision resistant).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. Applications of Hash Functions</h2>
+        <ul>
+            <li><strong>Password storage:</strong>
+                <ul>
+                    <li>Passwords are hashed and stored.</li>
+                    <li>One-way property protects against leaks.</li>
+                    <li>Password hash functions (e.g., <strong>bcrypt</strong>, <strong>scrypt</strong>) must be slow to prevent guessing attacks.</li>
+                </ul>
+            </li>
+            <li><strong>Key derivation:</strong>
+                <ul>
+                    <li>Derive encryption keys from passphrases (e.g., <strong>pbkdf2</strong>, <strong>Argon2</strong>).</li>
+                </ul>
+            </li>
+            <li><strong>Proof-of-work:</strong>
+                <ul>
+                    <li>Used in cryptocurrencies; relies on one-way property.</li>
+                </ul>
+            </li>
+            <li><strong>Data integrity:</strong>
+                <ul>
+                    <li>Weak collision resistance is important.</li>
+                </ul>
+            </li>
+            <li><strong>Digital signatures:</strong>
+                <ul>
+                    <li>Collision resistance ensures <strong>non-repudiation</strong>.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>4. Confidentiality vs. Integrity</h2>
+        <ul>
+            <li><strong>Ciphers</strong> (e.g., AES, ChaCha20) provide <strong>confidentiality</strong> but <span style="color: red;">not integrity</span>.</li>
+            <li>Modification of ciphertext can alter plaintext undetectably.</li>
+            <li><strong>Solution:</strong> Use a hash function to verify integrity.</li>
+        </ul>
+        <div class="example">
+            <strong>Integrity with Hash Functions:</strong>
+            <ol>
+                <li>Alice sends <code>x</code> over an insecure channel.</li>
+                <li>Alice sends <code>h(x)</code> over an authentic channel (e.g., phone, trusted website).</li>
+                <li>Bob receives <code>x'</code>, computes <code>h(x')</code>, and checks if it matches <code>h(x)</code>.</li>
+                <li>If they match, <code>x' = x</code> (by weak collision resistance).</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>5. Message Authentication Codes (MACs)</h2>
+        <ul>
+            <li>Hash functions alone require a secure channel for <code>h(x)</code>.</li>
+            <li><strong>MACs</strong> (e.g., <strong>HMAC</strong>) use a secret key: <code>h<sub>K</sub>(x)</code>.</li>
+            <li>HMACs are built from cryptographic hash functions (e.g., HMAC-SHA256).</li>
+            <li>Both sender and receiver share the key <code>K</code> (symmetric).</li>
+        </ul>
+        <div class="example">
+            <strong>How HMAC Works:</strong>
+            <ol>
+                <li>Alice sends <code>x</code> and <code>h<sub>K</sub>(x)</code> to Bob.</li>
+                <li>Bob receives <code>x'</code> and <code>h'</code>, computes <code>h<sub>K</sub>(x')</code>, and checks if it matches <code>h'</code>.</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
