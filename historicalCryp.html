@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Security & Historical Cryptography - Exam Revision</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2em;
+            background: #181c23;
+            color: #e6e6e6;
+        }
+        h1, h2, h3 {
+            color: #7ecfff;
+        }
+        h1 {
+            border-bottom: 2px solid #7ecfff;
+            padding-bottom: 0.3em;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+            background: #232733;
+        }
+        th, td {
+            border: 1px solid #444a5a;
+            padding: 0.5em 1em;
+            text-align: left;
+        }
+        th {
+            background: #22334a;
+            color: #b8e1ff;
+        }
+        code {
+            background: #232733;
+            color: #ffecb3;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .example, .note {
+            background: #22334a;
+            border-left: 4px solid #7ecfff;
+            padding: 1em;
+            margin: 1em 0;
+        }
+        ul, ol {
+            margin-left: 2em;
+        }
+        blockquote {
+            background: #232733;
+            border-left: 4px solid #7ecfff;
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            color: #b8e1ff;
+        }
+        a {
+            color: #7ecfff;
+        }
+        strong {
+            color: #ffd580;
+        }
+        em {
+            color: #b8e1ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Network Security & Historical Cryptography<br><small>Exam Revision Guide</small></h1>
+
+    <h2>1. Terminology</h2>
+    <table>
+        <tr><th>Word</th><th>Definition</th></tr>
+        <tr><td>Cryptography</td><td>Secret writing with ciphers</td></tr>
+        <tr><td>Cryptanalysis</td><td>Breaking ciphers</td></tr>
+        <tr><td>Cryptology</td><td>Both of the above</td></tr>
+        <tr><td>Encryption</td><td>Transforming plain text to cipher text</td></tr>
+        <tr><td>Decryption</td><td>Recovering plain text from cipher text</td></tr>
+        <tr><td>Cipher</td><td>A mechanism for encryption and decryption (also called <b>cryptosystem</b>)</td></tr>
+    </table>
+
+    <h2>2. Goals of Cryptography</h2>
+    <ul>
+        <li><b>Confidentiality:</b> Preventing disclosure of information to unauthorized entities</li>
+        <li><b>Integrity:</b> Preventing unauthorized modification of information</li>
+        <li><b>Authenticity:</b> Preventing attribution of data to false origin</li>
+    </ul>
+    <p>The aim is to ensure these properties even when messages can be eavesdropped, intercepted, forged, or modified.</p>
+
+    <h2>3. Adversary Model (Threat Model)</h2>
+    <ul>
+        <li><b>Passive Adversary:</b> Can eavesdrop on all messages (read-only)</li>
+        <li><b>Active Adversary:</b> Can forge and modify messages (read/write)</li>
+    </ul>
+    <div class="note">
+        <b>Symmetric Encryption:</b> <br>
+        Alice encrypts plaintext <code>m</code> with key <code>k</code>: <span class="formula">c = E<sub>k</sub>(m)</span><br>
+        Bob decrypts <code>c</code> with key <code>k</code>: <span class="formula">m = D<sub>k</sub>(c) = E<sub>k</sub><sup>-1</sup>(c)</span>
+    </div>
+
+    <h2>4. Attacks Against Cryptosystems</h2>
+    <ul>
+        <li><b>Ciphertext-only attack:</b> Attacker knows only ciphertexts</li>
+        <li><b>Known-plaintext attack:</b> Attacker knows plaintext-ciphertext pairs</li>
+        <li><b>Chosen-plaintext attack:</b> Attacker can choose plaintexts and get ciphertexts</li>
+        <li><b>Chosen-ciphertext attack:</b> Attacker can choose ciphertexts and get plaintexts</li>
+    </ul>
+    <div class="note">
+        <b>Kerckhoff's Principle:</b> The security of a cryptosystem should depend only on the secrecy of the key, not the algorithm.
+    </div>
+
+    <h2>5. Formal Definition of an Encryption Scheme</h2>
+    <ul>
+        <li>Message space: <code>&#x1D544;</code></li>
+        <li>Ciphertext space: <code>&#x1D544;</code></li>
+        <li>Key space: <code>&#x1D544;</code></li>
+    </ul>
+    <div class="formula">
+        For every <code>k ∈ K, m ∈ M: D<sub>k</sub>(E<sub>k</sub>(m)) = m</code>
+    </div>
+    <ul>
+        <li>Plaintexts: <code>m ∈ M</code></li>
+        <li>Ciphertexts: <code>c ∈ C</code></li>
+        <li>Keys: <code>k ∈ K</code></li>
+    </ul>
+
+    <h2>6. Symmetric Cryptography Systems</h2>
+    <ul>
+        <li><b>Transposition:</b> Permute symbols in the block</li>
+        <li><b>Substitution:</b> Replace symbols with others</li>
+    </ul>
+
+    <h3>6.1 Simple Transposition Cipher</h3>
+    <ul>
+        <li>Permutes symbols in a block using a key (permutation)</li>
+        <li>Encryption: <span class="formula">E<sub>e</sub>(m) = (m<sub>e(1)</sub>, m<sub>e(2)</sub>, ..., m<sub>e(t)</sub>)</span></li>
+        <li>Decryption: Apply the inverse permutation</li>
+    </ul>
+    <div class="note">
+        <b>Example:</b> Permutation <code>e = (4,3,2,6,1,5)</code> encrypts <code>secrete</code> as <code>rcetse</code>
+    </div>
+
+    <h3>6.3 Cryptanalysis of Transposition Ciphers</h3>
+    <ul>
+        <li>Preserves letter frequencies</li>
+        <li>Cryptanalyst uses n-gram frequencies and tries reverse transpositions</li>
+    </ul>
+
+    <h2>7. Simple (Monoalphabetic Substitution) Ciphers</h2>
+    <ul>
+        <li>Each letter is replaced by another letter using a permutation of the alphabet</li>
+        <li>Encryption: <span class="formula">E<sub>e</sub>(m) = e(m<sub>1</sub>)e(m<sub>2</sub>)...e(m<sub>t</sub>)</span></li>
+        <li>Decryption: <span class="formula">D<sub>e</sub>(c) = e<sup>-1</sup>(c<sub>1</sub>)...e<sup>-1</sup>(c<sub>t</sub>)</span></li>
+    </ul>
+
+    <h3>7.1 Caesar Cipher</h3>
+    <ul>
+        <li>Shift each letter by a fixed amount (key <code>e</code>)</li>
+        <li>Example: <code>e = 3</code>, A → D, B → E, etc.</li>
+    </ul>
+    <div class="info">
+        <b>Key Mapping:</b><br>
+        Plain: ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+        Cipher: DEFGHIJKLMNOPQRSTUVWXYZABC
+    </div>
+    <div class="check">
+        <b>Example:</b><br>
+        Plaintext: the quick brown fox jumps over the lazy dog<br>
+        Ciphertext: WKH TXLFN EURZQ IRA MXPSV RYHU WKH ODCB GRJ
+    </div>
+    <div class="formula">
+        Encryption: E<sub>e</sub>(x) = x + e mod 26<br>
+        Decryption: D<sub>e</sub>(x) = x - e mod 26
+    </div>
+
+    <h2>8. Breaking Caesar's Cipher</h2>
+    <ul>
+        <li><b>Brute Force Attack:</b> Try all 26 keys and pick the most plausible plaintext</li>
+        <li><b>Letter Frequency Attack:</b> Compare letter frequencies in ciphertext to typical plaintext</li>
+    </ul>
+    <div class="note">
+        <b>Caesar Cipher is weak:</b> Only 26 possible keys; easily broken with passive, ciphertext-only attacks.
+    </div>
+
+    <h2>9. Polyalphabetic Substitution (Vigenère Cipher)</h2>
+    <ul>
+        <li>Uses a keyword to apply different shifts to each letter</li>
+        <li>Flattens frequency distribution, making analysis harder</li>
+        <li>Vigenère Square helps with encryption/decryption</li>
+    </ul>
+    <h3>9.1 Attacking Vigenère Cipher</h3>
+    <ul>
+        <li>If key length is known, group ciphertext accordingly and analyze each group</li>
+        <li>Guess key length by looking for repeated patterns (Kasiski examination)</li>
+        <li>Statistical methods (e.g., Measure of Roughness) can help confirm key length</li>
+    </ul>
+    <div class="formula">
+        MR = Σ<sub>i=0</sub><sup>n-1</sup> (p<sub>i</sub> - 1/n)<sup>2</sup> = Σ<sub>i=0</sub><sup>n-1</sup> p<sub>i</sub><sup>2</sup> - 1/n
+    </div>
+    <div class="note">
+        For English, MR ≈ 0.028. Use this to verify key length guesses.
+    </div>
+
+    <h2>10. One-Time Pads (Vernam Cipher)</h2>
+    <ul>
+        <li>Key is random, as long as the plaintext, and used only once</li>
+        <li>Encryption (binary): <span class="formula">c = m ⊕ k</span></li>
+        <li>Unconditionally secure if keys are random and never reused</li>
+        <li>Impractical due to key distribution and management</li>
+        <li>Reusing keys makes the cipher weak (Running Key cipher)</li>
+        <li>Pseudorandom sequences (stream ciphers) are used in practice, but are only computationally secure</li>
+    </ul>
+    <div class="info">
+        <b>Why unconditionally secure?</b><br>
+        Given a ciphertext, any plaintext guess yields a possible key, so attacker cannot determine the correct plaintext.
+    </div>
+
+    <hr>
+    <p><b>Tip for Exam:</b> Focus on understanding the <b>attack models</b>, <b>cipher weaknesses</b>, and <b>formal definitions</b>. Practice identifying which attack applies to which cipher and why.</p>
+</body>
+</html>
