@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Network Security Practice Exam</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    .question { margin-bottom: 30px; }
+    .result { margin-top: 10px; font-weight: bold; }
+    button { margin-top: 10px; }
+    input[type="number"] { width: 80px; }
+    .calc-input { margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Network Security Practice Exam</h1>
+  <form id="quizForm">
+
+    <!-- Q1: Multiple Choice (CIA) -->
+    <div class="question" id="q1">
+      <p>1. Which of the following best describes the "Integrity" property in the CIA triad?</p>
+      <input type="radio" name="q1" value="a" id="q1a">
+      <label for="q1a">a) Only authorized entities can access information</label><br>
+      <input type="radio" name="q1" value="b" id="q1b">
+      <label for="q1b">b) Information is accurate and complete</label><br>
+      <input type="radio" name="q1" value="c" id="q1c">
+      <label for="q1c">c) Information is accessible when needed</label><br>
+      <button type="button" onclick="checkAnswer('q1', 'b')">Check Answer</button>
+      <span class="result" id="result-q1"></span>
+    </div>
+
+    <!-- Q2: Multiple Choice (Block Cipher Modes) -->
+    <div class="question" id="q2">
+      <p>2. Which block cipher mode encrypts each block independently, without chaining?</p>
+      <input type="radio" name="q2" value="a" id="q2a">
+      <label for="q2a">a) CBC</label><br>
+      <input type="radio" name="q2" value="b" id="q2b">
+      <label for="q2b">b) ECB</label><br>
+      <input type="radio" name="q2" value="c" id="q2c">
+      <label for="q2c">c) CFB</label><br>
+      <button type="button" onclick="checkAnswer('q2', 'b')">Check Answer</button>
+      <span class="result" id="result-q2"></span>
+    </div>
+
+    <!-- Q3: Calculation (RSA Encryption) -->
+    <div class="question" id="q3">
+      <p>3. <b>Calculation:</b> Using RSA with parameters p = 7, q = 13, e = 5, encrypt the message m = 9.<br>
+      Enter the ciphertext as an integer.</p>
+      <div class="calc-input">
+        <input type="number" id="q3input">
+        <button type="button" onclick="checkCalcQ3()">Check Answer</button>
+      </div>
+      <span class="result" id="result-q3"></span>
+    </div>
+
+    <!-- Q4: Multiple Choice (Hash Properties) -->
+    <div class="question" id="q4">
+      <p>4. Which property of a cryptographic hash function means it is hard to find two different inputs with the same hash value?</p>
+      <input type="radio" name="q4" value="a" id="q4a">
+      <label for="q4a">a) Preimage resistance</label><br>
+      <input type="radio" name="q4" value="b" id="q4b">
+      <label for="q4b">b) Second preimage resistance</label><br>
+      <input type="radio" name="q4" value="c" id="q4c">
+      <label for="q4c">c) Collision resistance</label><br>
+      <button type="button" onclick="checkAnswer('q4', 'c')">Check Answer</button>
+      <span class="result" id="result-q4"></span>
+    </div>
+
+    <!-- Q5: Calculation (Modular Exponentiation) -->
+    <div class="question" id="q5">
+      <p>5. <b>Calculation:</b> Compute 7<sup>4</sup> mod 9.</p>
+      <div class="calc-input">
+        <input type="number" id="q5input">
+        <button type="button" onclick="checkCalcQ5()">Check Answer</button>
+      </div>
+      <span class="result" id="result-q5"></span>
+    </div>
+
+    <!-- Q6: Multiple Choice (Threats & Agents) -->
+    <div class="question" id="q6">
+      <p>6. Which of the following is a threat agent?</p>
+      <input type="radio" name="q6" value="a" id="q6a">
+      <label for="q6a">a) Eavesdropping</label><br>
+      <input type="radio" name="q6" value="b" id="q6b">
+      <label for="q6b">b) Script kiddie</label><br>
+      <input type="radio" name="q6" value="c" id="q6c">
+      <label for="q6c">c) Defence in depth</label><br>
+      <button type="button" onclick="checkAnswer('q6', 'b')">Check Answer</button>
+      <span class="result" id="result-q6"></span>
+    </div>
+
+    <!-- Q7: Multiple Choice (Certificate Differences) -->
+    <div class="question" id="q7">
+      <p>7. Which of the following is a difference between X.509 and PGP certificates? (Select all that apply)</p>
+      <input type="checkbox" name="q7" value="a" id="q7a">
+      <label for="q7a">a) The number of signed identifiers</label><br>
+      <input type="checkbox" name="q7" value="b" id="q7b">
+      <label for="q7b">b) The use of asymmetric cryptography</label><br>
+      <input type="checkbox" name="q7" value="c" id="q7c">
+      <label for="q7c">c) The number of signers of a certificate</label><br>
+      <input type="checkbox" name="q7" value="d" id="q7d">
+      <label for="q7d">d) Signatures are checked using public keys</label><br>
+      <button type="button" onclick="checkMultiQ7()">Check Answer</button>
+      <span class="result" id="result-q7"></span>
+    </div>
+
+    <!-- Q8: Calculation (Caesar Cipher) -->
+    <div class="question" id="q8">
+      <p>8. <b>Calculation:</b> Encrypt the plaintext "dog" with a Caesar cipher using key K = 3. Enter the ciphertext (all lowercase, no spaces).</p>
+      <div class="calc-input">
+        <input type="text" id="q8input">
+        <button type="button" onclick="checkCalcQ8()">Check Answer</button>
+      </div>
+      <span class="result" id="result-q8"></span>
+    </div>
+
+    <!-- Q9: Multiple Choice (Diffie-Hellman) -->
+    <div class="question" id="q9">
+      <p>9. The security of the Diffie-Hellman key exchange relies on the difficulty of which problem?</p>
+      <input type="radio" name="q9" value="a" id="q9a">
+      <label for="q9a">a) Integer factorisation</label><br>
+      <input type="radio" name="q9" value="b" id="q9b">
+      <label for="q9b">b) Discrete logarithm problem</label><br>
+      <input type="radio" name="q9" value="c" id="q9c">
+      <label for="q9c">c) Integer square root</label><br>
+      <button type="button" onclick="checkAnswer('q9', 'b')">Check Answer</button>
+      <span class="result" id="result-q9"></span>
+    </div>
+
+    <!-- Q10: Calculation (Hash Chain) -->
+    <div class="question" id="q10">
+      <p>10. <b>Calculation:</b> If h(x) = x + 2 (mod 10), and you start with x = 3, what is the result after applying the hash function 4 times?</p>
+      <div class="calc-input">
+        <input type="number" id="q10input">
+        <button type="button" onclick="checkCalcQ10()">Check Answer</button>
+      </div>
+      <span class="result" id="result-q10"></span>
+    </div>
+
+  </form>
+
+  <script>
+    function checkAnswer(qid, correct) {
+      const radios = document.getElementsByName(qid);
+      let selected = null;
+      for (const radio of radios) {
+        if (radio.checked) {
+          selected = radio.value;
+          break;
+        }
+      }
+      const resultSpan = document.getElementById('result-' + qid);
+      if (selected === null) {
+        resultSpan.textContent = "Please select an answer.";
+        resultSpan.style.color = "orange";
+      } else if (selected === correct) {
+        resultSpan.textContent = "Correct!";
+        resultSpan.style.color = "green";
+      } else {
+        resultSpan.textContent = "Incorrect.";
+        resultSpan.style.color = "red";
+      }
+    }
+
+    // Q3: RSA Calculation
+    function checkCalcQ3() {
+      // p=7, q=13, e=5, m=9
+      // n = 7*13 = 91
+      // c = m^e mod n = 9^5 mod 91
+      // 9^2 = 81, 9^3 = 729, 9^4 = 6561, 9^5 = 59049
+      // 59049 mod 91
+      let answer = parseInt(document.getElementById('q3input').value, 10);
+      let correct = 59049 % 91; // 59049 / 91 = 649, remainder 10
+      let resultSpan = document.getElementById('result-q3');
+      if (isNaN(answer)) {
+        resultSpan.textContent = "Please enter a number.";
+        resultSpan.style.color = "orange";
+      } else if (answer === correct) {
+        resultSpan.textContent = "Correct!";
+        resultSpan.style.color = "green";
+      } else {
+        resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+        resultSpan.style.color = "red";
+      }
+    }
+
+    // Q5: Modular exponentiation
+    function checkCalcQ5() {
+      // 7^4 mod 9
+      // 7^2 = 49, 49 mod 9 = 4
+      // 7^4 = (7^2)^2 = 16, 16 mod 9 = 7
+      // Actually, 7^4 = 2401, 2401 mod 9 = 7
+      let answer = parseInt(document.getElementById('q5input').value, 10);
+      let correct = 7;
+      let resultSpan = document.getElementById('result-q5');
+      if (isNaN(answer)) {
+        resultSpan.textContent = "Please enter a number.";
+        resultSpan.style.color = "orange";
+      } else if (answer === correct) {
+        resultSpan.textContent = "Correct!";
+        resultSpan.style.color = "green";
+      } else {
+        resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+        resultSpan.style.color = "red";
+      }
+    }
+
+    // Q7: Multi-select
+    function checkMultiQ7() {
+      // Correct: a and c
+      let boxes = [
+        document.getElementById('q7a').checked,
+        document.getElementById('q7b').checked,
+        document.getElementById('q7c').checked,
+        document.getElementById('q7d').checked
+      ];
+      let correct = [true, false, true, false];
+      let resultSpan = document.getElementById('result-q7');
+      if (boxes.every((val, idx) => val === correct[idx])) {
+        resultSpan.textContent = "Correct!";
+        resultSpan.style.color = "green";
+      } else {
+        resultSpan.textContent = "Incorrect. The correct answers are a) and c).";
+        resultSpan.style.color = "red";
+      }
+    }
+
+    // Q8: Caesar cipher
+    function checkCalcQ8() {
+      // "dog" with K=3: d->g, o->r, g->j => "grj"
+      let answer = document.getElementById('q8input').value.trim().toLowerCase();
+      let correct = "grj";
+      let resultSpan = document.getElementById('result-q8');
+      if (!answer) {
+        resultSpan.textContent = "Please enter the ciphertext.";
+        resultSpan.style.color = "orange";
+      } else if (answer === correct) {
+        resultSpan.textContent = "Correct!";
+        resultSpan.style.color = "green";
+      } else {
+        resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+        resultSpan.style.color = "red";
+      }
+    }
+
+    // Q10: Hash chain
+    function checkCalcQ10() {
+      // h(x) = x+2 mod 10, x=3, apply 4 times
+      // 1st: 3+2=5, 2nd: 5+2=7, 3rd: 7+2=9, 4th: 9+2=11 mod 10 = 1
+      let answer = parseInt(document.getElementById('q10input').value, 10);
+      let correct = 1;
+      let resultSpan = document.getElementById('result-q10');
+      if (isNaN(answer)) {
+        resultSpan.textContent = "Please enter a number.";
+        resultSpan.style.color = "orange";
+      } else if (answer === correct) {
+        resultSpan.textContent = "Correct!";
+        resultSpan.style.color = "green";
+      } else {
+        resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+        resultSpan.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
