@@ -204,6 +204,190 @@
       <button type="button" onclick="checkAnswer('q16', 'a')">Check Answer</button>
       <span class="result" id="result-q16"></span>
     </div>
+
+    <div class="question" id="q17">
+  <p>17. Why might an organization choose to use an IDS instead of an IPS?</p>
+  <input type="radio" name="q17" value="a" id="q17a">
+  <label for="q17a">a) IDS can block malicious traffic automatically</label><br>
+  <input type="radio" name="q17" value="b" id="q17b">
+  <label for="q17b">b) IDS does not slow down the network and only alerts on suspicious activity</label><br>
+  <input type="radio" name="q17" value="c" id="q17c">
+  <label for="q17c">c) IDS is always cheaper than IPS</label><br>
+  <button type="button" onclick="checkAnswer('q17', 'b')">Check Answer</button>
+  <span class="result" id="result-q17"></span>
+</div>
+
+<div class="question" id="q18">
+  <p>18. Which of the following is an example of "something you are" as an authentication factor?</p>
+  <input type="radio" name="q18" value="a" id="q18a">
+  <label for="q18a">a) Password</label><br>
+  <input type="radio" name="q18" value="b" id="q18b">
+  <label for="q18b">b) Fingerprint</label><br>
+  <input type="radio" name="q18" value="c" id="q18c">
+  <label for="q18c">c) Security token</label><br>
+  <button type="button" onclick="checkAnswer('q18', 'b')">Check Answer</button>
+  <span class="result" id="result-q18"></span>
+</div>
+
+<div class="question" id="q19">
+  <p>19. <b>Calculation:</b> Using RSA with p = 5, q = 11, e = 3, encrypt the message m = 53. Enter the ciphertext as an integer.</p>
+  <div class="calc-input">
+    <input type="number" id="q19input">
+    <button type="button" onclick="checkCalcQ19()">Check Answer</button>
+  </div>
+  <span class="result" id="result-q19"></span>
+</div>
+
+
+
+<div class="question" id="q20">
+  <p>20. Which IDS detection style is most likely to generate false positives if the definition of intruder behaviour is too loose?</p>
+  <input type="radio" name="q20" value="a" id="q20a">
+  <label for="q20a">a) Signature-based detection</label><br>
+  <input type="radio" name="q20" value="b" id="q20b">
+  <label for="q20b">b) Anomaly-based detection</label><br>
+  <input type="radio" name="q20" value="c" id="q20c">
+  <label for="q20c">c) Policy-based detection</label><br>
+  <button type="button" onclick="checkAnswer('q20', 'b')">Check Answer</button>
+  <span class="result" id="result-q20"></span>
+</div>
+
+<div class="question" id="q21">
+  <p>21. Which of the following is <b>not</b> a typical parameter in a firewall rule?</p>
+  <input type="radio" name="q21" value="a" id="q21a">
+  <label for="q21a">a) Source address</label><br>
+  <input type="radio" name="q21" value="b" id="q21b">
+  <label for="q21b">b) Destination port</label><br>
+  <input type="radio" name="q21" value="c" id="q21c">
+  <label for="q21c">c) Encryption algorithm</label><br>
+  <input type="radio" name="q21" value="d" id="q21d">
+  <label for="q21d">d) Protocol</label><br>
+  <button type="button" onclick="checkAnswer('q21', 'c')">Check Answer</button>
+  <span class="result" id="result-q21"></span>
+</div>
+
+<div class="question" id="q22">
+  <p>22. <b>Calculation:</b> If guessing a PIN requires 10<sup>4</sup> attempts and a password requires 10<sup>6</sup> attempts, how many attempts are needed to guess both if they must be guessed together (multiplicative security)?</p>
+  <div class="calc-input">
+    <input type="number" id="q22input">
+    <button type="button" onclick="checkCalcQ22()">Check Answer</button>
+  </div>
+  <span class="result" id="result-q22"></span>
+</div>
+
+<div class="question" id="q23">
+  <p>23. Match each authentication factor to its example:</p>
+  <table>
+    <tr><td>1. Something you know</td><td>
+      <select id="q23a">
+        <option value="">Select...</option>
+        <option value="a">Password</option>
+        <option value="b">Fingerprint</option>
+        <option value="c">Smart card</option>
+        <option value="d">Location (IP address)</option>
+        <option value="e">Friend confirmation</option>
+      </select>
+    </td></tr>
+    <tr><td>2. Something you have</td><td>
+      <select id="q23b">
+        <option value="">Select...</option>
+        <option value="a">Password</option>
+        <option value="b">Fingerprint</option>
+        <option value="c">Smart card</option>
+        <option value="d">Location (IP address)</option>
+        <option value="e">Friend confirmation</option>
+      </select>
+    </td></tr>
+    <tr><td>3. Something you are</td><td>
+      <select id="q23c">
+        <option value="">Select...</option>
+        <option value="a">Password</option>
+        <option value="b">Fingerprint</option>
+        <option value="c">Smart card</option>
+        <option value="d">Location (IP address)</option>
+        <option value="e">Friend confirmation</option>
+      </select>
+    </td></tr>
+    <tr><td>4. Somewhere you are</td><td>
+      <select id="q23d">
+        <option value="">Select...</option>
+        <option value="a">Password</option>
+        <option value="b">Fingerprint</option>
+        <option value="c">Smart card</option>
+        <option value="d">Location (IP address)</option>
+        <option value="e">Friend confirmation</option>
+      </select>
+    </td></tr>
+    <tr><td>5. Someone you know</td><td>
+      <select id="q23e">
+        <option value="">Select...</option>
+        <option value="a">Password</option>
+        <option value="b">Fingerprint</option>
+        <option value="c">Smart card</option>
+        <option value="d">Location (IP address)</option>
+        <option value="e">Friend confirmation</option>
+      </select>
+    </td></tr>
+  </table>
+  <button type="button" onclick="checkMatchQ23()">Check Answer</button>
+  <span class="result" id="result-q23"></span>
+</div>
+
+
+<div class="question" id="q24">
+  <p>24. Which of the following is <b>not</b> a benefit provided by TLS/SSL?</p>
+  <input type="radio" name="q24" value="a" id="q24a">
+  <label for="q24a">a) Data confidentiality</label><br>
+  <input type="radio" name="q24" value="b" id="q24b">
+  <label for="q24b">b) Data integrity</label><br>
+  <input type="radio" name="q24" value="c" id="q24c">
+  <label for="q24c">c) Server authentication</label><br>
+  <input type="radio" name="q24" value="d" id="q24d">
+  <label for="q24d">d) Protection against physical theft of servers</label><br>
+  <button type="button" onclick="checkAnswer('q24', 'd')">Check Answer</button>
+  <span class="result" id="result-q24"></span>
+</div>
+
+<div class="question" id="q25">
+  <p>25. Which of the following are required properties of a <b>cryptographic hash function</b>? (Select all that apply)</p>
+  <input type="checkbox" id="q25a"> <label for="q25a">a) One-way (preimage resistance)</label><br>
+  <input type="checkbox" id="q25b"> <label for="q25b">b) Strong collision resistance</label><br>
+  <input type="checkbox" id="q25c"> <label for="q25c">c) Output length must be at least 512 bits</label><br>
+  <input type="checkbox" id="q25d"> <label for="q25d">d) Second preimage resistance</label><br>
+  <button type="button" onclick="checkMultiQ25()">Check Answer</button>
+  <span class="result" id="result-q25"></span>
+</div>
+
+<div class="question" id="q26">
+  <p>26. <b>Calculation:</b> If a Vigenère cipher uses a 4-letter key to encrypt a 20-letter message, how many different key groups will the ciphertext be split into for frequency analysis?</p>
+  <input type="number" id="q26input">
+  <button type="button" onclick="checkCalcQ26()">Check Answer</button>
+  <span class="result" id="result-q26"></span>
+</div>
+
+
+<div class="question" id="q27">
+  <p>27. Which of the following is <b>not</b> a stage in the lifecycle of a digital certificate?</p>
+  <input type="radio" name="q27" value="a" id="q27a">
+  <label for="q27a">a) Creation</label><br>
+  <input type="radio" name="q27" value="b" id="q27b">
+  <label for="q27b">b) Suspension</label><br>
+  <input type="radio" name="q27" value="c" id="q27c">
+  <label for="q27c">c) Expiration</label><br>
+  <input type="radio" name="q27" value="d" id="q27d">
+  <label for="q27d">d) Encryption</label><br>
+  <button type="button" onclick="checkAnswer('q27', 'd')">Check Answer</button>
+  <span class="result" id="result-q27"></span>
+</div>
+
+
+<div class="question" id="q28">
+  <p>28. <b>Calculation:</b> If you want to encrypt a 50-character message using a one-time pad, how long must your key be?</p>
+  <input type="number" id="q28input">
+  <button type="button" onclick="checkCalcQ28()">Check Answer</button>
+  <span class="result" id="result-q28"></span>
+</div>
+
   </form>
 
   <script>
@@ -364,6 +548,123 @@
         resultSpan.style.color = "red";
       }
     }
+
+      // Add this to your <script> section
+function checkCalcQ19() {
+  // n = 5*11 = 55; c = 53^3 mod 55
+  // 53^2 = 2809; 2809 mod 55 = 4; 4*53 = 212; 212 mod 55 = 47
+  let answer = parseInt(document.getElementById('q19input').value, 10);
+  let correct = 47;
+  let resultSpan = document.getElementById('result-q19');
+  if (isNaN(answer)) {
+    resultSpan.textContent = "Please enter a number.";
+    resultSpan.style.color = "orange";
+  } else if (answer === correct) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+    resultSpan.style.color = "red";
+  }
+}
+
+// Add this to your <script> section
+function checkCalcQ22() {
+  // Multiplicative: 10^4 * 10^6 = 10^10
+  let answer = parseInt(document.getElementById('q22input').value, 10);
+  let correct = 10000000000;
+  let resultSpan = document.getElementById('result-q22');
+  if (isNaN(answer)) {
+    resultSpan.textContent = "Please enter a number.";
+    resultSpan.style.color = "orange";
+  } else if (answer === correct) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkMatchQ23() {
+  const answers = [
+    document.getElementById('q23a').value,
+    document.getElementById('q23b').value,
+    document.getElementById('q23c').value,
+    document.getElementById('q23d').value,
+    document.getElementById('q23e').value
+  ];
+  const correct = ['a','c','b','d','e'];
+  let resultSpan = document.getElementById('result-q23');
+  if (answers.includes("")) {
+    resultSpan.textContent = "Please select an answer for each factor.";
+    resultSpan.style.color = "orange";
+  } else if (answers.every((val, idx) => val === correct[idx])) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. Correct mapping: 1-a, 2-c, 3-b, 4-d, 5-e.";
+    resultSpan.style.color = "red";
+  }
+}
+
+
+
+
+// Add to your <script> section
+function checkMultiQ25() {
+  // Correct: a, b, d
+  let boxes = [
+    document.getElementById('q25a').checked,
+    document.getElementById('q25b').checked,
+    document.getElementById('q25c').checked,
+    document.getElementById('q25d').checked
+  ];
+  let correct = [true, true, false, true];
+  let resultSpan = document.getElementById('result-q25');
+  if (boxes.every((val, idx) => val === correct[idx])) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. Correct answers: a, b, d.";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkCalcQ26() {
+  // Each key letter encrypts every 4th letter, so 4 groups
+  let answer = parseInt(document.getElementById('q26input').value, 10);
+  let correct = 4;
+  let resultSpan = document.getElementById('result-q26');
+  if (isNaN(answer)) {
+    resultSpan.textContent = "Please enter a number.";
+    resultSpan.style.color = "orange";
+  } else if (answer === correct) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+    resultSpan.style.color = "red";
+  }
+}
+
+// Add to your <script> section
+function checkCalcQ28() {
+  // One-time pad key must be as long as the message: 50
+  let answer = parseInt(document.getElementById('q28input').value, 10);
+  let correct = 50;
+  let resultSpan = document.getElementById('result-q28');
+  if (isNaN(answer)) {
+    resultSpan.textContent = "Please enter a number.";
+    resultSpan.style.color = "orange";
+  } else if (answer === correct) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+    resultSpan.style.color = "red";
+  }
+}
 
 
   </script>
