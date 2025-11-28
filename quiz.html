@@ -388,6 +388,77 @@
   <span class="result" id="result-q28"></span>
 </div>
 
+<div class="question" id="q29">
+  <p>29. <b>Calculation:</b> Bob receives ciphertext c = 17, encrypted with RSA public key (n = 77, e = 13). The primes are p = 7, q = 11. What is the plaintext m? (Show your calculation steps on paper; enter the integer result.)</p>
+  <div class="calc-input">
+    <input type="number" id="q29input">
+    <button type="button" onclick="checkCalcQ29()">Check Answer</button>
+  </div>
+  <span class="result" id="result-q29"></span>
+</div>
+
+<div class="question" id="q30">
+  <p>30. Alice uses a password (10<sup>6</sup> possibilities) and a 6-digit OTP token (10<sup>6</sup> possibilities) for login. If an attacker can try passwords and OTPs separately (additive security), what is the total number of attempts needed in the worst case?</p>
+  <div class="calc-input">
+    <input type="number" id="q30input">
+    <button type="button" onclick="checkCalcQ30()">Check Answer</button>
+  </div>
+  <span class="result" id="result-q30"></span>
+</div>
+
+<div class="question" id="q31">
+  <p>31. An IDS is configured with a very tight definition of intruder behaviour. What is the most likely impact on the rates of false positives and false negatives?</p>
+  <input type="radio" name="q31" value="a" id="q31a">
+  <label for="q31a">a) Both false positives and false negatives increase</label><br>
+  <input type="radio" name="q31" value="b" id="q31b">
+  <label for="q31b">b) False positives increase, false negatives decrease</label><br>
+  <input type="radio" name="q31" value="c" id="q31c">
+  <label for="q31c">c) False positives decrease, false negatives increase</label><br>
+  <input type="radio" name="q31" value="d" id="q31d">
+  <label for="q31d">d) Both false positives and false negatives decrease</label><br>
+  <button type="button" onclick="checkAnswer('q31', 'c')">Check Answer</button>
+  <span class="result" id="result-q31"></span>
+</div>
+
+<div class="question" id="q32">
+  <p>32. In a web of trust model (like PGP), which of the following statements is <b>true</b>?</p>
+  <input type="radio" name="q32" value="a" id="q32a">
+  <label for="q32a">a) All certificates are signed by a single root CA</label><br>
+  <input type="radio" name="q32" value="b" id="q32b">
+  <label for="q32b">b) Trust is established by direct verification between users</label><br>
+  <input type="radio" name="q32" value="c" id="q32c">
+  <label for="q32c">c) Certificates cannot be revoked</label><br>
+  <input type="radio" name="q32" value="d" id="q32d">
+  <label for="q32d">d) Only one signature per certificate is allowed</label><br>
+  <button type="button" onclick="checkAnswer('q32', 'b')">Check Answer</button>
+  <span class="result" id="result-q32"></span>
+</div>
+
+<div class="question" id="q33">
+  <p>33. In CBC mode, if a single ciphertext block is corrupted during transmission, how many plaintext blocks will be affected upon decryption?</p>
+  <input type="radio" name="q33" value="a" id="q33a">
+  <label for="q33a">a) Only the corresponding plaintext block</label><br>
+  <input type="radio" name="q33" value="b" id="q33b">
+  <label for="q33b">b) The corresponding and the next plaintext block</label><br>
+  <input type="radio" name="q33" value="c" id="q33c">
+  <label for="q33c">c) All subsequent plaintext blocks</label><br>
+  <input type="radio" name="q33" value="d" id="q33d">
+  <label for="q33d">d) None</label><br>
+  <button type="button" onclick="checkAnswer('q33', 'b')">Check Answer</button>
+  <span class="result" id="result-q33"></span>
+</div>
+
+<div class="question" id="q34">
+  <p>34. Which of the following statements are <b>true</b> about steganography? (Select all that apply)</p>
+  <input type="checkbox" id="q34a"> <label for="q34a">a) It hides the existence of a message</label><br>
+  <input type="checkbox" id="q34b"> <label for="q34b">b) It always provides strong confidentiality</label><br>
+  <input type="checkbox" id="q34c"> <label for="q34c">c) It can be combined with cryptography for extra security</label><br>
+  <input type="checkbox" id="q34d"> <label for="q34d">d) It is detectable if the method is known</label><br>
+  <button type="button" onclick="checkMultiQ34()">Check Answer</button>
+  <span class="result" id="result-q34"></span>
+</div>
+
+
   </form>
 
   <script>
@@ -666,6 +737,62 @@ function checkCalcQ28() {
   }
 }
 
+function checkCalcQ29() {
+  // n = 77, e = 13, p = 7, q = 11
+  // φ(n) = (p-1)*(q-1) = 6*10 = 60
+  // Find d such that 13*d ≡ 1 mod 60 => d = 37 (since 13*37 = 481, 481 mod 60 = 1)
+  // m = c^d mod n = 17^37 mod 77
+  // 17^37 mod 77 = 57 (precomputed)
+  let answer = parseInt(document.getElementById('q29input').value, 10);
+  let correct = 57;
+  let resultSpan = document.getElementById('result-q29');
+  if (isNaN(answer)) {
+    resultSpan.textContent = "Please enter a number.";
+    resultSpan.style.color = "orange";
+  } else if (answer === correct) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkCalcQ30() {
+  // Additive: 10^6 + 10^6 = 2,000,000
+  let answer = parseInt(document.getElementById('q30input').value, 10);
+  let correct = 2000000;
+  let resultSpan = document.getElementById('result-q30');
+  if (isNaN(answer)) {
+    resultSpan.textContent = "Please enter a number.";
+    resultSpan.style.color = "orange";
+  } else if (answer === correct) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkMultiQ34() {
+  // Correct: a, c, d
+  let boxes = [
+    document.getElementById('q34a').checked,
+    document.getElementById('q34b').checked,
+    document.getElementById('q34c').checked,
+    document.getElementById('q34d').checked
+  ];
+  let correct = [true, false, true, true];
+  let resultSpan = document.getElementById('result-q34');
+  if (boxes.every((val, idx) => val === correct[idx])) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. Correct answers: a, c, d.";
+    resultSpan.style.color = "red";
+  }
+}
 
   </script>
 </body>
