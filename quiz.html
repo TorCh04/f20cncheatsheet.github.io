@@ -138,6 +138,72 @@
       <span class="result" id="result-q10"></span>
     </div>
 
+    <div class="question" id="q11">
+      <p>11. Which type of firewall tracks the state of active connections and makes decisions based on the context of the traffic?</p>
+      <input type="radio" name="q11" value="a" id="q11a">
+      <label for="q11a">a) Stateless firewall</label><br>
+      <input type="radio" name="q11" value="b" id="q11b">
+      <label for="q11b">b) Stateful firewall</label><br>
+      <input type="radio" name="q11" value="c" id="q11c">
+      <label for="q11c">c) Packet sniffer</label><br>
+      <button type="button" onclick="checkAnswer('q11', 'b')">Check Answer</button>
+      <span class="result" id="result-q11"></span>
+    </div>
+
+    <div class="question" id="q12">
+      <p>12. <b>Calculation:</b> Decrypt the ciphertext "jgnnq" using a Caesar cipher with key K = 2. Enter the plaintext (all lowercase, no spaces).</p>
+      <div class="calc-input">
+        <input type="text" id="q12input">
+        <button type="button" onclick="checkCalcQ12()">Check Answer</button>
+      </div>
+      <span class="result" id="result-q12"></span>
+    </div>
+
+    <div class="question" id="q13">
+      <p>13. Which type of Intrusion Detection System (IDS) detection method can identify new, previously unknown attacks?</p>
+      <input type="radio" name="q13" value="a" id="q13a">
+      <label for="q13a">a) Signature-based detection</label><br>
+      <input type="radio" name="q13" value="b" id="q13b">
+      <label for="q13b">b) Anomaly-based detection</label><br>
+      <input type="radio" name="q13" value="c" id="q13c">
+      <label for="q13c">c) Policy-based detection</label><br>
+      <button type="button" onclick="checkAnswer('q13', 'b')">Check Answer</button>
+      <span class="result" id="result-q13"></span>
+    </div>
+
+    <div class="question" id="q14">
+      <p>14. <b>Calculation:</b> Calculate 15<sup>2</sup> mod 13.</p>
+      <div class="calc-input">
+        <input type="number" id="q14input">
+        <button type="button" onclick="checkCalcQ14()">Check Answer</button>
+      </div>
+      <span class="result" id="result-q14"></span>
+    </div>
+
+    <div class="question" id="q15">
+      <p>15. Which protocol operates at the network layer and can encrypt both the header and payload of IP packets?</p>
+      <input type="radio" name="q15" value="a" id="q15a">
+      <label for="q15a">a) TLS</label><br>
+      <input type="radio" name="q15" value="b" id="q15b">
+      <label for="q15b">b) IPSec</label><br>
+      <input type="radio" name="q15" value="c" id="q15c">
+      <label for="q15c">c) SSH</label><br>
+      <button type="button" onclick="checkAnswer('q15', 'b')">Check Answer</button>
+      <span class="result" id="result-q15"></span>
+    </div>
+
+
+    <div class="question" id="q16">
+  <p>16. Which application of hash functions relies most on the one-way property?</p>
+      <input type="radio" name="q16" value="a" id="q16a">
+      <label for="q16a">a) Password storage</label><br>
+      <input type="radio" name="q16" value="b" id="q16b">
+      <label for="q16b">b) Digital signatures</label><br>
+      <input type="radio" name="q16" value="c" id="q16c">
+      <label for="q16c">c) Data integrity</label><br>
+      <button type="button" onclick="checkAnswer('q16', 'a')">Check Answer</button>
+      <span class="result" id="result-q16"></span>
+    </div>
   </form>
 
   <script>
@@ -262,6 +328,44 @@
         resultSpan.style.color = "red";
       }
     }
+
+    // Add this to your <script> section
+    function checkCalcQ12() {
+      // "jgnnq" with K=2: j->h, g->e, n->l, n->l, q->o => "hello"
+      let answer = document.getElementById('q12input').value.trim().toLowerCase();
+      let correct = "hello";
+      let resultSpan = document.getElementById('result-q12');
+      if (!answer) {
+        resultSpan.textContent = "Please enter the plaintext.";
+        resultSpan.style.color = "orange";
+      } else if (answer === correct) {
+        resultSpan.textContent = "Correct!";
+        resultSpan.style.color = "green";
+      } else {
+        resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+        resultSpan.style.color = "red";
+      }
+    }
+
+  // Add this to your <script> section
+    function checkCalcQ14() {
+      // 15^2 = 225, 225 mod 13 = 4
+      let answer = parseInt(document.getElementById('q14input').value, 10);
+      let correct = 4;
+      let resultSpan = document.getElementById('result-q14');
+      if (isNaN(answer)) {
+        resultSpan.textContent = "Please enter a number.";
+        resultSpan.style.color = "orange";
+      } else if (answer === correct) {
+        resultSpan.textContent = "Correct!";
+        resultSpan.style.color = "green";
+      } else {
+        resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+        resultSpan.style.color = "red";
+      }
+    }
+
+
   </script>
 </body>
 </html>
