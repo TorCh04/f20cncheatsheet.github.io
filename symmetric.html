@@ -135,19 +135,19 @@
                     <li><b>CBC (Cipher Block Chaining):</b> Each block XORed with previous ciphertext before encryption.<br>
                         <span class="formula">cⱼ = Eₖ(mⱼ ⊕ cⱼ₋₁)</span>
                     </li>
-                    <img src="images/CBC mode.png" alt="CBC Mode Diagram">
+                    <img src="images/cipher block chaining.png" alt="CBC Mode Diagram">
                     <li><b>CTR (Counter):</b> Block cipher used as stream cipher, keystream from counter.<br>
                         <span class="formula">cⱼ = Eₖ(iv + j - 1) ⊕ mⱼ</span>
                     </li>
-                    <img src="images/counter mode.png" alt="CTR Mode Diagram">
+                    <img src="images/ctr counter mode.png" alt="CTR Mode Diagram">
                     <li><b>CFB (Cipher Feedback):</b> Previous ciphertext encrypted, then XORed with plaintext.<br>
                         <span class="formula">cⱼ = Eₖ(cⱼ₋₁) ⊕ mⱼ</span>
                     </li>
-                    <img src="images/CFB mode.png" alt="CFB Mode Diagram">
+                    <img src="images/CFB Cipher.png" alt="CFB Mode Diagram">
                     <li><b>OFB (Output Feedback):</b> Output of cipher fed back to generate keystream.<br>
                         <span class="formula">Oⱼ = Eₖ(Oⱼ₋₁), cⱼ = Oⱼ ⊕ mⱼ</span>
                     </li>
-                    <img src="images/Output Feedback.png" alt="OFB Mode Diagram">
+                    <img src="images/OFB Cipher.png" alt="OFB Mode Diagram">
                 </ul>
             </li>
         </ul>
