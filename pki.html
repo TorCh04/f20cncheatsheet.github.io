@@ -103,6 +103,87 @@
         </table>
     </section>
 
+
+<section>
+  <h2>X.509 vs PGP: Security & Cryptography Comparison</h2>
+  <div>
+    <h3>X.509</h3>
+    <ul>
+      <li><strong>Definition:</strong> X.509 is a standard that defines the format of public key certificates, used in protocols like TLS/SSL.</li>
+      <li><strong>Trust Model:</strong> <em>Hierarchical (CA-based):</em> Trust is established through a chain of Certificate Authorities (CAs).</li>
+      <li><strong>Certificate Structure:</strong> Includes subject, issuer, public key, validity period, and digital signature.</li>
+      <li><strong>Common Use Cases:</strong>
+        <ul>
+          <li>Securing websites (HTTPS)</li>
+          <li>Email encryption (S/MIME)</li>
+          <li>VPNs</li>
+          <li>Code signing</li>
+        </ul>
+      </li>
+      <li><strong>Management:</strong> Centralized. CAs issue, revoke, and manage certificates.</li>
+    </ul>
+  </div>
+  <div>
+    <h3>PGP (Pretty Good Privacy)</h3>
+    <ul>
+      <li><strong>Definition:</strong> PGP is an encryption program for cryptographic privacy and authentication, often used for email encryption.</li>
+      <li><strong>Trust Model:</strong> <em>Web of Trust:</em> Decentralized trust. Users sign each other's keys, forming a network of trust.</li>
+      <li><strong>Certificate Structure:</strong> Self-signed keys, can be signed by others. Contains user IDs, public keys, and signatures.</li>
+      <li><strong>Common Use Cases:</strong>
+        <ul>
+          <li>Email encryption (OpenPGP, GPG)</li>
+          <li>File encryption</li>
+          <li>Signing software packages</li>
+        </ul>
+      </li>
+      <li><strong>Management:</strong> Decentralized. Users generate and manage their own keys; trust is established via key signing.</li>
+    </ul>
+  </div>
+  <h3>Summary Table</h3>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>X.509 (PKI)</th>
+        <th>PGP (Web of Trust)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Trust Model</td>
+        <td>Hierarchical (CA)</td>
+        <td>Decentralized (WoT)</td>
+      </tr>
+      <tr>
+        <td>Key Management</td>
+        <td>Centralized</td>
+        <td>Decentralized</td>
+      </tr>
+      <tr>
+        <td>Common Use</td>
+        <td>HTTPS, S/MIME, VPN</td>
+        <td>Email, file encryption</td>
+      </tr>
+      <tr>
+        <td>Certificate Format</td>
+        <td>ASN.1 DER/PEM</td>
+        <td>OpenPGP format</td>
+      </tr>
+      <tr>
+        <td>Revocation</td>
+        <td>CRL, OCSP</td>
+        <td>Key revocation certs</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>In Summary</h3>
+  <ul>
+    <li><strong>X.509:</strong> Best for environments needing a central authority (e.g., the web).</li>
+    <li><strong>PGP:</strong> Best for peer-to-peer trust scenarios, such as secure email between individuals.</li>
+  </ul>
+</section>
+
+
     <section>
         <h2>8. OpenPGP</h2>
         <ul>
