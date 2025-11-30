@@ -591,6 +591,144 @@
   <span class="result" id="result-q41"></span>
 </div>
 
+<div class="question" id="q42">
+  <p>42. Which of the following is <b>not</b> a standard method for revoking a digital certificate in PKI?</p>
+  <input type="radio" name="q42" value="a" id="q42a">
+  <label for="q42a">a) Certificate Revocation List (CRL)</label><br>
+  <input type="radio" name="q42" value="b" id="q42b">
+  <label for="q42b">b) Online Certificate Status Protocol (OCSP)</label><br>
+  <input type="radio" name="q42" value="c" id="q42c">
+  <label for="q42c">c) Certificate Expiry</label><br>
+  <input type="radio" name="q42" value="d" id="q42d">
+  <label for="q42d">d) Certificate Transparency Log</label><br>
+  <button type="button" onclick="checkAnswer('q42', 'd')">Check Answer</button>
+  <span class="result" id="result-q42"></span>
+</div>
+
+<div class="question" id="q43">
+  <p>43. <b>Calculation:</b> In a typical TLS handshake, how many round trips (client-server exchanges) are required before application data can be securely sent? (Assume no session resumption or client authentication.)</p>
+  <input type="number" id="q43input">
+  <button type="button" onclick="checkCalcQ43()">Check Answer</button>
+  <span class="result" id="result-q43"></span>
+</div>
+
+<div class="question" id="q44">
+  <p>44. Match each firewall type to its main feature:</p>
+  <table>
+    <tr><td>1. Stateful firewall</td><td>
+      <select id="q44a">
+        <option value="">Select...</option>
+        <option value="a">Tracks connection state</option>
+        <option value="b">Examines HTTP traffic for attacks</option>
+        <option value="c">Filters packets based only on headers</option>
+        <option value="d">Runs in the cloud</option>
+      </select>
+    </td></tr>
+    <tr><td>2. Web Application Firewall (WAF)</td><td>
+      <select id="q44b">
+        <option value="">Select...</option>
+        <option value="a">Tracks connection state</option>
+        <option value="b">Examines HTTP traffic for attacks</option>
+        <option value="c">Filters packets based only on headers</option>
+        <option value="d">Runs in the cloud</option>
+      </select>
+    </td></tr>
+    <tr><td>3. Stateless firewall</td><td>
+      <select id="q44c">
+        <option value="">Select...</option>
+        <option value="a">Tracks connection state</option>
+        <option value="b">Examines HTTP traffic for attacks</option>
+        <option value="c">Filters packets based only on headers</option>
+        <option value="d">Runs in the cloud</option>
+      </select>
+    </td></tr>
+    <tr><td>4. Virtual firewall</td><td>
+      <select id="q44d">
+        <option value="">Select...</option>
+        <option value="a">Tracks connection state</option>
+        <option value="b">Examines HTTP traffic for attacks</option>
+        <option value="c">Filters packets based only on headers</option>
+        <option value="d">Runs in the cloud</option>
+      </select>
+    </td></tr>
+  </table>
+  <button type="button" onclick="checkMatchQ44()">Check Answer</button>
+  <span class="result" id="result-q44"></span>
+</div>
+
+<div class="question" id="q45">
+  <p>45. Which protocol is commonly used for VPN tunneling at the application layer and can be clientless?</p>
+  <input type="radio" name="q45" value="a" id="q45a">
+  <label for="q45a">a) IPSec</label><br>
+  <input type="radio" name="q45" value="b" id="q45b">
+  <label for="q45b">b) TLS</label><br>
+  <input type="radio" name="q45" value="c" id="q45c">
+  <label for="q45c">c) L2TP</label><br>
+  <input type="radio" name="q45" value="d" id="q45d">
+  <label for="q45d">d) GRE</label><br>
+  <button type="button" onclick="checkAnswer('q45', 'b')">Check Answer</button>
+  <span class="result" id="result-q45"></span>
+</div>
+
+<div class="question" id="q46">
+  <p>46. Where should a network-based IDS (NIDS) be placed for maximum visibility of incoming threats?</p>
+  <input type="radio" name="q46" value="a" id="q46a">
+  <label for="q46a">a) Inside the DMZ, monitoring only outbound traffic</label><br>
+  <input type="radio" name="q46" value="b" id="q46b">
+  <label for="q46b">b) Outside the firewall, monitoring all Internet traffic</label><br>
+  <input type="radio" name="q46" value="c" id="q46c">
+  <label for="q46c">c) Just inside the firewall, monitoring inbound traffic</label><br>
+  <input type="radio" name="q46" value="d" id="q46d">
+  <label for="q46d">d) On a user’s workstation</label><br>
+  <button type="button" onclick="checkAnswer('q46', 'c')">Check Answer</button>
+  <span class="result" id="result-q46"></span>
+</div>
+
+<div class="question" id="q47">
+  <p>47. <b>Calculation:</b> If a VPN tunnel encapsulates a 1000-byte IP packet with a 60-byte new header, what is the total size of the packet sent over the public network?</p>
+  <input type="number" id="q47input">
+  <button type="button" onclick="checkCalcQ47()">Check Answer</button>
+  <span class="result" id="result-q47"></span>
+</div>
+
+<div class="question" id="q48">
+  <p>48. Which authentication protocol uses a challenge-response mechanism to prevent replay attacks?</p>
+  <input type="radio" name="q48" value="a" id="q48a">
+  <label for="q48a">a) Simple password login</label><br>
+  <input type="radio" name="q48" value="b" id="q48b">
+  <label for="q48b">b) Challenge-Handshake Authentication Protocol (CHAP)</label><br>
+  <input type="radio" name="q48" value="c" id="q48c">
+  <label for="q48c">c) Static PIN entry</label><br>
+  <input type="radio" name="q48" value="d" id="q48d">
+  <label for="q48d">d) Username only</label><br>
+  <button type="button" onclick="checkAnswer('q48', 'b')">Check Answer</button>
+  <span class="result" id="result-q48"></span>
+</div>
+
+<div class="question" id="q49">
+  <p>49. Which of the following are common steganography techniques? (Select all that apply)</p>
+  <input type="checkbox" id="q49a"> <label for="q49a">a) Least Significant Bit (LSB) image encoding</label><br>
+  <input type="checkbox" id="q49b"> <label for="q49b">b) Hiding data in TCP/IP headers</label><br>
+  <input type="checkbox" id="q49c"> <label for="q49c">c) Substitution ciphers</label><br>
+  <input type="checkbox" id="q49d"> <label for="q49d">d) Audio file echo hiding</label><br>
+  <button type="button" onclick="checkMultiQ49()">Check Answer</button>
+  <span class="result" id="result-q49"></span>
+</div>
+
+<div class="question" id="q50">
+  <p>50. You visit a website and your browser displays a warning: "The certificate is not trusted." What is the <b>most likely</b> reason?</p>
+  <input type="radio" name="q50" value="a" id="q50a">
+  <label for="q50a">a) The website uses HTTP instead of HTTPS</label><br>
+  <input type="radio" name="q50" value="b" id="q50b">
+  <label for="q50b">b) The certificate was signed by an untrusted Certificate Authority</label><br>
+  <input type="radio" name="q50" value="c" id="q50c">
+  <label for="q50c">c) The website is down</label><br>
+  <input type="radio" name="q50" value="d" id="q50d">
+  <label for="q50d">d) The browser is out of date</label><br>
+  <button type="button" onclick="checkAnswer('q50', 'b')">Check Answer</button>
+  <span class="result" id="result-q50"></span>
+</div>
+
   </form>
 
   <script>
@@ -996,6 +1134,82 @@ function checkCalcQ41() {
     resultSpan.style.color = "green";
   } else {
     resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkCalcQ43() {
+  // 1. ClientHello -> ServerHello/Certificate/ServerHelloDone
+  // 2. ClientKeyExchange/Finished -> Server Finished
+  // Two round trips
+  let answer = parseInt(document.getElementById('q43input').value, 10);
+  let correct = 2;
+  let resultSpan = document.getElementById('result-q43');
+  if (isNaN(answer)) {
+    resultSpan.textContent = "Please enter a number.";
+    resultSpan.style.color = "orange";
+  } else if (answer === correct) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkMatchQ44() {
+  const answers = [
+    document.getElementById('q44a').value,
+    document.getElementById('q44b').value,
+    document.getElementById('q44c').value,
+    document.getElementById('q44d').value
+  ];
+  const correct = ['a','b','c','d'];
+  let resultSpan = document.getElementById('result-q44');
+  if (answers.includes("")) {
+    resultSpan.textContent = "Please select an answer for each firewall type.";
+    resultSpan.style.color = "orange";
+  } else if (answers.every((val, idx) => val === correct[idx])) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. Correct mapping: 1-a, 2-b, 3-c, 4-d.";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkCalcQ47() {
+  // 1000 + 60 = 1060 bytes
+  let answer = parseInt(document.getElementById('q47input').value, 10);
+  let correct = 1060;
+  let resultSpan = document.getElementById('result-q47');
+  if (isNaN(answer)) {
+    resultSpan.textContent = "Please enter a number.";
+    resultSpan.style.color = "orange";
+  } else if (answer === correct) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkMultiQ49() {
+  // Correct: a, b, d
+  let boxes = [
+    document.getElementById('q49a').checked,
+    document.getElementById('q49b').checked,
+    document.getElementById('q49c').checked,
+    document.getElementById('q49d').checked
+  ];
+  let correct = [true, true, false, true];
+  let resultSpan = document.getElementById('result-q49');
+  if (boxes.every((val, idx) => val === correct[idx])) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. Correct answers: a, b, d.";
     resultSpan.style.color = "red";
   }
 }
