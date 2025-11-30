@@ -461,6 +461,135 @@
   <span class="result" id="result-q34"></span>
 </div>
 
+<div class="question" id="q35">
+  <p>35. Match each PKI concept to its definition:</p>
+  <table>
+    <tr><td>1. Certificate Authority (CA)</td><td>
+      <select id="q35a">
+        <option value="">Select...</option>
+        <option value="a">Issues and signs digital certificates</option>
+        <option value="b">Cryptographic protocol for secure web traffic</option>
+        <option value="c">List of revoked certificates</option>
+        <option value="d">User requesting a certificate</option>
+        <option value="e">Verifies certificate status in real time</option>
+      </select>
+    </td></tr>
+    <tr><td>2. TLS</td><td>
+      <select id="q35b">
+        <option value="">Select...</option>
+        <option value="a">Issues and signs digital certificates</option>
+        <option value="b">Cryptographic protocol for secure web traffic</option>
+        <option value="c">List of revoked certificates</option>
+        <option value="d">User requesting a certificate</option>
+        <option value="e">Verifies certificate status in real time</option>
+      </select>
+    </td></tr>
+    <tr><td>3. Certificate Revocation List (CRL)</td><td>
+      <select id="q35c">
+        <option value="">Select...</option>
+        <option value="a">Issues and signs digital certificates</option>
+        <option value="b">Cryptographic protocol for secure web traffic</option>
+        <option value="c">List of revoked certificates</option>
+        <option value="d">User requesting a certificate</option>
+        <option value="e">Verifies certificate status in real time</option>
+      </select>
+    </td></tr>
+    <tr><td>4. OCSP</td><td>
+      <select id="q35d">
+        <option value="">Select...</option>
+        <option value="a">Issues and signs digital certificates</option>
+        <option value="b">Cryptographic protocol for secure web traffic</option>
+        <option value="c">List of revoked certificates</option>
+        <option value="d">User requesting a certificate</option>
+        <option value="e">Verifies certificate status in real time</option>
+      </select>
+    </td></tr>
+    <tr><td>5. Subscriber</td><td>
+      <select id="q35e">
+        <option value="">Select...</option>
+        <option value="a">Issues and signs digital certificates</option>
+        <option value="b">Cryptographic protocol for secure web traffic</option>
+        <option value="c">List of revoked certificates</option>
+        <option value="d">User requesting a certificate</option>
+        <option value="e">Verifies certificate status in real time</option>
+      </select>
+    </td></tr>
+  </table>
+  <button type="button" onclick="checkMatchQ35()">Check Answer</button>
+  <span class="result" id="result-q35"></span>
+</div>
+
+
+
+<div class="question" id="q36">
+  <p>36. During the SSL/TLS handshake, what is the main purpose of the server certificate?</p>
+  <input type="radio" name="q36" value="a" id="q36a">
+  <label for="q36a">a) To encrypt all data sent by the client</label><br>
+  <input type="radio" name="q36" value="b" id="q36b">
+  <label for="q36b">b) To authenticate the server's identity to the client</label><br>
+  <input type="radio" name="q36" value="c" id="q36c">
+  <label for="q36c">c) To generate the session key</label><br>
+  <input type="radio" name="q36" value="d" id="q36d">
+  <label for="q36d">d) To authenticate the client to the server</label><br>
+  <button type="button" onclick="checkAnswer('q36', 'b')">Check Answer</button>
+  <span class="result" id="result-q36"></span>
+</div>
+
+<div class="question" id="q37">
+  <p>37. <b>Calculation:</b> If a VPN tunnel encapsulates a 1000-byte IP packet with a 60-byte new header, what is the total size of the packet sent over the tunnel?</p>
+  <div class="calc-input">
+    <input type="number" id="q37input">
+    <button type="button" onclick="checkCalcQ37()">Check Answer</button>
+  </div>
+  <span class="result" id="result-q37"></span>
+</div>
+
+<div class="question" id="q38">
+  <p>38. Which type of firewall is specifically designed to protect web applications from attacks like SQL injection and XSS?</p>
+  <input type="radio" name="q38" value="a" id="q38a">
+  <label for="q38a">a) Packet-filtering firewall</label><br>
+  <input type="radio" name="q38" value="b" id="q38b">
+  <label for="q38b">b) Web Application Firewall (WAF)</label><br>
+  <input type="radio" name="q38" value="c" id="q38c">
+  <label for="q38c">c) Network-based IDS</label><br>
+  <input type="radio" name="q38" value="d" id="q38d">
+  <label for="q38d">d) Unified Threat Management (UTM)</label><br>
+  <button type="button" onclick="checkAnswer('q38', 'b')">Check Answer</button>
+  <span class="result" id="result-q38"></span>
+</div>
+
+<div class="question" id="q39">
+  <p>39. Which of the following are features of an Intrusion Prevention System (IPS)? (Select all that apply)</p>
+  <input type="checkbox" id="q39a"> <label for="q39a">a) Can block malicious traffic in real time</label><br>
+  <input type="checkbox" id="q39b"> <label for="q39b">b) Only generates alerts, does not block traffic</label><br>
+  <input type="checkbox" id="q39c"> <label for="q39c">c) Can quarantine hosts</label><br>
+  <input type="checkbox" id="q39d"> <label for="q39d">d) Can log security events</label><br>
+  <button type="button" onclick="checkMultiQ39()">Check Answer</button>
+  <span class="result" id="result-q39"></span>
+</div>
+
+<div class="question" id="q40">
+  <p>40. Which authentication protocol uses a challenge-response mechanism to prevent replay attacks?</p>
+  <input type="radio" name="q40" value="a" id="q40a">
+  <label for="q40a">a) Simple password login</label><br>
+  <input type="radio" name="q40" value="b" id="q40b">
+  <label for="q40b">b) Challenge-response protocol</label><br>
+  <input type="radio" name="q40" value="c" id="q40c">
+  <label for="q40c">c) Static PIN entry</label><br>
+  <input type="radio" name="q40" value="d" id="q40d">
+  <label for="q40d">d) Username only</label><br>
+  <button type="button" onclick="checkAnswer('q40', 'b')">Check Answer</button>
+  <span class="result" id="result-q40"></span>
+</div>
+
+<div class="question" id="q41">
+  <p>41. <b>Calculation:</b> If you can hide 1 bit of secret data in each pixel of a 640x480 image, what is the maximum number of bytes you can hide?</p>
+  <div class="calc-input">
+    <input type="number" id="q41input">
+    <button type="button" onclick="checkCalcQ41()">Check Answer</button>
+  </div>
+  <span class="result" id="result-q41"></span>
+</div>
 
   </form>
 
@@ -793,6 +922,80 @@ function checkMultiQ34() {
     resultSpan.style.color = "green";
   } else {
     resultSpan.textContent = "Incorrect. Correct answers: a, c, d.";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkMatchQ35() {
+  const answers = [
+    document.getElementById('q35a').value,
+    document.getElementById('q35b').value,
+    document.getElementById('q35c').value,
+    document.getElementById('q35d').value,
+    document.getElementById('q35e').value
+  ];
+  const correct = ['a','b','c','e','d'];
+  let resultSpan = document.getElementById('result-q35');
+  if (answers.includes("")) {
+    resultSpan.textContent = "Please select an answer for each concept.";
+    resultSpan.style.color = "orange";
+  } else if (answers.every((val, idx) => val === correct[idx])) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. Correct mapping: 1-a, 2-b, 3-c, 4-e, 5-d.";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkCalcQ37() {
+  let answer = parseInt(document.getElementById('q37input').value, 10);
+  let correct = 1060;
+  let resultSpan = document.getElementById('result-q37');
+  if (isNaN(answer)) {
+    resultSpan.textContent = "Please enter a number.";
+    resultSpan.style.color = "orange";
+  } else if (answer === correct) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkMultiQ39() {
+  // Correct: a, c, d
+  let boxes = [
+    document.getElementById('q39a').checked,
+    document.getElementById('q39b').checked,
+    document.getElementById('q39c').checked,
+    document.getElementById('q39d').checked
+  ];
+  let correct = [true, false, true, true];
+  let resultSpan = document.getElementById('result-q39');
+  if (boxes.every((val, idx) => val === correct[idx])) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. Correct answers: a, c, d.";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkCalcQ41() {
+  // 640*480 = 307200 bits; 307200/8 = 38400 bytes
+  let answer = parseInt(document.getElementById('q41input').value, 10);
+  let correct = 38400;
+  let resultSpan = document.getElementById('result-q41');
+  if (isNaN(answer)) {
+    resultSpan.textContent = "Please enter a number.";
+    resultSpan.style.color = "orange";
+  } else if (answer === correct) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
     resultSpan.style.color = "red";
   }
 }
