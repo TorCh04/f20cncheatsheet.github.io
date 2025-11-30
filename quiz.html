@@ -729,6 +729,117 @@
   <span class="result" id="result-q50"></span>
 </div>
 
+<div class="question" id="q51">
+  <p>51. A client receives a certificate chain: [End-entity cert, Intermediate CA cert, Root CA cert]. The root CA is in the client’s trust store, but the intermediate CA’s certificate is expired. What is the result?</p>
+  <input type="radio" name="q51" value="a" id="q51a">
+  <label for="q51a">a) The chain is trusted because the root is trusted</label><br>
+  <input type="radio" name="q51" value="b" id="q51b">
+  <label for="q51b">b) The chain is not trusted because the intermediate CA is expired</label><br>
+  <input type="radio" name="q51" value="c" id="q51c">
+  <label for="q51c">c) The chain is trusted if the end-entity cert is valid</label><br>
+  <input type="radio" name="q51" value="d" id="q51d">
+  <label for="q51d">d) The chain is trusted only if the intermediate CA is self-signed</label><br>
+  <button type="button" onclick="checkAnswer('q51', 'b')">Check Answer</button>
+  <span class="result" id="result-q51"></span>
+</div>
+
+<div class="question" id="q52">
+  <p>52. <b>Calculation:</b> A client supports the following cipher suites: [A, B, C, D]. The server supports [B, C, E]. If the server uses the first match in its preference order, which cipher suite will be selected?</p>
+  <input type="text" id="q52input">
+  <button type="button" onclick="checkCalcQ52()">Check Answer</button>
+  <span class="result" id="result-q52"></span>
+</div>
+
+<div class="question" id="q53">
+  <p>53. An organization has a web server in a DMZ, an internal database, and a firewall between the DMZ and the internal network. Which traffic should the firewall <b>block</b> to maximize security without disrupting service?</p>
+  <input type="radio" name="q53" value="a" id="q53a">
+  <label for="q53a">a) Web server to database: SQL queries</label><br>
+  <input type="radio" name="q53" value="b" id="q53b">
+  <label for="q53b">b) Database to web server: responses</label><br>
+  <input type="radio" name="q53" value="c" id="q53c">
+  <label for="q53c">c) Web server to internal user workstations: SSH</label><br>
+  <input type="radio" name="q53" value="d" id="q53d">
+  <label for="q53d">d) Web server to Internet: HTTP</label><br>
+  <button type="button" onclick="checkAnswer('q53', 'c')">Check Answer</button>
+  <span class="result" id="result-q53"></span>
+</div>
+
+<div class="question" id="q54">
+  <p>54. <b>Calculation:</b> A VPN connects two offices: Office A (192.168.1.0/24) and Office B (10.0.0.0/24). If a user in Office A wants to reach 10.0.0.25, what must be true about the VPN configuration?</p>
+  <input type="radio" name="q54" value="a" id="q54a">
+  <label for="q54a">a) The VPN must route traffic for 10.0.0.0/24</label><br>
+  <input type="radio" name="q54" value="b" id="q54b">
+  <label for="q54b">b) The VPN must NAT all traffic to 192.168.1.0/24</label><br>
+  <input type="radio" name="q54" value="c" id="q54c">
+  <label for="q54c">c) The VPN must block 10.0.0.25</label><br>
+  <input type="radio" name="q54" value="d" id="q54d">
+  <label for="q54d">d) The VPN must use split tunneling</label><br>
+  <button type="button" onclick="checkAnswer('q54', 'a')">Check Answer</button>
+  <span class="result" id="result-q54"></span>
+</div>
+
+<div class="question" id="q55">
+  <p>55. Which of the following are common techniques attackers use to evade IDS/IPS detection? (Select all that apply)</p>
+  <input type="checkbox" id="q55a"> <label for="q55a">a) Packet fragmentation</label><br>
+  <input type="checkbox" id="q55b"> <label for="q55b">b) Encryption of payloads</label><br>
+  <input type="checkbox" id="q55c"> <label for="q55c">c) Using standard ports only</label><br>
+  <input type="checkbox" id="q55d"> <label for="q55d">d) Polymorphic shellcode</label><br>
+  <button type="button" onclick="checkMultiQ55()">Check Answer</button>
+  <span class="result" id="result-q55"></span>
+</div>
+<div class="question" id="q56">
+  <p>56. A system uses a static challenge-response protocol where the server always sends the same challenge. What attack is this protocol most vulnerable to?</p>
+  <input type="radio" name="q56" value="a" id="q56a">
+  <label for="q56a">a) Replay attack</label><br>
+  <input type="radio" name="q56" value="b" id="q56b">
+  <label for="q56b">b) Man-in-the-middle attack</label><br>
+  <input type="radio" name="q56" value="c" id="q56c">
+  <label for="q56c">c) Dictionary attack</label><br>
+  <input type="radio" name="q56" value="d" id="q56d">
+  <label for="q56d">d) Brute-force attack</label><br>
+  <button type="button" onclick="checkAnswer('q56', 'a')">Check Answer</button>
+  <span class="result" id="result-q56"></span>
+</div>
+
+<div class="question" id="q57">
+  <p>57. <b>Calculation:</b> An 800x600 pixel image uses 24 bits per pixel (RGB). If you hide 1 bit in the least significant bit of each color channel, what is the maximum number of bytes you can hide?</p>
+  <input type="number" id="q57input">
+  <button type="button" onclick="checkCalcQ57()">Check Answer</button>
+  <span class="result" id="result-q57"></span>
+</div>
+
+<div class="question" id="q58">
+  <p>58. During a TLS handshake, an attacker intercepts and modifies the handshake to force both client and server to use an older, insecure protocol version. What is this attack called, and what is a common mitigation?</p>
+  <input type="radio" name="q58" value="a" id="q58a">
+  <label for="q58a">a) Man-in-the-middle; use longer keys</label><br>
+  <input type="radio" name="q58" value="b" id="q58b">
+  <label for="q58b">b) Downgrade attack; use protocol version negotiation and deprecate old versions</label><br>
+  <input type="radio" name="q58" value="c" id="q58c">
+  <label for="q58c">c) Replay attack; use nonces</label><br>
+  <input type="radio" name="q58" value="d" id="q58d">
+  <label for="q58d">d) Padding oracle; use authenticated encryption</label><br>
+  <button type="button" onclick="checkAnswer('q58', 'b')">Check Answer</button>
+  <span class="result" id="result-q58"></span>
+</div>
+
+<div class="question" id="q59">
+  <p>59. Which of the following are potential security risks of improperly configured VPNs? (Select all that apply)</p>
+  <input type="checkbox" id="q59a"> <label for="q59a">a) Split tunneling exposes internal resources</label><br>
+  <input type="checkbox" id="q59b"> <label for="q59b">b) Weak authentication allows unauthorized access</label><br>
+  <input type="checkbox" id="q59c"> <label for="q59c">c) All traffic is always encrypted</label><br>
+  <input type="checkbox" id="q59d"> <label for="q59d">d) VPN leaks can reveal user IP addresses</label><br>
+  <button type="button" onclick="checkMultiQ59()">Check Answer</button>
+  <span class="result" id="result-q59"></span>
+</div>  
+
+<div class="question" id="q60">
+  <p>60. <b>Calculation:</b> An IDS analyzes 10,000 events. It raises 200 alerts, of which 180 are false positives. What is the false positive rate as a percentage?</p>
+  <input type="number" id="q60input">
+  <button type="button" onclick="checkCalcQ60()">Check Answer</button>
+  <span class="result" id="result-q60"></span>
+</div>
+
+
   </form>
 
   <script>
@@ -1210,6 +1321,97 @@ function checkMultiQ49() {
     resultSpan.style.color = "green";
   } else {
     resultSpan.textContent = "Incorrect. Correct answers: a, b, d.";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkCalcQ52() {
+  // Server supports [B, C, E], client supports [A, B, C, D]
+  // First match in server order: B (since B is in both)
+  let answer = document.getElementById('q52input').value.trim().toUpperCase();
+  let correct = "B";
+  let resultSpan = document.getElementById('result-q52');
+  if (!answer) {
+    resultSpan.textContent = "Please enter a cipher suite.";
+    resultSpan.style.color = "orange";
+  } else if (answer === correct) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkMultiQ55() {
+  // Correct: a, b, d
+  let boxes = [
+    document.getElementById('q55a').checked,
+    document.getElementById('q55b').checked,
+    document.getElementById('q55c').checked,
+    document.getElementById('q55d').checked
+  ];
+  let correct = [true, true, false, true];
+  let resultSpan = document.getElementById('result-q55');
+  if (boxes.every((val, idx) => val === correct[idx])) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. Correct answers: a, b, d.";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkCalcQ57() {
+  // 800*600 = 480,000 pixels; 3 channels per pixel = 1,440,000 bits; 1 bit per channel
+  // 1,440,000 bits / 8 = 180,000 bytes
+  let answer = parseInt(document.getElementById('q57input').value, 10);
+  let correct = 180000;
+  let resultSpan = document.getElementById('result-q57');
+  if (isNaN(answer)) {
+    resultSpan.textContent = "Please enter a number.";
+    resultSpan.style.color = "orange";
+  } else if (answer === correct) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + ".";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkMultiQ59() {
+  // Correct: a, b, d
+  let boxes = [
+    document.getElementById('q59a').checked,
+    document.getElementById('q59b').checked,
+    document.getElementById('q59c').checked,
+    document.getElementById('q59d').checked
+  ];
+  let correct = [true, true, false, true];
+  let resultSpan = document.getElementById('result-q59');
+  if (boxes.every((val, idx) => val === correct[idx])) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. Correct answers: a, b, d.";
+    resultSpan.style.color = "red";
+  }
+}
+
+function checkCalcQ60() {
+  // 180 false positives out of 10,000 events: (180/10000)*100 = 1.8%
+  let answer = parseFloat(document.getElementById('q60input').value);
+  let correct = 1.8;
+  let resultSpan = document.getElementById('result-q60');
+  if (isNaN(answer)) {
+    resultSpan.textContent = "Please enter a percentage.";
+    resultSpan.style.color = "orange";
+  } else if (Math.abs(answer - correct) < 0.01) {
+    resultSpan.textContent = "Correct!";
+    resultSpan.style.color = "green";
+  } else {
+    resultSpan.textContent = "Incorrect. The correct answer is " + correct + "%.";
     resultSpan.style.color = "red";
   }
 }
