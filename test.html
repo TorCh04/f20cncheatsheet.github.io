@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>K-Means Clustering Demo</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    canvas {
+      background: #020617;
+      border: 2px solid #334155;
+      border-radius: 12px;
+      cursor: crosshair;
+    }
+
+    .controls {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    button {
+      background: #3b82f6;
+      border: none;
+      padding: 0.5rem 1rem;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+
+    input {
+      width: 60px;
+      padding: 0.25rem;
+    }
+
+    .legend {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+<h2>K-Means Clustering Live Demo</h2>
+
+<canvas id="canvas" width="600" height="400"></canvas>
+
+<div class="controls">
+  <label>K:
+    <input type="number" id="kValue" value="3" min="1" />
+  </label>
+  <button onclick="initCentroids()">Init Centroids</button>
+  <button onclick="runStep()">Run Step</button>
+  <button onclick="resetAll()">Reset</button>
+</div>
+
+<div class="legend">
+  Click the canvas to place points.  
+  Init centroids → Run step repeatedly to watch convergence.
+</div>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let points = [];
+let centroids = [];
+let assignments = [];
+
+const colors = ["#ef4444","#22c55e","#3b82f6","#eab308","#a855f7","#14b8a6"];
+
+canvas.addEventListener("click", e => {
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  points.push({x,y});
+  draw();
+});
+
+function initCentroids() {
+  const k = parseInt(document.getElementById("kValue").value);
+  centroids = [];
+
+  for (let i = 0; i < k; i++) {
+    centroids.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height
+    });
+  }
+  draw();
+}
+
+function runStep() {
+  if (centroids.length === 0) return;
+
+  // Assignment step
+  assignments = points.map(p => {
+    let minDist = Infinity;
+    let ci = 0;
+    centroids.forEach((c, i) => {
+      const d = dist(p,c);
+      if (d < minDist) {
+        minDist = d;
+        ci = i;
+      }
+    });
+    return ci;
+  });
+
+  // Update step
+  centroids.forEach((c, i) => {
+    const cluster = points.filter((_, idx) => assignments[idx] === i);
+    if (cluster.length === 0) return;
+
+    c.x = cluster.reduce((s,p)=>s+p.x,0)/cluster.length;
+    c.y = cluster.reduce((s,p)=>s+p.y,0)/cluster.length;
+  });
+
+  draw();
+}
+
+function resetAll() {
+  points = [];
+  centroids = [];
+  assignments = [];
+  draw();
+}
+
+function dist(a,b) {
+  return Math.hypot(a.x-b.x, a.y-b.y);
+}
+
+function draw() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  // Draw points
+  points.forEach((p,i)=>{
+    const cluster = assignments[i];
+    ctx.fillStyle = colors[cluster % colors.length] || "#fff";
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,5,0,Math.PI*2);
+    ctx.fill();
+  });
+
+  // Draw centroids
+  centroids.forEach((c,i)=>{
+    ctx.strokeStyle = colors[i % colors.length];
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(c.x,c.y,10,0,Math.PI*2);
+    ctx.stroke();
+    ctx.fillStyle = colors[i % colors.length];
+    ctx.fillText("C"+(i+1),c.x+12,c.y);
+  });
+}
+
+draw();
+</script>
+
+</body>
+</html>
